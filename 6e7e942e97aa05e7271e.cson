@@ -1,0 +1,23 @@
+type: "MARKDOWN_NOTE"
+folder: "c58e0363657feb4ddb8a"
+title: "Recursion"
+content: '''
+  # Recursion
+  
+  > Your **base case** is the most important piece.  If you don't write this first you will stack overflow
+  
+  
+  ```js
+  function basicRecursion(max, current) {
+    if (current > max) return
+    console.log(current)
+    basicRecursion(max, current + 1)
+  }
+  
+  basicRecursion(1, 10)
+  ```
+'''
+tags: []
+isStarred: false
+createdAt: "2017-07-27T03:36:47.321Z"
+updatedAt: "2017-07-27T03:46:09.002Z"

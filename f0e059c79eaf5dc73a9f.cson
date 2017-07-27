@@ -1,0 +1,36 @@
+type: "MARKDOWN_NOTE"
+folder: "c58e0363657feb4ddb8a"
+title: "Big O Notation"
+content: '''
+  # Big O Notation
+  
+  # TODO: [Read this](https://web.njit.edu/~wl256/download/cs610/Introduction-to-algorithm-3rdEdition.pdf)
+  
+  ## Big Idea
+  
+  > Big O sucks away the unimportant stuff so you can focus on what matters
+  
+  
+  ### O(1)
+  
+  * When you have no loops and are just doing something and exiting/returning
+  
+  ### O(n)
+  
+  * When you are doing the same amount of work that is going into a function
+  
+  ### O(n^2)
+  
+  * Trick here is to look for double `for` or `while` loops
+  
+  ### O(log n)
+  
+  * Where code employs **divide and conquer** strategies that use *recursion* like merge and quick sorts
+  
+'''
+tags: [
+  "Big_O"
+]
+isStarred: false
+createdAt: "2017-07-27T03:10:52.428Z"
+updatedAt: "2017-07-27T03:34:16.413Z"
