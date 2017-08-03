@@ -46,3 +46,9 @@ function factorial(n) {
 }
 ```
 
+## Merge Sort
+
+> bigO = O(n log n)
+
+* Recursive algo that is very **stable**
+  * However when sorting numbers stability doesn't matter because you don't care what order two 4's for instance are given to you
