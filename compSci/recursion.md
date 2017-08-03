@@ -33,7 +33,7 @@ function fibonacci(n) {
 
 > !4 = 4 * 3 * 2 * 1
 
-* Factorials are defined recursively by **multipling itself** by the previous number until you get to 1
+* Factorials are defined recursively by **multiplying itself** by the previous number until you get to 1
 
 ```js
 function factorial(n) {
