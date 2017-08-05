@@ -9,5 +9,5 @@ git push origin master
 > You can then add this alias to `.zshrc`
 
 ```zsh
-alias s='bash s.sh'
+alias s='bash saveNotes.sh'
 ```
