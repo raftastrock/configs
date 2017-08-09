@@ -11,3 +11,5 @@
 3. run `ant all`
 
     * That will start your build
+
+4. go into your bundles folder, then tomcat then bin and run `./catalina.sh run`
