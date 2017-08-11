@@ -24,14 +24,16 @@ alias -g z="~/.zshrc"
 # GENERAL FUNCTIONS
 function zpush {
   cd ~/dev/notes/linuxCLI/scripts
-  cp "$g" .
-  cp "$z" .
+  cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
+  cp ~/.zshrc .
   gsave "$1"
   cd -
 }
 
 function zpull {
   cd ~/dev/notes/linuxCLI/scripts
+  git pull origin master
+  . ~/.zshrc
 }
 
 # Jack functions
