@@ -33,8 +33,8 @@ function zpush {
 function zpull {
   cd ~/dev/notes/linuxCLI/scripts
   git pull origin master
-  cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh ~
-  cp ~/.zshrc ~
+  cp .zshrc ~
+  cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
   re
 }
 
