@@ -36,6 +36,7 @@ function zpull {
   cp .zshrc ~
   cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
   re
+  cd -
 }
 
 # Jack functions
