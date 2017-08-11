@@ -33,7 +33,9 @@ function zpush {
 function zpull {
   cd ~/dev/notes/linuxCLI/scripts
   git pull origin master
-  . ~/.zshrc
+  cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh ~
+  cp ~/.zshrc ~
+  re
 }
 
 # Jack functions
