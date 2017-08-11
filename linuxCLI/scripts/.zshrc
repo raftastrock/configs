@@ -22,9 +22,16 @@ alias -g g="~/.oh-my-zsh/plugins/git/git.plugin.zsh"
 alias -g z="~/.zshrc"
 
 # GENERAL FUNCTIONS
-function update {
+function zpush {
   cd ~/dev/notes/linuxCLI/scripts
-  cp ~/.zshrc .
+  cp "$g" .
+  cp "$z" .
+  gsave "$1"
+  cd -
+}
+
+function zpull {
+  cd ~/dev/notes/linuxCLI/scripts
 }
 
 # Jack functions
