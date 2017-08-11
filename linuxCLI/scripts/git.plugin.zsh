@@ -95,6 +95,7 @@ compdef _git gdv=git-diff
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
+alias gfu='git fetch upstream'
 alias gups='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
 
 function gfg() { git ls-files | grep $@ }
