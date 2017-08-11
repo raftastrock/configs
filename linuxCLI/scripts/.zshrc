@@ -1,17 +1,15 @@
 # PATH
+export ANT_OPTS="-Xms2048m -Xmx4096m -XX:MaxPermSize=512m"
 export TEMP=$HOME/temp
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=/home/ryan/.oh-my-zsh
 
-
 # PLUGINS
-
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES
-
 alias b="bash brightness.sh"
 alias c="clear"
 alias re=". ~/.zshrc"
@@ -23,16 +21,13 @@ alias suspend="systemctl suspend"
 alias -g g="~/.oh-my-zsh/plugins/git/git.plugin.zsh" 
 alias -g z="~/.zshrc"
 
-# ANT PATH
+# GENERAL FUNCTIONS
+function update {
+  cd ~/dev/notes/linuxCLI/scripts
+  cp ~/.zshrc .
+}
 
-export ANT_OPTS="-Xms2048m -Xmx4096m -XX:MaxPermSize=512m"
-
-
-# GIT FUNCTIONS
-
-alias count="git rev-list --count $1"
-alias cur="git branch | grep \* | sed -r 's/^.{2}//'"
-
+# Jack functions
 function jse {
   jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
@@ -42,7 +37,6 @@ function jsc {
 }
 
 # GRADLE FUNCTION
-
 function rungradle {
 
   # Rename settings.gradle temporarily
@@ -137,3 +131,4 @@ function rungradle {
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
