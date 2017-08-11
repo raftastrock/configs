@@ -27,7 +27,7 @@ function zpush {
   cd ~/dev/notes/linuxCLI/scripts
   cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
   cp ~/.zshrc .
-  gsave '$1'
+  gsave "$1"
   cd -
 }
 
@@ -42,11 +42,11 @@ function zpull {
 
 # Jack functions
 function jse {
-  jack --stat '$1' --grep '$2' --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+  jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 function jsc {
-  jack '$1' --grep '$2' --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+  jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 # GRADLE FUNCTION
@@ -61,13 +61,13 @@ function rungradle {
   # Run regular gradle commands
   local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
 
-  if [[ -n '$root_level' && -f '$root_level/gradlew' ]]; then
-    root_level='$root_level/gradlew'
+  if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
+    root_level="$root_level/gradlew"
   else
     root_level=$(which gradle)
   fi
 
-  '$root_level' $@
+  "$root_level" $@
 
   if [ -e settings.gradle.tmp ]
     then
