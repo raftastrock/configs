@@ -13,6 +13,7 @@ source ~/PS1.zsh
 alias b='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
+alias notes='cd ~/dev/notes && code .'
 alias re='. ~/.zshrc'
 alias sass='sudo npm rebuild node-sass --force'
 alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
