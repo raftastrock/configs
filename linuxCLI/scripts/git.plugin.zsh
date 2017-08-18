@@ -193,7 +193,6 @@ alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
-alias gprs = gh pr -s ${1} -t ${2} -b ${2} -D "Hey @${1}, here are the updates for [${2}](https://issues.liferay.com/browse/${2}). Thanks for reviewing :) ${3}"
 alias gpu='git push upstream'
 alias gpv='git push -v'
 
@@ -248,3 +247,8 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
+# NODE GH STUFF
+function gprs(){
+  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
+}
