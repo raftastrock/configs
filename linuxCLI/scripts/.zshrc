@@ -21,7 +21,7 @@ alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
 alias suspend='systemctl suspend'
 
 # ALIASES GLOBAL
-alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
+alias -g p='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
