@@ -25,6 +25,10 @@ alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
+function s {
+  cat $1 | grep $2
+}
+
 function zpush {
   cd ~/dev/notes/linuxCLI/scripts
   cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
