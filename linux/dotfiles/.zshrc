@@ -1,4 +1,3 @@
-#Hellod
 # PATH
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=512m'
 export TEMP=$HOME/temp
@@ -20,7 +19,7 @@ alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
 alias sass='sudo npm rebuild node-sass --force'
 alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
-alias suspend='systemctl suspend'
+alias suspend='systemctl suspend -i'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
