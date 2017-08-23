@@ -1,0 +1,23 @@
+! Mode switch to Super
+!clear mod4
+!clear mod5
+keycode 133 = Mode_switch
+!add mod4 = Mode_switch
+!
+! Mode switch to Super
+keycode 31 = i I Up
+keycode 44 = j J Left
+keycode 45 = k K Down
+keycode 46 = l L Right
+
+
+!Home
+keycode 47 = semicolon colon Home
+keycode 48 = apostrophe quotedbl End
+
+!
+! Shift + Esc = ~
+keycode 9 = grave asciitilde Escape
+!
+! Super + BackSpace = Delete
+keycode 22 = BackSpace BackSpace Delete
