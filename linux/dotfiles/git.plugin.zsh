@@ -70,7 +70,7 @@ alias gcsm='git commit -s -m'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
 alias gcl='git clone --recursive'
-alias gclean='git clean -fd'
+alias gclean='git clean -dfnx'
 alias gpristine='git reset --hard && git clean -dfx'
 alias gcm='git checkout master'
 alias gcd='git checkout develop'
@@ -95,8 +95,9 @@ compdef _git gdv=git-diff
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
+alias gfor='git fetch origin && git reset --hard origin/$(git_current_branch)'
 alias gfu='git fetch upstream'
-alias gups='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
+alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
 
 function gfg() { git ls-files | grep $@ }
 compdef _grep gfg
