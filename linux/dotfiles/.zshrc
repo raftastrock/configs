@@ -23,6 +23,13 @@ alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
 alias suspend='systemctl suspend -i'
 alias xmod='xmodmap ~/.Xmodmap'
 
+# Github Users
+alias Allen='allen-ziegenfus'
+alias Joan='joanhyokim'
+alias Luke='raftastrock'
+alias Phil='phillipchan2'
+alias Ryan='ryanschuhler'
+
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
 alias -g z='~/.zshrc'
