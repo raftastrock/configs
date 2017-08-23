@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case "$1" in
+    resume)
+	xmodmap ~/.Xmodmap
+	b .6       
+	;;
+    thaw) 
+	b .6
+	xmodmap ~/.Xmodmap
+        ;;
+    *)
+        ;;
+esac
