@@ -14,12 +14,14 @@ source ~/PS1.zsh
 alias b='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
+alias lock='gnome-screensaver-command -l'
 alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
 alias sass='sudo npm rebuild node-sass --force'
 alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
 alias suspend='systemctl suspend -i'
+alias xmod='xmodmap ~/.Xmodmap'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
