@@ -3,6 +3,12 @@ zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 : ${_omz_git_git_cmd:=git}
 
 #
+# Exports
+#
+
+export cur=$(git_current_branch)
+
+#
 # Functions
 #
 
@@ -13,6 +19,7 @@ zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 function current_branch() {
   git_current_branch
 }
+
 # The list of remotes
 function current_repository() {
   if ! $_omz_git_git_cmd rev-parse --is-inside-work-tree &> /dev/null; then
@@ -20,17 +27,29 @@ function current_repository() {
   fi
   echo $($_omz_git_git_cmd remote -v | cut -d':' -f 2)
 }
+
 # Pretty log messages
 function _git_log_prettily(){
   if ! [ -z $1 ]; then
     git log --pretty=$1
   fi
 }
+
 # Warn if the current branch is a WIP
 function work_in_progress() {
   if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
     echo "WIP!!"
   fi
+}
+
+function gpr(){
+  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
+}
+
+function gsave(){
+  git add .
+  git commit -m $1
+  git push origin $(git_current_branch)
 }
 
 #
@@ -197,10 +216,6 @@ alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
 
-function gpr(){
-  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
-}
-
 alias gpu='git push upstream'
 alias gpv='git push -v'
 
@@ -221,12 +236,6 @@ alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 alias gru='git reset --'
 alias grup='git remote update'
 alias grv='git remote -v'
-
-function gsave(){
-  git add .
-  git commit -m $1
-  git push origin
-}
 
 alias gsb='git status -sb'
 alias gsd='git svn dcommit'
