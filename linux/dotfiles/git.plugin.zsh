@@ -125,12 +125,6 @@ compdef _grep gfg
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
 
-ggf() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push --force origin "${b:=$1}"
-}
-compdef _git ggf=git-checkout
-
 ggl() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     git pull origin "${*}"
@@ -212,6 +206,7 @@ alias gmum='git merge upstream/master'
 
 alias gp='git push'
 alias gpd='git push --dry-run'
+alias gpf='git push --force origin $(git_current_branch)'
 alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
