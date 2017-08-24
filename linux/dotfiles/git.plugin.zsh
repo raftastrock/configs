@@ -193,6 +193,7 @@ alias gmum='git merge upstream/master'
 
 alias gp='git push'
 alias gpd='git push --dry-run'
+alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
 
