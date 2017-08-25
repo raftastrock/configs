@@ -2,59 +2,11 @@
 zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 : ${_omz_git_git_cmd:=git}
 
-#
-# Exports
-#
-
+# EXPORTS
 export cur=$(git_current_branch)
 
-#
-# Functions
-#
 
-# The name of the current branch
-# Back-compatibility wrapper for when this function was defined here in
-# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
-# to fix the core -> git plugin dependency.
-function current_branch() {
-  git_current_branch
-}
-
-# Repo Name
-function repo_name() {
-  git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
-}
-
-# Pretty log messages
-function _git_log_prettily(){
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  fi
-}
-
-# Warn if the current branch is a WIP
-function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
-    echo "WIP!!"
-  fi
-}
-
-function gpr(){
-  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
-}
-
-function gsave(){
-  git add .
-  git commit -m $1
-  git push origin $(git_current_branch)
-  opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-}
-
-#
-# Aliases
-# (sorted alphabetically)
-#
-
+# ALIASES
 alias g='git'
 
 alias ga='git add'
@@ -107,9 +59,6 @@ alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
-gdv() { git diff -w "$@" | view - }
-compdef _git gdv=git-diff
-
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
@@ -118,46 +67,8 @@ alias gfr='git fetch upstream && git reset --hard'
 alias gfu='git fetch upstream'
 alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
 
-function gfg() { git ls-files | grep $@ }
-compdef _grep gfg
-
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
-
-ggl() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git pull origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git pull origin "${b:=$1}"
-  fi
-}
-compdef _git ggl=git-checkout
-
-ggp() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git push origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git push origin "${b:=$1}"
-  fi
-}
-compdef _git ggp=git-checkout
-
-ggpnp() {
-  if [[ "$#" == 0 ]]; then
-    ggl && ggp
-  else
-    ggl "${*}" && ggp "${*}"
-  fi
-}
-compdef _git ggpnp=git-checkout
-
-ggu() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git pull --rebase origin "${b:=$1}"
-}
-compdef _git ggu=git-checkout
 
 alias ggpur='ggu'
 compdef _git ggpur=git-checkout
@@ -259,3 +170,84 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
+# FUNCTIONS
+function _git_log_prettily(){
+  if ! [ -z $1 ]; then
+    git log --pretty=$1
+  fi
+}
+
+function gdv() { git diff -w "$@" | view - }
+
+compdef _git gdv=git-diff
+
+
+function gfg() { git ls-files | grep $@ }
+
+compdef _grep gfg
+
+
+function ggl() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git pull origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git pull origin "${b:=$1}"
+  fi
+}
+
+compdef _git ggl=git-checkout
+
+
+function ggp() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git push origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git push origin "${b:=$1}"
+  fi
+}
+
+compdef _git ggp=git-checkout
+
+
+function ggpnp() {
+  if [[ "$#" == 0 ]]; then
+    ggl && ggp
+  else
+    ggl "${*}" && ggp "${*}"
+  fi
+}
+
+compdef _git ggpnp=git-checkout
+
+
+function ggu() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git pull --rebase origin "${b:=$1}"
+}
+
+compdef _git ggu=git-checkout
+
+
+function gpr(){
+  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
+}
+
+function gsave(){
+  git add .
+  git commit -m $1
+  git push origin $(git_current_branch)
+  opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+}
+
+function repo_name() {
+  git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
+}
+
+function work_in_progress() {
+  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+    echo "WIP!!"
+  fi
+}
