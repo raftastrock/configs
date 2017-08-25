@@ -116,6 +116,7 @@ alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
 alias gfor='git fetch origin && git reset --hard origin/$(git_current_branch)'
+alias gfr='git fetch upstream && git reset --hard'
 alias gfu='git fetch upstream'
 alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
 
