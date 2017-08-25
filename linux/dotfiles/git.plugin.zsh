@@ -20,12 +20,9 @@ function current_branch() {
   git_current_branch
 }
 
-# The list of remotes
-function current_repository() {
-  if ! $_omz_git_git_cmd rev-parse --is-inside-work-tree &> /dev/null; then
-    return
-  fi
-  echo $($_omz_git_git_cmd remote -v | cut -d':' -f 2)
+# Repo Name
+function repo_name() {
+  git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
 }
 
 # Pretty log messages
@@ -50,6 +47,7 @@ function gsave(){
   git add .
   git commit -m $1
   git push origin $(git_current_branch)
+  opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
 }
 
 #
@@ -256,6 +254,7 @@ alias gunignore='git update-index --no-assume-unchanged'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias gup='git pull --rebase'
 alias gupv='git pull --rebase -v'
+alias gun='git config --global user.name'
 alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
