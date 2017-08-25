@@ -1,14 +1,13 @@
 #!/bin/bash
+# /etc/pm/sleep.d
 
 case "$1" in
     resume)
-	xmodmap ~/.Xmodmap
-	b .6       
-	;;
-    thaw) 
-	b .6
-	xmodmap ~/.Xmodmap
-        ;;
-    *)
-        ;;
+  b .6
+  xmodmap ~/.Xmodmap
+  ;;
+    thaw)
+  b .6
+  xmodmap ~/.Xmodmap
+    ;;
 esac
