@@ -120,7 +120,6 @@ alias gpf='git push --force origin $(git_current_branch)'
 alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
-
 alias gpu='git push upstream'
 alias gpv='git push -v'
 
@@ -170,6 +169,8 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
+
 
 # FUNCTIONS
 function _git_log_prettily(){
