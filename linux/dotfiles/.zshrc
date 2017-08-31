@@ -29,6 +29,7 @@ export Joan='joanhyokim'
 export Luke='raftastrock'
 export Phil='phillipchan2'
 export Ryan='ryanschuhler'
+export Weston='westonhancock'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 

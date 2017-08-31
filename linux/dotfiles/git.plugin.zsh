@@ -2,6 +2,14 @@
 zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 : ${_omz_git_git_cmd:=git}
 
+# The name of the current branch
+# Back-compatibility wrapper for when this function was defined here in
+# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
+# to fix the core -> git plugin dependency.
+function current_branch() {
+  git_current_branch
+}
+
 # EXPORTS
 export cur=$(git_current_branch)
 
@@ -239,7 +247,7 @@ function gpr(){
 function gsave(){
   git add .
   git commit -m $1
-  git push origin $(git_current_branch)
+  git push -f origin $(git_current_branch)
   opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
 }
 
@@ -253,10 +261,3 @@ function work_in_progress() {
   fi
 }
 
-# The name of the current branch
-# Back-compatibility wrapper for when this function was defined here in
-# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
-# to fix the core -> git plugin dependency.
-function current_branch() {
-  git_current_branch
-}
