@@ -11,7 +11,7 @@ function current_branch() {
 }
 
 # EXPORTS
-export cur=$(git_current_branch)
+export cur=$(current_branch)
 
 
 # ALIASES
@@ -139,7 +139,7 @@ alias grbc='git rebase --continue'
 alias grbi='git rebase -i'
 alias grbm='git rebase master'
 alias grbs='git rebase --skip'
-alias grh='git reset HEAD'
+alias grh='git reset --hard'
 alias grhh='git reset HEAD --hard'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
