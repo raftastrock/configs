@@ -11,7 +11,7 @@ function current_branch() {
 }
 
 # EXPORTS
-export cur=$(current_branch)
+export cur=$(git_current_branch)
 
 
 # ALIASES
@@ -73,7 +73,7 @@ alias gfo='git fetch origin'
 alias gfor='git fetch origin && git reset --hard origin/$(git_current_branch)'
 alias gfr='git fetch upstream && git reset --hard'
 alias gfu='git fetch upstream'
-alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch)'
+alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch) && git clean -dfnx'
 
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
