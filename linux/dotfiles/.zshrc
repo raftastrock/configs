@@ -66,7 +66,20 @@ function jsc {
   jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
-# GRADLE FUNCTION
+# LIFERAY FUNCTIONS
+
+# change main dir server directory
+function mainDir {
+  touch app.server.ryan.properties
+  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+}
+
+# change plugin dir server directory
+function plugDir {
+  touch build.ryan.properties
+  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+}
+
 function rungradle {
 
   # Rename settings.gradle temporarily
