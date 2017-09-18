@@ -15,6 +15,7 @@ alias b='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
 alias lock='gnome-screensaver-command -l'
+alias my='mysql -u root'
 alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
@@ -66,7 +67,20 @@ function jsc {
   jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
+
 # LIFERAY FUNCTIONS
+
+# Deploy community theme
+function deploy-theme {
+  cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
+  ant deploy
+  cd -
+}
+
+# Go to bundles
+function bundle {
+  cd
+}
 
 # change main dir server directory
 function mainDir {
