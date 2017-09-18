@@ -6,7 +6,7 @@ export ZSH=/home/ryan/.oh-my-zsh
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # PLUGINS
-plugins=(git)
+plugins=(git zsh-output-highlighting)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
@@ -72,14 +72,10 @@ function jsc {
 
 # Deploy community theme
 function deploy-theme {
+  rm -rfv /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/work/Catalina/localhost/osb-community-theme
   cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
   ant deploy
   cd -
-}
-
-# Go to bundles
-function bundle {
-  cd
 }
 
 # change main dir server directory
