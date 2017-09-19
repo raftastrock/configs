@@ -20,7 +20,6 @@ alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
 alias sass='sudo npm rebuild node-sass --force'
-alias serve='cd ../bundles/tom*/bin && ./catalina.sh run'
 alias suspend='systemctl suspend -i'
 alias xmod='xmodmap ~/.Xmodmap'
 
@@ -31,6 +30,8 @@ export Luke='raftastrock'
 export Phil='phillipchan2'
 export Ryan='ryanschuhler'
 export Weston='westonhancock'
+export Proto='protoEvangelion'
+export LukeIcon=':floppy_disk:'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
@@ -72,10 +73,26 @@ function jsc {
 
 # Deploy community theme
 function deploy-theme {
-  rm -rfv /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/work/Catalina/localhost/osb-community-theme
+  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+  rm -rfv work/Catalina/localhost/osb-community-theme
+  #rm -rfv webapps/osb-community-theme/css/.sass-cache
+  #rm -rfv temp
+  #rm -rfv logs
   cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
   ant deploy
   cd -
+}
+
+# Serve Liferay
+function serve {
+  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
+  ./catalina.sh run
+  cd -
+}
+
+# Go to Tomcat Dir
+function tom {
+  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
 }
 
 # change main dir server directory

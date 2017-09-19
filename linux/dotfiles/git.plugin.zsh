@@ -241,7 +241,7 @@ compdef _git ggu=git-checkout
 
 
 function gpr(){
-  gh pr -s $1 -t $2 -b $3 -D "Hey @$1, here are the updates for [$2](https://issues.liferay.com/browse/$2). Thanks for reviewing :) $4"
+  gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
 function gsave(){
