@@ -81,6 +81,7 @@ function deploy-theme {
   cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
   ant deploy
   cd -
+  cd -
 }
 
 # Serve Liferay
