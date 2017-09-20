@@ -34,8 +34,10 @@ export Ryan='ryanschuhler'
 export Weston='westonhancock'
 export Proto='protoEvangelion'
 
+export JoanIcon=':herb:'
+export LukeIcon=':mount_fuji:'
+export PhilIcon=':palm_tree:'
 export RyanIcon=':registered:'
-export LukeIcon=':floppy_disk:'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
