@@ -13,7 +13,6 @@ function current_branch() {
 # EXPORTS
 export cur=$(git_current_branch)
 
-
 # ALIASES
 alias g='git'
 
