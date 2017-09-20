@@ -42,6 +42,13 @@ alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
+function new {
+  cd ~/dev/temp
+  touch $1
+  code $1
+  cd -
+}
+
 function s {
   cat $1 | grep $2
 }
