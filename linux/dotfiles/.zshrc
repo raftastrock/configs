@@ -4,6 +4,7 @@ export TEMP=$HOME/temp
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=/home/ryan/.oh-my-zsh
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export API_URL='http://localhost:1337'
 
 # PLUGINS
 plugins=(git zsh-output-highlighting)
