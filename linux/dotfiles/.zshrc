@@ -15,6 +15,7 @@ alias b='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
 alias lock='gnome-screensaver-command -l'
+alias hi='systemctl hibernate'
 alias my='mysql -u root'
 alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
@@ -31,6 +32,8 @@ export Phil='phillipchan2'
 export Ryan='ryanschuhler'
 export Weston='westonhancock'
 export Proto='protoEvangelion'
+
+export RyanIcon=':registered:'
 export LukeIcon=':floppy_disk:'
 
 # ALIASES GLOBAL
