@@ -13,3 +13,9 @@
     * That will start your build
 
 4. go into your bundles folder, then tomcat then bin and run `./catalina.sh run`
+
+
+## Deploying plugins on 6.2.x
+
+1. make sure your parent dir prop in your build.properties file is correct directory
+2. go to your theme or plugin dir and run `ant deploy`
