@@ -80,8 +80,8 @@ alias gga='git gui citool --amend'
 alias ggpur='ggu'
 compdef _git ggpur=git-checkout
 
-alias ggpull='git pull origin $(git_current_branch)'
-compdef _git ggpull=git-checkout
+alias ggpo='git pull origin $(git_current_branch)'
+alias ggpu='git pull upstream $(git_current_branch)'
 
 alias ggpush='git push origin $(git_current_branch)'
 compdef _git ggpush=git-checkout
