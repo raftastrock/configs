@@ -59,7 +59,9 @@ function zpush {
   cd ~/dev/notes/linux/dotfiles
   cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
   cp ~/.zshrc .
+  cd ../../
   gsave "$1"
+  cd -
   cd -
 }
 

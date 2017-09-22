@@ -244,7 +244,7 @@ function gpr(){
 }
 
 function gsave(){
-  git add .
+  gaa
   git commit -m $1
   git push -f origin $(git_current_branch)
   opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
