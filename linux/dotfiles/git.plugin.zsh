@@ -83,9 +83,6 @@ compdef _git ggpur=git-checkout
 alias ggpo='git pull origin $(git_current_branch)'
 alias ggpu='git pull upstream $(git_current_branch)'
 
-alias ggpush='git push origin $(git_current_branch)'
-compdef _git ggpush=git-checkout
-
 alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
@@ -127,7 +124,7 @@ alias gpf='git push --force origin $(git_current_branch)'
 alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
-alias gpu='git push upstream'
+alias gpu='git push upstream $(git_current_branch)'
 alias gpv='git push -v'
 
 alias gr='git remote'
