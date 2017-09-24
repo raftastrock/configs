@@ -244,7 +244,7 @@ function gsave(){
   gaa
   git commit -m $1
   git push -f origin $(git_current_branch)
-  if [ $# -gt 1 ]
+  if [ '$#' -gt 1 ]
   then
     opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
   else
