@@ -39,6 +39,9 @@ export LukeIcon=':mount_fuji:'
 export PhilIcon=':palm_tree:'
 export RyanIcon=':registered:'
 
+# Github Repos
+export nil='next-in-line'
+
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
 alias -g z='~/.zshrc'
@@ -61,7 +64,6 @@ function zpush {
   cp ~/.zshrc .
   cd ../../
   gsave "$1"
-  cd -
   cd -
 }
 
