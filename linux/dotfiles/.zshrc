@@ -85,14 +85,22 @@ function jsc {
 
 
 # LIFERAY FUNCTIONS
-
-# Deploy community theme
-function deploy-theme {
+function clean {
   cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
   rm -rfv work/Catalina/localhost/osb-community-theme
-  #rm -rfv webapps/osb-community-theme/css/.sass-cache
-  #rm -rfv temp
-  #rm -rfv logs
+}
+
+function cleanAll {
+  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+  rm -rfv work/Catalina/localhost/osb-community-theme
+  rm -rfv webapps/osb-community-theme/css/.sass-cache
+  rm -rfv temp
+  rm -rfv logs
+}
+
+# Deploy community theme
+function theme {
+  clean
   cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
   ant deploy
   cd -

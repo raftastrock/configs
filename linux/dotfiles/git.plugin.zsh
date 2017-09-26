@@ -142,6 +142,7 @@ alias grh='git reset --hard'
 alias grhh='git reset HEAD --hard'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
+alias grs='git reset --soft'
 alias grset='git remote set-url'
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
 alias gru='git reset --'
@@ -246,7 +247,7 @@ function gpr(){
 function gsave(){
   gaa
   git commit -m $1
-  git push -f origin $(git_current_branch)
+  git push origin $(git_current_branch)
   opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
 }
 
