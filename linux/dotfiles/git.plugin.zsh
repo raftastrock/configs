@@ -10,9 +10,6 @@ function current_branch() {
   git_current_branch
 }
 
-# EXPORTS
-export cur=$(git_current_branch)
-
 # ALIASES
 alias g='git'
 
@@ -34,7 +31,7 @@ alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
 alias gbss='git bisect start'
 
-alias gc='git commit -v'
+alias gc='git rev-parse --abbrev-ref HEAD'
 alias gc!='git commit -v --amend'
 alias gcn!='git commit -v --no-edit --amend'
 alias gca='git commit -v -a'
@@ -245,15 +242,6 @@ function gsave(){
   gaa
   git commit -m $1
   git push origin $(git_current_branch)
-  if [ $# -gt 1 ]
-  then
-    opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-  else
-    opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-  fi
-}
-
-function tester(){
   if [ $# -gt 1 ]
   then
     opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
