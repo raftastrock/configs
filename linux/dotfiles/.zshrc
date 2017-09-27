@@ -12,7 +12,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES
-alias b='bash brightness.sh'
+alias b='git rev-parse --abbrev-ref HEAD'
+alias bright='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
 alias lock='gnome-screensaver-command -l'
