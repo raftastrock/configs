@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES
-alias b='git rev-parse --abbrev-ref HEAD'
+alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
 alias bright='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
@@ -24,6 +24,7 @@ alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
 alias sass='sudo npm rebuild node-sass --force'
 alias suspend='systemctl suspend -i'
+alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
 
 # Github User Variabls
