@@ -40,6 +40,7 @@ export JoanIcon=':herb:'
 export LukeIcon=':mount_fuji:'
 export PhilIcon=':palm_tree:'
 export RyanIcon=':registered:'
+export WestonIcon=':four_leaf_clover:'
 
 # Github Repos
 export nil='next-in-line'
@@ -77,17 +78,20 @@ function zpull {
   cd -
 }
 
-# Jack functions
-function jse {
-  jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
-}
-
-function jsc {
-  jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
-}
-
 
 # LIFERAY FUNCTIONS
+
+# Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
+function addDir {
+  cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee
+  touch app.server.ryan.properties
+  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+  cd /home/ryan/dev/life/liferay-plugins-ee
+  touch build.ryan.properties
+  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+  cd -
+}
+
 function clean {
   cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
   rm -rfv work/Catalina/localhost/osb-community-theme
@@ -101,13 +105,24 @@ function cleanAll {
   rm -rfv logs
 }
 
-# Deploy community theme
-function theme {
-  clean
-  cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
-  ant deploy
-  cd -
-  cd -
+function rungradle {
+  # Rename settings.gradle temporarily
+  if [ -e settings.gradle ]
+    then
+      mv settings.gradle settings.gradle.tmp
+  fi
+  # Run regular gradle commands
+  local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
+    root_level="$root_level/gradlew"
+  else
+    root_level=$(which gradle)
+  fi
+  "$root_level" $@
+  if [ -e settings.gradle.tmp ]
+    then
+      mv settings.gradle.tmp settings.gradle
+  fi
 }
 
 # Serve Liferay
@@ -117,46 +132,28 @@ function serve {
   cd -
 }
 
+# Deploy community theme
+function theme {
+  clean
+  cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
+  ant deploy
+  cd -
+  cd -
+}
+
 # Go to Tomcat Dir
 function tom {
   cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
 }
 
-# change main dir server directory
-function mainDir {
-  touch app.server.ryan.properties
-  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+
+# JACK SEARCH FUNCTIONS
+function jse {
+  jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
-# change plugin dir server directory
-function plugDir {
-  touch build.ryan.properties
-  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
-}
-
-function rungradle {
-
-  # Rename settings.gradle temporarily
-  if [ -e settings.gradle ]
-    then
-      mv settings.gradle settings.gradle.tmp
-  fi
-
-  # Run regular gradle commands
-  local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
-
-  if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
-    root_level="$root_level/gradlew"
-  else
-    root_level=$(which gradle)
-  fi
-
-  "$root_level" $@
-
-  if [ -e settings.gradle.tmp ]
-    then
-      mv settings.gradle.tmp settings.gradle
-  fi
+function jsc {
+  jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 
