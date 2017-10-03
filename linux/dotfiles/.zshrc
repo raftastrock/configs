@@ -27,7 +27,7 @@ alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
 
-# Github User Variabls
+# GITHUB USER VARIABLES
 export Allen='allen-ziegenfus'
 export Joan='joanhyokim'
 export Luke='raftastrock'
@@ -42,7 +42,7 @@ export PhilIcon=':palm_tree:'
 export RyanIcon=':registered:'
 export WestonIcon=':four_leaf_clover:'
 
-# Github Repos
+# GITHUB REPOS
 export nil='next-in-line'
 
 # ALIASES GLOBAL
@@ -51,31 +51,31 @@ alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
 function new {
-  cd ~/dev/temp
-  touch $1
-  code $1
-  cd -
+	cd ~/dev/temp
+	touch $1
+	code $1
+	cd -
 }
 
 function s {
-  cat $1 | grep $2
+	cat $1 | grep $2
 }
 
 function zpush {
-  cd ~/dev/notes/linux/dotfiles
-  cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
-  cp ~/.zshrc .
-  gsave "$1"
-  cd -
+	cd ~/dev/notes/linux/dotfiles
+	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
+	cp ~/.zshrc .
+	gsave "$1"
+	cd -
 }
 
 function zpull {
-  cd ~/dev/notes/linux/dotfiles
-  git pull origin master
-  cp .zshrc ~
-  cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
-  re
-  cd -
+	cd ~/dev/notes/linux/dotfiles
+	git pull origin master
+	cp .zshrc ~
+	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
+	re
+	cd -
 }
 
 
@@ -83,77 +83,77 @@ function zpull {
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
 function addDir {
-  cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee
-  touch app.server.ryan.properties
-  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
-  cd /home/ryan/dev/life/liferay-plugins-ee
-  touch build.ryan.properties
-  echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
-  cd -
+	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee
+	touch app.server.ryan.properties
+	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+	cd /home/ryan/dev/life/liferay-plugins-ee
+	touch build.ryan.properties
+	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	cd -
 }
 
 function clean {
-  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
-  rm -rfv work/Catalina/localhost/osb-community-theme
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+	rm -rfv work/Catalina/localhost/osb-community-theme
 }
 
 function cleanAll {
-  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
-  rm -rfv work/Catalina/localhost/osb-community-theme
-  rm -rfv webapps/osb-community-theme/css/.sass-cache
-  rm -rfv temp
-  rm -rfv logs
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+	rm -rfv work/Catalina/localhost/osb-community-theme
+	rm -rfv webapps/osb-community-theme/css/.sass-cache
+	rm -rfv temp
+	rm -rfv logs
 }
 
 function rungradle {
-  # Rename settings.gradle temporarily
-  if [ -e settings.gradle ]
-    then
-      mv settings.gradle settings.gradle.tmp
-  fi
-  # Run regular gradle commands
-  local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
-    root_level="$root_level/gradlew"
-  else
-    root_level=$(which gradle)
-  fi
-  "$root_level" $@
-  if [ -e settings.gradle.tmp ]
-    then
-      mv settings.gradle.tmp settings.gradle
-  fi
+	# Rename settings.gradle temporarily
+	if [ -e settings.gradle ]
+		then
+			mv settings.gradle settings.gradle.tmp
+	fi
+	# Run regular gradle commands
+	local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
+	if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
+		root_level="$root_level/gradlew"
+	else
+		root_level=$(which gradle)
+	fi
+	"$root_level" $@
+	if [ -e settings.gradle.tmp ]
+		then
+			mv settings.gradle.tmp settings.gradle
+	fi
 }
 
 # Serve Liferay
 function serve {
-  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
-  ./catalina.sh run
-  cd -
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
+	./catalina.sh run
+	cd -
 }
 
 # Deploy community theme
 function theme {
-  clean
-  cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
-  ant deploy
-  cd -
-  cd -
+	clean
+	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
+	ant deploy
+	cd -
+	cd -
 }
 
 # Go to Tomcat Dir
 function tom {
-  cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
 }
 
 
 # JACK SEARCH FUNCTIONS
 function jse {
-  jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+	jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 function jsc {
-  jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+	jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 

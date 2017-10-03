@@ -7,7 +7,7 @@ zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 # the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
 # to fix the core -> git plugin dependency.
 function current_branch() {
-  git_current_branch
+	git_current_branch
 }
 
 # ALIASES
@@ -175,9 +175,9 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # FUNCTIONS
 function _git_log_prettily(){
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  fi
+	if ! [ -z $1 ]; then
+		git log --pretty=$1
+	fi
 }
 
 function gdv() { git diff -w "$@" | view - }
@@ -191,71 +191,71 @@ compdef _grep gfg
 
 
 function ggl() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git pull origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git pull origin "${b:=$1}"
-  fi
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git pull origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git pull origin "${b:=$1}"
+	fi
 }
 
 compdef _git ggl=git-checkout
 
 
 function ggp() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git push origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git push origin "${b:=$1}"
-  fi
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git push origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git push origin "${b:=$1}"
+	fi
 }
 
 compdef _git ggp=git-checkout
 
 
 function ggpnp() {
-  if [[ "$#" == 0 ]]; then
-    ggl && ggp
-  else
-    ggl "${*}" && ggp "${*}"
-  fi
+	if [[ "$#" == 0 ]]; then
+		ggl && ggp
+	else
+		ggl "${*}" && ggp "${*}"
+	fi
 }
 
 compdef _git ggpnp=git-checkout
 
 
 function ggu() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git pull --rebase origin "${b:=$1}"
+	[[ "$#" != 1 ]] && local b="$(git_current_branch)"
+	git pull --rebase origin "${b:=$1}"
 }
 
 compdef _git ggu=git-checkout
 
 
 function gpr(){
-  gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
+	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
 function gsave(){
-  gaa
-  git commit -m $1
-  git push origin $(git_current_branch)
-  if [ $# -gt 1 ]
-  then
-    opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-  else
-    opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-  fi
+	gaa
+	git commit -m $1
+	git push origin $(git_current_branch)
+	if [ $# -gt 1 ]
+	then
+		opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+	else
+		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+	fi
 }
 
 function repo_name() {
-  git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
+	git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
 }
 
 function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
-    echo "WIP!!"
-  fi
+	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+		echo "WIP!!"
+	fi
 }
 
