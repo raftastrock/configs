@@ -128,7 +128,7 @@ function rungradle {
 # Serve Liferay
 function serve {
 	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
-	./catalina.sh run
+	./catalina.sh run | lch -c ~/logColors.conf | grep -E --color=always 'ERROR|Caused by|$'
 	cd -
 }
 
