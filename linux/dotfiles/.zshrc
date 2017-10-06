@@ -78,6 +78,10 @@ function zpull {
 	cd -
 }
 
+function jira {
+	opn https://issues.liferay.com/browse/$1 -- 'google-chrome'
+}
+
 
 # LIFERAY FUNCTIONS
 
@@ -105,6 +109,27 @@ function cleanAll {
 	rm -rfv logs
 }
 
+# Serve Liferay
+function serve {
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
+	./catalina.sh run | lch -c ~/logColors.conf
+	cd -
+}
+
+# Deploy community theme
+function theme {
+	clean | lch -c ~/logColors.conf
+	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
+	ant deploy | lch -c ~/logColors.conf
+	cd -
+	cd -
+}
+
+# Go to Tomcat Dir
+function tom {
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
+}
+
 function rungradle {
 	# Rename settings.gradle temporarily
 	if [ -e settings.gradle ]
@@ -124,28 +149,6 @@ function rungradle {
 			mv settings.gradle.tmp settings.gradle
 	fi
 }
-
-# Serve Liferay
-function serve {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
-	./catalina.sh run | lch -c ~/logColors.conf | grep -E --color=always 'ERROR|Caused by|$'
-	cd -
-}
-
-# Deploy community theme
-function theme {
-	clean
-	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
-	ant deploy
-	cd -
-	cd -
-}
-
-# Go to Tomcat Dir
-function tom {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
-}
-
 
 # JACK SEARCH FUNCTIONS
 function jse {
