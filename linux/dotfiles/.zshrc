@@ -161,6 +161,11 @@ function jsc {
 	jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
+# Mongo Mlab Backup
+function mlabBackup {
+	mongodump -h ds145380.mlab.com:45380 -d heroku_kb0zhsht -c laBooths -u heroku_kb0zhsht -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/la
+	mongodump -h ds145380.mlab.com:45380 -d heroku_kb0zhsht -c lbBooths -u heroku_kb0zhsht -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/lb
+}
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
