@@ -25,7 +25,6 @@ alias restart='shutdown -r now'
 alias sass='sudo npm rebuild node-sass --force'
 alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
-alias updateCode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb'
 alias xmod='xmodmap ~/.Xmodmap'
 
 # GITHUB USER VARIABLES
@@ -51,6 +50,16 @@ alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
+
+function codeLatest {
+	wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
+	sudo dpkg -i /tmp/code_latest_amd64.deb
+}
+
+function codeVersion {
+	wget https://vscode-update.azurewebsites.net/$1/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
+        sudo dpkg -i /tmp/code_latest_amd64.deb
+}
 
 # Command to download recored-gif script: curl --location https://git.io/record-gif.sh | bash -
 function gif {
