@@ -51,6 +51,12 @@ alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
+
+# Command to download recored-gif script: curl --location https://git.io/record-gif.sh | bash -
+function gif {
+	record-gif.sh $1 ~/Videos/$2.gif
+}
+
 function new {
 	cd ~/dev/temp
 	touch $1
