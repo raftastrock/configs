@@ -72,7 +72,8 @@ function zpush {
 
 function zpull {
 	cd ~/dev/notes/linux/dotfiles
-	git pull origin master
+	git reset --hard origin/master
+	gcleandry
 	cp .zshrc ~
 	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
 	re
