@@ -87,6 +87,7 @@ function zpush {
 
 function zpull {
 	cd ~/dev/notes/linux/dotfiles
+	git fetch origin
 	git reset --hard origin/master
 	gcleandry
 	cp .zshrc ~
