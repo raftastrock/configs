@@ -12,7 +12,14 @@ if ! [ -x "$(command -v npm)" ]; then
   ./configure --prefix=~/local
   make install # ok, fine, this step probably takes more than 30 seconds...
   curl https://www.npmjs.org/install.sh | sh
-  exit 1
 else
   echo '✔ Node and npm are installed'
+fi
+
+# checks for opn package
+if ! [ -x "$(command -v opn)" ]; then
+  echo '✖️ Error: opn is not installed. Installing now'
+  sudo npm i -g opn-cli
+else
+  echo '✔ Opn (opens links in browser) is installed'
 fi

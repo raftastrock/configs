@@ -111,10 +111,8 @@ alias gmum='git merge upstream/master'
 alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpf='git push --force origin $(git_current_branch)'
-alias gpo='git push origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
-alias gpu='git push upstream $(git_current_branch)'
 alias gpv='git push -v'
 
 alias gr='git remote'
@@ -169,8 +167,22 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # FUNCTIONS
 
+function gopen(){
+  opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+}
+
 function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
+}
+
+function gpo(){
+  git push origin $(git_current_branch)
+  gopen
+}
+
+function gpu(){
+  git push upstream $(git_current_branch)
+  gopen
 }
 
 function gsave(){
@@ -181,7 +193,7 @@ function gsave(){
 	then
 		opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
 	else
-		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+    gopen
 	fi
 }
 
