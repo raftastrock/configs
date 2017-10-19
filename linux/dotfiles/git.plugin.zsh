@@ -18,7 +18,6 @@ alias gaa='git add --all'
 alias gapa='git add --patch'
 alias gau='git add --update'
 
-alias gb='git br' #https://www.npmjs.com/package/git-br
 alias gba='git branch -a'
 alias gbd='git branch -D'
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
@@ -26,7 +25,6 @@ alias gbed='git branch --edit-description'
 alias gbl='git blame -b -w'
 alias gbnm='git branch --no-merged'
 alias gbr='git branch --remote'
-alias gbs='git-select' #https://www.npmjs.com/package/git-select
 alias gbsb='git bisect bad'
 alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
@@ -74,9 +72,6 @@ alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
 
-alias ggpur='ggu'
-compdef _git ggpur=git-checkout
-
 alias ggpo='git pull origin $(git_current_branch)'
 alias ggpu='git pull upstream $(git_current_branch)'
 
@@ -106,8 +101,6 @@ alias glol="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cg
 alias glola="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
 alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
-alias glp="_git_log_prettily"
-compdef _git glp=git-log
 
 alias gm='git merge'
 alias gmom='git merge origin/master'
@@ -175,64 +168,6 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 
 # FUNCTIONS
-function _git_log_prettily(){
-	if ! [ -z $1 ]; then
-		git log --pretty=$1
-	fi
-}
-
-function gdv() { git diff -w "$@" | view - }
-
-compdef _git gdv=git-diff
-
-
-function gfg() { git ls-files | grep $@ }
-
-compdef _grep gfg
-
-
-function ggl() {
-	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-		git pull origin "${*}"
-	else
-		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
-		git pull origin "${b:=$1}"
-	fi
-}
-
-compdef _git ggl=git-checkout
-
-
-function ggp() {
-	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-		git push origin "${*}"
-	else
-		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
-		git push origin "${b:=$1}"
-	fi
-}
-
-compdef _git ggp=git-checkout
-
-
-function ggpnp() {
-	if [[ "$#" == 0 ]]; then
-		ggl && ggp
-	else
-		ggl "${*}" && ggp "${*}"
-	fi
-}
-
-compdef _git ggpnp=git-checkout
-
-
-function ggu() {
-	[[ "$#" != 1 ]] && local b="$(git_current_branch)"
-	git pull --rebase origin "${b:=$1}"
-}
-
-compdef _git ggu=git-checkout
-
 
 function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
@@ -259,4 +194,3 @@ function work_in_progress() {
 		echo "WIP!!"
 	fi
 }
-
