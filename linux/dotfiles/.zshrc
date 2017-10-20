@@ -67,7 +67,7 @@ function gif {
 }
 
 function new {
-	cd ~/dev/temp
+	cd ~/dev/temp/cool || return 1
 	touch $1
 	code $1
 	cd -
@@ -78,7 +78,7 @@ function s {
 }
 
 function zpush {
-	cd ~/dev/notes/linux/dotfiles
+	cd ~/dev/notes/linux/dotfiles || return 1
 	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
 	cp ~/.zshrc .
 	gsave "$1"
@@ -86,7 +86,7 @@ function zpush {
 }
 
 function zpull {
-	cd ~/dev/notes/linux/dotfiles
+	cd ~/dev/notes/linux/dotfiles || return 1
 	git fetch origin
 	git reset --hard origin/master
 	gcleandry
@@ -105,10 +105,10 @@ function jira {
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
 function addDir {
-	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee
+	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee || return 1
 	touch app.server.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
-	cd /home/ryan/dev/life/liferay-plugins-ee
+	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
 	touch build.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
 	cd -
@@ -116,12 +116,12 @@ function addDir {
 }
 
 function clean {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 }
 
 function cleanAll {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 	rm -rfv webapps/osb-community-theme/css/.sass-cache
 	rm -rfv temp
@@ -130,7 +130,7 @@ function cleanAll {
 
 # Serve Liferay
 function serve {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin || return 1
 	./catalina.sh run | lch -c ~/logColors.conf
 	cd -
 }
@@ -138,7 +138,7 @@ function serve {
 # Deploy community theme
 function theme {
 	clean | lch -c ~/logColors.conf
-	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme
+	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme || return 1
 	ant deploy | lch -c ~/logColors.conf
 	cd -
 	cd -
@@ -146,7 +146,7 @@ function theme {
 
 # Go to Tomcat Dir
 function tom {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62
+	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62 || return 1
 }
 
 function rungradle {
