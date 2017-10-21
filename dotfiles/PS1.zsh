@@ -17,7 +17,7 @@ prompt_bold_stop="%b"
 
 p_start="%B${prompt_color_green}✝ %b "
 p_path="%B${prompt_color_purple}%4~${prompt_bold_stop}%b"
-p_prompt="%B${prompt_color_green}⚝ %b"
+p_prompt="%B${prompt_color_green} => %b"
 p_redpipe="${prompt_color_red}|"
 
 function isgit() {

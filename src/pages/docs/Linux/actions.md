@@ -11,7 +11,7 @@ weight: 1
 
 ## Adding GitHub name and email in the global config 
 
-```
+```shell
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 ```
@@ -23,7 +23,7 @@ git config --global user.email johndoe@example.com
 
 ## Change Default Terminal
 
-```
+```shell
 sudo chsh -s $(which zsh)
 ```
 
@@ -34,7 +34,7 @@ sudo chsh -s $(which zsh)
 
 ## How to install a .deb file
 
-```
+```shell
 sudo dpkg -i /path/to/deb/file
 ```
 
