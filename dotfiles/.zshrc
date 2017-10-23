@@ -69,7 +69,7 @@ function gif {
 }
 
 function new {
-	cd ~/dev/temp/cool || return 1
+	cd ~/dev/temp || return 1
 	touch $1
 	code $1
 	cd -
