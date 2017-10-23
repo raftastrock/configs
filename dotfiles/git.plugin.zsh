@@ -173,8 +173,14 @@ function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
+# Fetches and rebases PR
 function gprb(){
 	gh pr $1 -f -R
+}
+
+# Forwards PR to another repo, closes the PR, and comments in both locations
+function gprf(){
+	gh pr $1 --fwd $2
 }
 
 function gpo(){
