@@ -29,6 +29,10 @@ alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
 
+# NPM
+alias nglobal='sudo npm -g list --depth=0'
+alias nlink='sudo npm link'
+
 # GITHUB USER VARIABLES
 export Allen='allen-ziegenfus'
 export Joan='joanhyokim'
@@ -97,11 +101,6 @@ function zpull {
 	re
 	cd -
 }
-
-function jira {
-	opn https://issues.liferay.com/browse/$1 -- 'google-chrome'
-}
-
 
 # LIFERAY FUNCTIONS
 
