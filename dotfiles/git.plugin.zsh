@@ -214,3 +214,12 @@ function work_in_progress() {
 		echo "WIP!!"
 	fi
 }
+
+
+# NPM
+alias nglobal='sudo npm -g list --depth=0'
+alias nlink='sudo npm link'
+
+function ns(){
+	npm show $1 versions
+}

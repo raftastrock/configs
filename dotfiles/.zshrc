@@ -29,10 +29,6 @@ alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
 
-# NPM
-alias nglobal='sudo npm -g list --depth=0'
-alias nlink='sudo npm link'
-
 # GITHUB USER VARIABLES
 export Allen='allen-ziegenfus'
 export Joan='joanhyokim'
@@ -172,11 +168,11 @@ function rungradle {
 
 # JACK SEARCH FUNCTIONS
 function jse {
-	jack --stat "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+	jack --stat $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 function jsc {
-	jack "$1" --grep "$2" --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
+	jack $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
 }
 
 # Mongo Mlab Backup
