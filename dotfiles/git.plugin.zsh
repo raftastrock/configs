@@ -195,7 +195,7 @@ function gpu(){
 
 function gsave(){
 	gaa
-	git commit -m $1
+	git commit -m "$(git_current_branch) $1"
 	git push origin $(git_current_branch)
 	if [ $# -gt 1 ]
 	then
