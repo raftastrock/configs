@@ -1,24 +1,24 @@
-'use strict';
+'use strict'
 
-import Component from 'metal-component';
-import Soy from 'metal-soy';
-import Toggler from 'metal-toggler';
+import Component from 'metal-component'
+import Soy from 'metal-soy'
+import Toggler from 'metal-toggler'
 
-import templates from './Sidebar.soy';
+import templates from './Sidebar.soy'
 
 class Sidebar extends Component {
 	attached() {
 		this._toggler = new Toggler({
 			content: '.sidebar-toggler-content',
-			header: '.sidebar-header'
-		});
+			header: '.sidebar-header',
+		})
 	}
 
 	disposed() {
-		this._toggler.dispose();
+		this._toggler.dispose()
 	}
-};
+}
 
-Soy.register(Sidebar, templates);
+Soy.register(Sidebar, templates)
 
-export default Sidebar;
+export default Sidebar

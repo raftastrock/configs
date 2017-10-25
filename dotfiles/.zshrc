@@ -48,7 +48,7 @@ export WestonIcon=':four_leaf_clover:'
 export nil='next-in-line'
 
 # ALIASES GLOBAL
-alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh' 
+alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
@@ -60,7 +60,7 @@ function codeLatest {
 
 function codeVersion {
 	wget https://vscode-update.azurewebsites.net/$1/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
-        sudo dpkg -i /tmp/code_latest_amd64.deb
+	sudo dpkg -i /tmp/code_latest_amd64.deb
 }
 
 # Command to download recored-gif script: curl --location https://git.io/record-gif.sh | bash -
