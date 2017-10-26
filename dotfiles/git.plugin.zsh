@@ -217,7 +217,7 @@ function work_in_progress() {
 
 
 # NPM
-alias nglobal='sudo npm -g list --depth=0'
+alias nlocation='sudo npm -g list --depth=0'
 alias nlink='sudo npm link'
 
 function ns(){
