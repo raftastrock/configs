@@ -1,15 +1,3 @@
-(( $+commands[npm] )) && {
-		__NPM_COMPLETION_FILE='${ZSH_CACHE_DIR}/npm_completion'
-
-		if [[ ! -f $__NPM_COMPLETION_FILE ]]; then
-				npm completion >! $__NPM_COMPLETION_FILE 2>/dev/null
-				[[ $? -ne 0 ]] && rm -f $__NPM_COMPLETION_FILE
-		fi
-
-		[[ -f $__NPM_COMPLETION_FILE ]] && source $__NPM_COMPLETION_FILE
-
-		unset __NPM_COMPLETION_FILE
-}
 
 alias ng='sudo npm i -g '
 alias nis='npm i -S '
@@ -22,7 +10,7 @@ alias nr='npm run '
 alias ns='npm start'
 alias nt='npm test'
 
-alias yg='sudo yarn i -g '
+alias yg='yarn i -g '
 alias yis='yarn i -S '
 alias yid='yarn i -D '
 alias yr='yarn run '

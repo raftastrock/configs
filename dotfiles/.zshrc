@@ -49,6 +49,7 @@ export nil='next-in-line'
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
+alias -g n='~/.oh-my-zsh/plugins/npm/npm.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # GENERAL FUNCTIONS
