@@ -8,7 +8,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=/home/ryan/.oh-my-zsh
 
 # PLUGINS
-plugins=(git zsh-output-highlighting)
+plugins=(git npm zsh-output-highlighting)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
@@ -80,9 +80,10 @@ function s {
 }
 
 function zpush {
-	cd ~/dev/notes/dotfiles || return 1
-	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh .
-	cp ~/.zshrc .
+	cd ~/dev/notes/dotfiles &&
+	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh . &&
+	cp ~/.oh-my-zsh/plugins/npm/npm.plugin.zsh . &&
+	cp ~/.zshrc . &&
 	gsave "$1"
 	cd -
 }
@@ -94,6 +95,7 @@ function zpull {
 	gcleandry
 	cp .zshrc ~
 	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
+	cp npm.plugin.zsh ~/.oh-my-zsh/plugins/npm
 	re
 	cd -
 }
