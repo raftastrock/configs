@@ -73,6 +73,8 @@ function bubbleSort(nums) {
 `bigO = n ^ 2`
 
 * Has more favorable coefficients than bubble sort
+* Better for things that are **near sorted**
+	* merge sort and quick sort are pretty much faster in all other cases
 
 ```javascript
 function insertionSort(nums) {
