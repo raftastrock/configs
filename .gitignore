@@ -1,4 +1,5 @@
 .deploy
+.dist
 .publish
 .temp
 node_modules
