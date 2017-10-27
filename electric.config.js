@@ -5,7 +5,6 @@ var marble = require('marble')
 module.exports = {
 	codeMirrorLanguages: ['shell', 'xml', 'css', 'javascript'],
 	deployOptions: {
-		remoteUrl: 'https://github.com/protoEvangelion/notes',
 		branch: 'deploy',
 	},
 	metalComponents: ['electric-marble-components'],
