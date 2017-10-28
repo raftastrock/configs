@@ -23,6 +23,6 @@ alias yr='yarn run '
 alias ys='yarn start'
 alias yt='yarn test'
 
-function nsv(){
-	npm show $1 versions
+function nv(){
+	npm view $1 versions --json
 }
