@@ -2,6 +2,7 @@
 alias nb='npm run build'
 alias nd='npm run deploy'
 alias ng='sudo npm i -g '
+alias ni='npm i'
 alias nis='npm i -S '
 alias nid='npm i -D '
 alias no='npm outdated'
