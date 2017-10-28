@@ -18,6 +18,7 @@ alias gaa='git add --all'
 alias gapa='git add --patch'
 alias gau='git add --update'
 
+alias gb='git-br' # https://www.npmjs.com/package/git-br
 alias gba='git branch -a'
 alias gbd='git branch -D'
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
@@ -25,6 +26,7 @@ alias gbed='git branch --edit-description'
 alias gbl='git blame -b -w'
 alias gbnm='git branch --no-merged'
 alias gbr='git branch --remote'
+alias gbs='git-select' # https://www.npmjs.com/package/git-select
 alias gbsb='git bisect bad'
 alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
