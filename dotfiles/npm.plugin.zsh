@@ -16,6 +16,7 @@ alias nus='npm uninstall -S '
 alias nr='npm run '
 alias ns='npm start'
 alias nt='npm test'
+alias nu='npm update'
 
 alias yg='yarn i -g '
 alias yis='yarn i -S '
@@ -26,4 +27,13 @@ alias yt='yarn test'
 
 function nv(){
 	npm view $1 versions --json
+}
+
+function nlatest(){
+	npm view $1 version
+}
+
+function ncv(){
+	echo "console.log(require('./package.json').dependencies.$1);" | node
+	echo "console.log(require('./package.json').devDependencies.$1);" | node
 }
