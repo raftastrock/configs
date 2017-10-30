@@ -168,7 +168,12 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # FUNCTIONS
 function gopen(){
-  opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+	if [ $# -gt 0 ]
+	then
+		opn http://github.com/$1/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+	else
+		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
+	fi
 }
 
 function gpr(){
@@ -187,24 +192,19 @@ function gprf(){
 
 function gpo(){
   git push origin $(git_current_branch)
-  gopen
+  gopen $1
 }
 
 function gpu(){
   git push upstream $(git_current_branch)
-  gopen
+  gopen $1
 }
 
 function gsave(){
 	gaa
 	git commit -m $1
 	git push origin $(git_current_branch)
-	if [ $# -gt 1 ]
-	then
-		opn http://github.com/$2/$(repo_name)/commit/$(git rev-parse HEAD) -- 'google-chrome'
-	else
-    gopen
-	fi
+	gopen $2
 }
 
 function repo_name() {
