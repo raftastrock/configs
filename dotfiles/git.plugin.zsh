@@ -180,6 +180,11 @@ function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
+# Light version
+function gprl(){
+	gh pr -s $1 -b $2 -t $3 -D "Hey @$1, $4"
+}
+
 # Fetches and rebases PR
 function gprb(){
 	gh pr $1 -f -R

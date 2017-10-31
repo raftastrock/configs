@@ -2,10 +2,14 @@
 
 var marble = require('marble')
 
+const date = new Date
+
 module.exports = {
 	codeMirrorLanguages: ['shell', 'xml', 'css', 'javascript'],
 	deployOptions: {
-		branch: 'gh-pages'
+		branch: 'gh-pages',
+		message: `Update: ${date.toLocaleDateString()} @ ${date.toLocaleTimeString()}`,
+		url: 'https://protoevangelion.github.io/notes',
 	},
 	metalComponents: ['electric-marble-components'],
 	sassOptions: {
