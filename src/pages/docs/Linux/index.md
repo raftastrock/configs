@@ -4,8 +4,6 @@ description: "Intro to Linux"
 layout: "guide"
 icon: "cloud"
 weight: 4
-url: "https://protoevangelion.github.io/notes/docs/Linux"
-
 ---
 
 ###### {$page.description}

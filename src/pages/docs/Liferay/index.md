@@ -4,7 +4,6 @@ description: "General liferay things."
 layout: "guide"
 icon: "code-file"
 weight: 3
-url: "Liferay"
 ---
 
 ###### {$page.description}
