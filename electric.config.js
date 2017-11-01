@@ -7,9 +7,8 @@ const date = new Date
 module.exports = {
 	codeMirrorLanguages: ['shell', 'xml', 'css', 'javascript'],
 	deployOptions: {
-		branch: 'gh-pages',
 		message: `Update: ${date.toLocaleDateString()} @ ${date.toLocaleTimeString()}`,
-		url: 'https://protoevangelion.github.io/notes',
+		force: true,
 	},
 	metalComponents: ['electric-marble-components'],
 	sassOptions: {
