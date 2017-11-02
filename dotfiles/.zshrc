@@ -12,6 +12,11 @@ plugins=(git npm zsh-output-highlighting)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
+# ALIASES GLOBAL
+alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
+alias -g n='~/.oh-my-zsh/plugins/npm/npm.plugin.zsh'
+alias -g z='~/.zshrc'
+
 # ALIASES
 alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
 alias bright='bash brightness.sh'
@@ -30,28 +35,32 @@ alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
 
 # GITHUB USER VARIABLES
-export Allen='allen-ziegenfus'
-export Co='covailnt'
-export Joan='joanhyokim'
-export Luke='raftastrock'
-export Phil='phillipchan2'
-export Proto='protoEvangelion'
-export Ryan='ryanschuhler'
-export Weston='westonhancock'
+export allen='allen-ziegenfus'
+export joan='joanhyokim'
+export luke='raftastrock'
+export phil='phillipchan2'
+export proto='protoEvangelion'
+export ryan='ryanschuhler'
+export weston='westonhancock'
 
-export JoanIcon=':herb:'
-export LukeIcon=':mount_fuji:'
-export PhilIcon=':palm_tree:'
-export RyanIcon=':registered:'
-export WestonIcon=':four_leaf_clover:'
+export joanicon=':herb:'
+export lukeicon=':mount_fuji:'
+export philicon=':palm_tree:'
+export ryanicon=':registered:'
+export westonicon=':four_leaf_clover:'
 
-# GITHUB REPOS
+# GITHUB ORGS
+export cov='covailnt'
+export gh='node-gh'
+export life='liferay'
 export nil='next-in-line'
 
-# ALIASES GLOBAL
-alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-alias -g n='~/.oh-my-zsh/plugins/npm/npm.plugin.zsh'
-alias -g z='~/.zshrc'
+# JIRA PROJECTS
+export lrisa='LR Information Services' #default assignee
+export lrisp='LRIS' #project
+export lrist='IS Request' #type
+export lrisc='Liferay.com' #component
+
 
 # GENERAL FUNCTIONS
 

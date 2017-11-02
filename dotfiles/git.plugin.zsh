@@ -182,7 +182,7 @@ function gpr(){
 
 # Light version
 function gprl(){
-	gh pr -s $1 -b $2 -t $3 -D "Hey there, $4"
+	gh pr -s $1 -b $2 -t $3 -D "$4"
 }
 
 # Fetches and rebases PR
