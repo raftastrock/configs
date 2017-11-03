@@ -9,6 +9,7 @@ module.exports = {
 	deployOptions: {
 		message: `Update: ${date.toLocaleDateString()} @ ${date.toLocaleTimeString()}`,
 		force: true,
+		branch: 'gh-pages',
 	},
 	metalComponents: ['electric-marble-components'],
 	sassOptions: {
