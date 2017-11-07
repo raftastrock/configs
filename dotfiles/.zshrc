@@ -18,6 +18,7 @@ alias -g n='~/.oh-my-zsh/plugins/npm/npm.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # ALIASES
+alias add='bash addComponent.sh'
 alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
 alias bright='bash brightness.sh'
 alias c='clear'
