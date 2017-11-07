@@ -8,8 +8,6 @@ module.exports = {
 	codeMirrorLanguages: ['shell', 'xml', 'css', 'javascript'],
 	deployOptions: {
 		message: `Update: ${date.toLocaleDateString()} @ ${date.toLocaleTimeString()}`,
-		force: true,
-		branch: 'gh-pages',
 	},
 	metalComponents: ['electric-marble-components'],
 	sassOptions: {
