@@ -4,6 +4,8 @@ export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
 export PATH=$HOME/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
 export TEMP=$HOME/temp
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export ZSH=/home/ryan/.oh-my-zsh
 
@@ -146,6 +148,13 @@ function serve {
 	cd -
 }
 
+# Serve Liferay
+function serve7 {
+	cd /home/ryan/dev/life/ee-7.0.x/bundles/tomcat-8.0.32/bin || return 1
+	./catalina.sh run | lch -c ~/logColors.conf
+	cd -
+}
+
 # Deploy community theme
 function theme {
 	clean | lch -c ~/logColors.conf
@@ -197,3 +206,7 @@ function mlabBackup {
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

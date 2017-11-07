@@ -14,7 +14,7 @@
 		"prettier-eslint-cli": "^4.4.0"
 	},
 	"scripts": {
-		"deploy": "electric deploy && npm run git",
+		"deploy": "electric deploy",
 		"git": "git checkout wedeploy && git fetch origin && git reset --hard origin/wedeploy",
 		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
 		"lint-staged": "lint-staged",
