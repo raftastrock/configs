@@ -52,17 +52,20 @@ weight: 2
 ## Theming
 
 * What has changed in DXP on the front end?
-	* Liferay theme generator
-	* Themelets
+	* **Liferay theme generator**
+	* **Themelets**
 		* mini UI components
 	* [Bourbon](http://bourbon.io/) sass utils
 		* Process css3 features
 		* provides mixins
 		* Bourbon is deprecating vendor prefix mixins
 			* [They recommend using autoprefixer](https://github.com/thoughtbot/bourbon/issues/702)
-	* Theme Contributors
-		* allows you to override things like the nav
-	* Importing Resources
+	* **Theme Contributors**
+		* allows you to override default theme things like the nav or the menu
+		* You need `Blade Cli` to do this
+		* Requires some backend knowledge OSGI modules
+		* 
+	* **Importing Resources**
 		* Resources importer allows you to deploy theme with predefined content
 
 This command will generate the base theme into your CWD
@@ -196,7 +199,7 @@ class MyComponent extends State {
 export default MyComponent;
 ```
 
-* To use metal dependencies run
+* To use metal dependencies run this in the root of your theme
 
 ```shell
 npm i -save metal metal-dom metal-state
@@ -230,9 +233,8 @@ npm i -save metal metal-dom metal-state
 
 * You can also add an image in that same folder that will show up on the platform (Example below)
 
-<figure>
-	<img src="/images/custom-layout.png" alt="Layout">
-</figure>
+<img src="/images/custom-layout.png" alt="Layout" style="max-width: 400px;">
+
 
 * Then in `liferay-look-and-feel.xml` do
 
@@ -245,6 +247,95 @@ npm i -save metal metal-dom metal-state
 		</layout-template>
 	</custom>
 </layout-templates>
+```
+
+</article>
+
+
+<article id="8">
+
+## Themelets
+
+> Themelets are small reusable pieces of code that you can reuse in themes
+
+* They can exist as **npm packages** (super dope)
+* Small ui components that you can plugin to your themes
+* Beneficial because there are **npm themelets** that have already been developed that you can consume
+	* https://www.npmjs.com/search?q=themelets
+	* https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/themelets
+
+### Example
+
+#### This installs it on the same level as your theme
+
+<img src="/images/themelet.png" alt="Themelet">
+
+* then cd into your new themelet directory and run:
+
+```shell
+npm link
+```
+
+* then to plug it in, navigate back to your theme folder and run
+
+```shell
+gulp extend
+```
+
+<img src="/images/consume-themelet.png" alt="Themelet">
+
+* then `gulp-deploy`
+
+</article>
+
+
+<article id="9">
+
+## Resources Importer
+
+* You can add assets like:
+	* web content (articles, structures, templates)
+	* documents
+	* Really only beneficial if you want to package your theme for other people to reuse
+
+<img src="/images/resources-importer.png" alt="Resources Importer" style="max-width: 400px;">
+
+</article>
+
+
+<article id="10">
+
+## Generating Layout Templates
+
+* Based on Bootstrap
+
+<img src="/images/layout-generator.png" alt="Layout Generator">
+
+
+#### Generates something like this
+
+```htmlmixed
+<div class="space-1-2-columns-50-50-limited" id="main-content" role="main">
+	<div class="portlet-layout row">
+		<div class="col-md-12 portlet-column portlet-column-only" id="column-1">
+			$processor.processColumn("column-1", "portlet-column-content portlet-column-content-only")
+		</div>
+	</div>
+	<div class="portlet-layout row">
+		<div class="col-md-2 portlet-column portlet-column-first" id="column-2">
+			$processor.processColumn("column-2", "portlet-column-content portlet-column-content-first")
+		</div>
+		<div class="col-md-4 portlet-column" id="column-3">
+			$processor.processColumn("column-3", "portlet-column-content")
+		</div>
+		<div class="col-md-4 portlet-column" id="column-4">
+			$processor.processColumn("column-4", "portlet-column-content")
+		</div>
+		<div class="col-md-2 portlet-column portlet-column-last" id="column-5">
+			$processor.processColumn("column-5", "portlet-column-content portlet-column-content-last")
+		</div>
+	</div>
+</div>
 ```
 
 </article>
