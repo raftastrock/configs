@@ -1,5 +1,5 @@
 ---
-title: "Setting Up DXP Theme"
+title: "DXP Front End Golden Nuggets"
 description: "How to set up Liferay theme"
 layout: "guide"
 weight: 2
@@ -26,6 +26,11 @@ weight: 2
 	* Consists of components like Cards and Dropdowns
 	* Has reusable patterns built in
 	* We start with Clay Base when we generate a theme
+	* You can get access to clay by doing:
+
+```sass
+@import "aui/lexicon/atlas";
+```
 
 #### Templates
 
@@ -53,6 +58,8 @@ weight: 2
 	* [Bourbon](http://bourbon.io/) sass utils
 		* Process css3 features
 		* provides mixins
+		* Bourbon is deprecating vendor prefix mixins
+			* [They recommend using autoprefixer](https://github.com/thoughtbot/bourbon/issues/702)
 	* Theme Contributors
 		* allows you to override things like the nav
 	* Importing Resources
@@ -100,10 +107,144 @@ gulp deploy
 
 * Example of navigation macro
 
-```html
+```htmlmixed
 <@liferay.navigation_menu
 	instance_id="footer_navigation_menu"
 	default_preferences="${freeMarkerPortletPreferences}"
 />
 ```
+
+### Theme Settings
+
+#### Example of getting a theme setting in freemarker
+
+```htmlmixed
+<#assign show_header_search = getterUtil.getBoolean(themeDisplay.getThemeSetting("show-header-search")) />
+```
+</article>
+
+<article id="5">
+
+## Application Decorators
+
+### Default Options
+* Barebone
+* Borderless
+* Decorate
+
+#### Example of changing existing app decorators
+
+```sass
+.portlet-decorate .portlet-content {
+	background: $portlet-topper-color;
+	border: 1px solid #DEEEEE;
+}
+
+.portlet-barebone .portlet-content {
+	padding: 0;
+}
+```
+
+* Then in `liferay-look-and-feel.xml` do (na)
+* **id** saves in DB and **name** shows up on platform
+
+```xml
+<portlet-decorator id="trending" name="Trending">
+	<portlet-decorator-css-class>portlet-trending</portlet-decorator-css-class>
+</portlet-decorator>
+```
+
+</article>
+
+
+<article id="6">
+
+## Javascript
+
+* To get access to use es6 run this in root of your theme
+
+```shell
+npm i -S liferay-theme-es2015-hook
+```
+
+* We can require js modules like so:
+
+```javascript
+require(
+	'space-theme/js/top_search.es',
+	function(TopSearch) {
+		new TopSearch.default();
+	}
+);
+```
+
+* And then do cool stuff like:
+
+```javascript
+import async from 'metal/src/async/async';
+import core from 'metal/src/core';
+import dom from 'metal-dom/src/dom';
+import State from 'metal-state/src/State';
+
+class MyComponent extends State {
+    constructor() {
+        console.log('Hello, World!');
+		}
+		// ...more cool stuff
+}
+
+export default MyComponent;
+```
+
+* To use metal dependencies run
+
+```shell
+npm i -save metal metal-dom metal-state
+```
+
+</article>
+
+
+<article id="7">
+
+## Layout Templates
+
+> Controls how portlets and web content layout on the page
+
+* If you want a custom layout, you can create these in the `layouttpl/custom` folder
+	* File: `layouttpl/custom/porygon_50_50_width_limited.tpl`
+
+```htmlmixed
+<div class="columns-2 container-fluid-1280" id="main-content" role="main">
+	<div class="portlet-layout row">
+		<div class="col-md-6 portlet-column portlet-column-first" id="column-1">
+			$processor.processColumn("column-1", "portlet-column-content portlet-column-content-first")
+		</div>
+
+		<div class="col-md-6 portlet-column portlet-column-last" id="column-2">
+			$processor.processColumn("column-2", "portlet-column-content portlet-column-content-last")
+		</div>
+	</div>
+</div>
+```
+
+* You can also add an image in that same folder that will show up on the platform (Example below)
+
+<figure>
+	<img src="/images/custom-layout.png" alt="Layout">
+</figure>
+
+* Then in `liferay-look-and-feel.xml` do
+
+```xml
+<layout-templates>
+	<custom>
+		<layout-template id="porygon_70_30_width_limited" name="Porygon 2 Columns (70/30) width limited">
+			<template-path>/layouttpl/custom/porygon_70_30_width_limited.tpl</template-path>
+			<thumbnail-path>/layouttpl/custom/porygon_70_30_width_limited.png</thumbnail-path>
+		</layout-template>
+	</custom>
+</layout-templates>
+```
+
 </article>

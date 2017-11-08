@@ -2,10 +2,17 @@
 
 var marble = require('marble')
 
-const date = new Date
+const date = new Date()
 
 module.exports = {
-	codeMirrorLanguages: ['shell', 'xml', 'css', 'javascript'],
+	codeMirrorLanguages: [
+		'shell',
+		'xml',
+		'css',
+		'javascript',
+		'sass',
+		'htmlmixed',
+	],
 	deployOptions: {
 		message: `Update: ${date.toLocaleDateString()} @ ${date.toLocaleTimeString()}`,
 	},
