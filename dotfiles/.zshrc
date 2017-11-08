@@ -200,8 +200,8 @@ function jsc {
 
 # Mongo Mlab Backup
 function mlabBackup {
-	mongodump -h ds145380.mlab.com:45380 -d heroku_kb0zhsht -c laBooths -u heroku_kb0zhsht -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/la
-	mongodump -h ds145380.mlab.com:45380 -d heroku_kb0zhsht -c lbBooths -u heroku_kb0zhsht -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/lb
+	mongodump -h ds249575.mlab.com:49575 -d heroku_n9739n51 -c laBooths -u heroku_n9739n51 -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/la
+	mongodump -h ds249575.mlab.com:49575 -d heroku_n9739n51 -c lbBooths -u heroku_n9739n51 -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/lb
 }
 
 # Adding autocomplete for 'we'
