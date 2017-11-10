@@ -9,24 +9,30 @@ weight: 2
 
 ## Environment
 
-* You can use yeoman [liferay theme generator](https://github.com/liferay/generator-liferay-theme) or [Blade](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli)
+* You can use yeoman [liferay theme generator](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/themes-generator) or [Blade](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli)
 
 ### Overview of Tools For Building User Experience
 
-#### Lexicon
+#### [Lexicon](https://lexicondesign.io/)
 
-* **Lexicon** only describes a set of preset styles and classes for UI
-	* While **Clay** is the actual implementation of that design language
-		* Clay is not in DXP yet (currently Lexicon is the experience and implementation)
-			* It is on master now though
+> **Lexicon** is a design system that describes how you should develop the UI
 
-* **Clay**
-	* Extension of Bootstrap 3
-	* Built with SASS
-	* Consists of components like Cards and Dropdowns
-	* Has reusable patterns built in
-	* We start with Clay Base when we generate a theme
-	* You can get access to clay by doing:
+* Like [grids should be designed with 8px as the base unit](https://lexicondesign.io/docs/designPrinciples/grid.html)
+* Or [alerts should should for only 10 secons if actions are associated](https://lexicondesign.io/docs/patterns/alerts.html)
+* So it's really a set of guidelines to foster a **consistent user experience**
+
+#### [Clay](https://claycss.com)
+
+> **Clay** is essentially the design principles of Lexicon **coded out**
+
+* Clay is not in DXP yet (currently Lexicon is the experience and implementation)
+	* It is on master now though
+* Extension of Bootstrap 3
+* Built with SASS
+* Consists of components like **Cards and Dropdowns**
+* Has reusable patterns built in
+* We start with Clay Base when we generate a theme
+* You can get access to clay by doing:
 
 ```sass
 @import "aui/lexicon/atlas";
@@ -49,7 +55,7 @@ weight: 2
 
 <article id="2">
 
-## Theming
+## Generating Your Theme
 
 * What has changed in DXP on the front end?
 	* **Liferay theme generator**
@@ -69,13 +75,14 @@ weight: 2
 		* Resources importer allows you to deploy theme with predefined content
 
 This command will generate the base theme into your CWD
+* CD into `modules/apps` from liferay root and run:
 
 ```shell
 yo liferay-theme
 ```
 
-* Verify that it your theme folder is located in `portal-folder/modules/apps`
-	* Then run:
+* Verify that your `theme folder` was generated in `portal-folder/modules/apps`
+	* `cd` into it and then run:
 
 ```shell
 gulp deploy
@@ -256,7 +263,7 @@ npm i -save metal metal-dom metal-state
 
 ## Themelets
 
-> Themelets are small reusable pieces of code that you can reuse in themes
+> Themelets are small reusable pieces of code that you can leverage in themes
 
 * They can exist as **npm packages** (super dope)
 * Small ui components that you can plugin to your themes
@@ -337,5 +344,26 @@ gulp extend
 	</div>
 </div>
 ```
+
+</article>
+
+
+<article id="11">
+
+## Integrating Metal in the Liferay context
+
+> It is recommended to integrate metal at the *OSGI* level although you could do it from a theme level and potentially a web content level
+
+* In relation to that keep an eye on **page fragments** that Jorge Ferrer is working on which may facilitate this
+
+* **Loop Faro** are good examples for microsites
+* Metal is only really helpful when you have **dynamic content**
+  * For static content it is not useful
+
+* Soy is only possibly on **server side**; better for **SEO**
+  * At this point it is not ideal to render JSX on Java server or have like Node servlets rendering and passing it on to Java
+
+* Talk to Travis about **workspaces**
+* Use **generator cli** rather than building things out in Liferay context
 
 </article>
