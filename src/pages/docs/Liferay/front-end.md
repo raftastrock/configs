@@ -1,17 +1,20 @@
 ---
 title: "DXP Front End Golden Nuggets"
-description: "How to set up Liferay theme"
+description: "Gleanings from the DXP Front End Training Course"
 layout: "guide"
 weight: 2
 ---
 
 <article id="1">
 
-## Environment
+## Overview of New Tools
+
+#### Yeoman Generator
 
 * You can use yeoman [liferay theme generator](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/themes-generator) or [Blade](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli)
-
-### Overview of Tools For Building User Experience
+* When generating the theme you can choose from
+	* **Styled** (includes Lexicon)
+	* **Unstyled** (doesn't include Lexicon)
 
 #### [Lexicon](https://lexicondesign.io/)
 
@@ -20,6 +23,9 @@ weight: 2
 * Like [grids should be designed with 8px as the base unit](https://lexicondesign.io/docs/designPrinciples/grid.html)
 * Or [alerts should should for only 10 secons if actions are associated](https://lexicondesign.io/docs/patterns/alerts.html)
 * So it's really a set of guidelines to foster a **consistent user experience**
+* Extends Bootstrap 4 (breaking changes with Bootstrap 3) and built with SASS
+* The goals is to provide a **unified & consistent** user experience
+* The BIG BENEFIT to devs is that it provides **reusable patterns** that can be leveraged into components which speeds up development...*and is more fun* ;)
 
 #### [Clay](https://claycss.com)
 
@@ -67,15 +73,17 @@ weight: 2
 		* Bourbon is deprecating vendor prefix mixins
 			* [They recommend using autoprefixer](https://github.com/thoughtbot/bourbon/issues/702)
 	* **Theme Contributors**
-		* allows you to override default theme things like the nav or the menu
-		* You need `Blade Cli` to do this
+		* allows you to override default theme things like the **nav, menu or dockbar**
+		* You need `Blade CLI` to do this
 		* Requires some backend knowledge OSGI modules
-		* 
+		* If you’d like to package UI resources independent of a specific theme and include them on all pages, Theme Contributors are the right tool
+
 	* **Importing Resources**
 		* Resources importer allows you to deploy theme with predefined content
+		* So you can create new sites with a predefined look and feel
 
 This command will generate the base theme into your CWD
-* CD into `modules/apps` from liferay root and run:
+* `cd` into `modules/apps` from liferay root and run:
 
 ```shell
 yo liferay-theme
@@ -171,21 +179,41 @@ gulp deploy
 
 ## Javascript
 
-* To get access to use es6 run this in root of your theme
+* To use ES6 file endings must be `file.es.js`
+* To get access to use es6 run this in root of your theme:
 
 ```shell
 npm i -S liferay-theme-es2015-hook
 ```
 
-* We can require js modules like so:
+* If you want to use metal do:
+
+```shell
+npm i -S metal metal-dom metal-state
+```
+
+* We can require js modules in our `main.js` like so:
 
 ```javascript
-require(
-	'space-theme/js/top_search.es',
-	function(TopSearch) {
-		new TopSearch.default();
-	}
-);
+(function() {
+	AUI().ready(
+		'liferay-sign-in-modal',
+		function(A) {
+			var signIn = A.one('.sign-in > a');
+
+			if (signIn && signIn.getData('redirect') !== 'true') {
+				signIn.plug(Liferay.SignInModal);
+			}
+		}
+	);
+
+	require(
+		'space-theme/js/top_search.es',
+		function(TopSearch) {
+			new TopSearch.default();
+		}
+	);
+})();
 ```
 
 * And then do cool stuff like:
@@ -197,19 +225,92 @@ import dom from 'metal-dom/src/dom';
 import State from 'metal-state/src/State';
 
 class MyComponent extends State {
-    constructor() {
-        console.log('Hello, World!');
-		}
-		// ...more cool stuff
+	constructor() {
+			console.log('Hello, World!');
+	}
+	// ...more cool stuff
 }
 
 export default MyComponent;
 ```
 
-* To use metal dependencies run this in the root of your theme
+* When you are done run:
 
 ```shell
-npm i -save metal metal-dom metal-state
+gulp deploy
+
+or
+
+gulp watch
+```
+
+#### Class Syntax
+
+```javascript
+class Car {
+	constructor(make) { //constructors!
+		this.currentSpeed = 25;
+	}
+	printCurrentSpeed() {
+		console.log('current speed: ' + this.currentSpeed + ' mph.');
+	}
+}
+
+class RaceCar extends Car { //inheritance
+	constructor(make, topSpeed) {
+		super(make);
+		this.topSpeed = topSpeed;
+	}
+	goFast(){
+		this.currentSpeed = this.topSpeed;
+	}
+}
+```
+
+#### Arrow Functions!
+
+```javascript
+var materials = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+materials.map(function(material) { 
+  return material.length; 
+}); // [8, 6, 7, 9]
+
+materials.map((material) => {
+  return material.length;
+}); // [8, 6, 7, 9]
+
+materials.map(material => material.length); // [8, 6, 7, 9]
+
+// arrow functions don't bind this keyword to the function either! Wahoo :)
+```
+
+#### Semantically helpful `let` and `const` block-scoped declarations
+
+```javascript
+//let
+function letTest() {
+	let x = 1; // let declares a frame scope local variable
+
+	if (true) {
+		let x = 2; // different variable
+		console.log(x); // 2
+	}
+
+	console.log(x); // 1
+}
+
+//const
+const ALWAYS_SEVEN = 7;
+// this will throw an error
+ALWAYS_SEVEN = 8;
+
+// You can mutate but not reassign
 ```
 
 </article>
@@ -270,6 +371,12 @@ npm i -save metal metal-dom metal-state
 * Beneficial because there are **npm themelets** that have already been developed that you can consume
 	* https://www.npmjs.com/search?q=themelets
 	* https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/themelets
+	* Themelet JS gets injected here in portal normal:
+
+```
+<!-- inject:js -->
+<!-- endinject -->
+```
 
 ### Example
 
@@ -293,6 +400,9 @@ gulp extend
 
 * then `gulp-deploy`
 
+Or you can do: `gulp extend` and search for a themelet on npm
+
+
 </article>
 
 
@@ -306,6 +416,26 @@ gulp extend
 	* Really only beneficial if you want to package your theme for other people to reuse
 
 <img src="/images/resources-importer.png" alt="Resources Importer" style="max-width: 400px;">
+
+
+### Embedding Apps
+
+##### Using the Portlet Name Attribute
+
+```htmlmixed
+<@liferay_portlet["runtime"]
+	portletName="CLASS_NAME"
+/>
+```
+
+##### Using the Class Name Attribute
+
+```htmlmixed
+<@liferay_portlet["runtime"]
+	portletProviderAction=portletProviderAction.ACTION
+	portletProviderClassName="CLASS.NAME"
+/>
+```
 
 </article>
 
@@ -344,26 +474,5 @@ gulp extend
 	</div>
 </div>
 ```
-
-</article>
-
-
-<article id="11">
-
-## Integrating Metal in the Liferay context
-
-> It is recommended to integrate metal at the *OSGI* level although you could do it from a theme level and potentially a web content level
-
-* In relation to that keep an eye on **page fragments** that Jorge Ferrer is working on which may facilitate this
-
-* **Loop Faro** are good examples for microsites
-* Metal is only really helpful when you have **dynamic content**
-  * For static content it is not useful
-
-* Soy is only possibly on **server side**; better for **SEO**
-  * At this point it is not ideal to render JSX on Java server or have like Node servlets rendering and passing it on to Java
-
-* Talk to Travis about **workspaces**
-* Use **generator cli** rather than building things out in Liferay context
 
 </article>

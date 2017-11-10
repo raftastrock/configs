@@ -21,6 +21,18 @@ weight: 3
 ### Freemarker
 
 * **Tag libs** are baller
+	* Taglibs are a tool to create consistent, responsive, accessible UI
+components for use in development
+
+```htmlmixed
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
+<%@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
+
+<PREFIX:{tag-name} [TAG-ATTRIBUTES] />
+```
+
 * You can drop a **web content** field on structure while in the UI
 * You can **inject Database information** (no longer need to use resource locator)
 	* New module called "**Context Contributors**" that allow you to access resources more securely than the resource locator
@@ -34,8 +46,7 @@ weight: 3
 
 ### Clay components and elements
 
-* liferay.github.io/clay
-* You can use Clay components in your templates
+* You can use [Clay components](https://claycss.com/) in your templates
 	* Gives you lego type functionality
 	* You can compose components
 
@@ -44,7 +55,7 @@ weight: 3
 * **Standalone** templates not associated to a structure that can be imported into other templates 
 
 ```htmlmixed
-<#include "$templatesPath">
+<#include "${full_templates_path}/navigation.ftl" />
 ```
 
 ### Embeddable Apps
@@ -68,13 +79,13 @@ weight: 3
 		<#assign article = journalArticleLocalService.getArticleByUrlTitle(36823, "header-web-content") />
 
 		<#if article??>
-			$article.getContent()?replace("]>", "")
+			${article.getContent()?replace("]>", "")}
 		</#if>
 
 		<p>
-			Your assignment, $entryType, has been graded by the instructor. 
+			Your assignment, ${entryType}, has been graded by the instructor. 
 		<#if comments != "" >
-			<br />Here are the comments included: <strong>$comments</strong>
+			<br />Here are the comments included: <strong>${comments}</strong>
 		</#if>
 		</p>
 
