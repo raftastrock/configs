@@ -39,6 +39,7 @@ alias xmod='xmodmap ~/.Xmodmap'
 # GITHUB USER VARIABLES
 export allen='allen-ziegenfus'
 export joan='joanhyokim'
+export josh='jwu910'
 export luke='raftastrock'
 export phil='phillipchan2'
 export proto='protoEvangelion'
@@ -123,6 +124,17 @@ function addDir {
 	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
 	touch build.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	cd -
+	cd -
+}
+
+function addDir1 {
+	cd /home/ryan/dev/life/ee-6.1.x/liferay-portal-ee || return 1
+	touch app.server.ryan.properties
+	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.1.x/bundles" > app.server.ryan.properties
+	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
+	touch build.ryan.properties
+	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.1.x/bundles" > build.ryan.properties
 	cd -
 	cd -
 }

@@ -1,4 +1,3 @@
-
 alias nb='npm run build'
 alias nd='npm run deploy'
 alias ng='sudo npm i -g '
