@@ -4,7 +4,6 @@ export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
 export PATH=$HOME/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
 export TEMP=$HOME/temp
-export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export ZSH=/home/ryan/.oh-my-zsh
 
