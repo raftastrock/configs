@@ -21,9 +21,11 @@ alias y='yarn'
 alias yag='yarn add -g '
 alias yas='yarn add '
 alias yad='yarn add -D '
+alias yb='yarn build'
 alias yd='yarn run dev'
 alias yr='yarn run '
 alias ys='yarn start'
+alias yse='yarn serve'
 alias yt='yarn test'
 
 function nv(){
