@@ -63,7 +63,10 @@ export lrisa='LR Information Services' #default assignee
 export lrisp='LRIS' #project
 export lrist='IS Request' #type
 export lrisc='Liferay.com' #component
-
+# new ticket
+function jiran {
+	gh ji -N -A $lrisa -p $lrisp -T $lrist -C $lrisc --title $1 --message $2
+}
 
 # GENERAL FUNCTIONS
 
