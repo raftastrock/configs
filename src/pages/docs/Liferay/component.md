@@ -21,18 +21,22 @@ weight: 4
 ##### Here is an example of how Travis Cory calls soy templates by using a tag lib in web content and in the theme context
 
 ```htmlmixed
-<#assign liferay_soy = PortletJspTagLibs["/META-INF/resources/soy.tld"] />
-<#assign context = {"”: ””} />
+From web content
 
-${getData}
+<#assign liferay_soy = taglibLiferayHash["/META-INF/resources/soy.tld"] />
+
+From theme
+
+<#assign liferay_soy = PortletJspTagLibs["/META-INF/resources/soy.tld"] />
+
+
+<#assign context = {"id": "chips", "chips": ["test1", "test2"]} />
 
 <@liferay_soy["template-renderer"]
-	componentId=""
-	context=context
-	templateNamespace=“Template.render"
+    componentId="chips"
+    context=context
+    templateNamespace= "MaterialChips.render"
 />
-
-<!-- context being what you want to pass to the template -->
 ```
 
 </article>
