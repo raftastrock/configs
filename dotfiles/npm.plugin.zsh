@@ -27,6 +27,7 @@ alias yr='yarn run '
 alias ys='yarn start'
 alias yse='yarn serve'
 alias yt='yarn test'
+alias yu='yarn upgrade'
 
 function nv(){
 	npm view $1 versions --json
