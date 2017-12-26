@@ -38,7 +38,7 @@ alias xmod='xmodmap ~/.Xmodmap'
 
 # GITHUB USER VARIABLES
 export allen='allen-ziegenfus'
-export angelo='AngeloYoun'
+export design='liferay-design'
 export joan='joanhyokim'
 export josh='jwu910'
 export luke='raftastrock'
