@@ -156,6 +156,10 @@ function cleanAll {
 	rm -rfv logs
 }
 
+function gw {
+	gradle $1 | lch -c ~/logColors.conf
+}
+
 # Serve Liferay
 function serve {
 	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin || return 1
