@@ -1,19 +1,17 @@
 {
-  "name": "setupdockerlinux",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.17.1",
-    "curlrequest": "^1.0.1",
-    "download": "^6.2.5",
-    "fs-extra": "^5.0.0",
-    "js-yaml": "^3.10.0",
-    "user-home": "^2.0.0"
-  }
+	"name": "setupdockerlinux",
+	"version": "1.0.0",
+	"description": "sets up liferay docker image to work with linux security standards",
+	"main": "index.js",
+	"scripts": {
+		"start": "node --experimental-modules index.mjs"
+	},
+	"author": "Ryan Garant",
+	"license": "ISC",
+	"dependencies": {
+		"download": "^6.2.5",
+		"fs-extra": "^5.0.0",
+		"js-yaml": "^3.10.0",
+		"user-home": "^2.0.0"
+	}
 }

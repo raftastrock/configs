@@ -2,7 +2,7 @@
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=512m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
-export PATH=$HOME/bin:~/.npm-global/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
+export PATH=$HOME/bin:~/.npm-global/bin:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export ZSH=/home/ryan/.oh-my-zsh
@@ -25,12 +25,14 @@ alias c='clear'
 alias copy='xclip -sel clip'
 alias gd='gulp deploy'
 alias lock='gnome-screensaver-command -l'
+alias lc='bash logColors.sh'
 alias ls='ls -F --color=auto'
 alias hi='systemctl hibernate -i'
 alias my='mysql -u root'
 alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
+alias sas='sudo apt search $1'
 alias sass='sudo npm rebuild node-sass --force'
 alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
