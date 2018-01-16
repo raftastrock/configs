@@ -1,5 +1,5 @@
 # PATH
-export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=512m'
+export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=4000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
 export PATH=$HOME/bin:~/.npm-global/bin:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
@@ -37,6 +37,7 @@ alias sass='sudo npm rebuild node-sass --force'
 alias suspend='systemctl suspend -i'
 alias up='xmod && python listenForUsb.py'
 alias xmod='xmodmap ~/.Xmodmap'
+alias xmod2='xmodmap ~/.Xmodmap2'
 
 # GITHUB USER VARIABLES
 export allen='allen-ziegenfus'
