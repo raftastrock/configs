@@ -20,6 +20,6 @@ export default function rewriteHttpdPort() {
 			.then(() => console.log('Successfully rewrote port for', dockerYmlPath))
 			.catch(err => console.error(err))
 	} catch (err) {
-		console.error(err)
+		console.error('Error rewriting Httpd port', err)
 	}
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-import downloadBundles from './src/getBundles.mjs'
+import downloadBundles from './src/downloadBundles.mjs'
 import rewritePort from './src/rewritePort.mjs'
 
 rewritePort()
