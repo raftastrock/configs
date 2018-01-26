@@ -14,7 +14,7 @@ function current_branch() {
 alias g='git'
 
 alias ga='git add'
-alias gaa='git add --all'
+alias gaa='git add -u .'
 alias gapa='git add --patch'
 alias gau='git add --update'
 
