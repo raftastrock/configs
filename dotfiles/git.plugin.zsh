@@ -14,7 +14,7 @@ function current_branch() {
 alias g='git'
 
 alias ga='git add'
-alias gaa='git add -u .'
+alias gaa='git add .'
 alias gapa='git add --patch'
 alias gau='git add --update'
 
@@ -39,7 +39,7 @@ alias gca='git commit -v -a'
 alias gca!='git commit -v -a --amend'
 alias gcan!='git commit -v -a --no-edit --amend'
 alias gcans!='git commit -v -a -s --no-edit --amend'
-alias gcam='git add -u . && git commit -m'
+alias gcam='git add . && git commit -m'
 alias gcsm='git commit -s -m'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
