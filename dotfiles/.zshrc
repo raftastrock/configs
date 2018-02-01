@@ -33,7 +33,6 @@ alias my='mysql -u root'
 alias notes='cd ~/dev/notes && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
-alias screen='xrandr --output VGA-1 --left-of HDMI-1'
 alias sai='sudo apt install $1'
 alias sas='sudo apt search $1'
 alias sass='sudo npm rebuild node-sass --force'
@@ -85,6 +84,11 @@ function codeLatest {
 function codeVersion {
 	wget https://vscode-update.azurewebsites.net/$1/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
 	sudo dpkg -i /tmp/code_latest_amd64.deb
+}
+
+function screen {
+	xrandr --output VGA-1 --left-of HDMI-1
+	xrandr --output VGA-1 --primary
 }
 
 # Command to download recored-gif script: curl --location https://git.io/record-gif.sh | bash -
