@@ -44,6 +44,7 @@ alias xmod2='xmodmap ~/.Xmodmap2'
 
 # GITHUB USER VARIABLES
 export allen='allen-ziegenfus'
+export bchan='brianchandotcom'
 export design='liferay-design'
 export joan='joanhyokim'
 export josh='jwu910'
