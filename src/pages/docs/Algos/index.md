@@ -102,7 +102,7 @@ function insertionSort(nums) {
 3. return where appropriate
 4. write procecdures for each case that bring you closer to the base case(s)
 
-```js
+```javascript
 function basicRecursion(max, current) {
 	if (current > max) return
 	console.log(current)
