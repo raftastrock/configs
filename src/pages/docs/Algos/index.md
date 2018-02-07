@@ -36,7 +36,7 @@ weight: 1
 
 ### O(log n)
 
-* Where code employs **divide and conquer** strategies that use *recursion* like merge and quick sorts
+* Where code employs **divide and conquer** strategies that use _recursion_ like merge and quick sorts
 
 </article>
 
@@ -52,7 +52,7 @@ weight: 1
 function bubbleSort(nums) {  
   do {
     var swapped = false
-    
+
     for (let i = 0; i < nums.length; i++) {
       if (nums[i] > nums[i + 1] {
         const temp = nums[i]
@@ -67,25 +67,23 @@ function bubbleSort(nums) {
 
 * You probably will never use a do loop or bubble sort in production code
 
-
 ### Insertion Sort
 
 `bigO = n ^ 2`
 
 * Has more favorable coefficients than bubble sort
-* Better for things that are **near sorted**
-	* merge sort and quick sort are pretty much faster in all other cases
+* Better for things that are **near sorted** \* merge sort and quick sort are pretty much faster in all other cases
 
 ```javascript
 function insertionSort(nums) {
-  for (let i = 1; i < nums.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (nums[i] < nums[j]) {
-        const spliced = nums.splice(i, 1)
-        nums.splice(j, 0, spliced[0])
-      }
-    }
-  }
+	for (let i = 1; i < nums.length; i++) {
+		for (let j = 0; j < i; j++) {
+			if (nums[i] < nums[j]) {
+				const spliced = nums.splice(i, 1)
+				nums.splice(j, 0, spliced[0])
+			}
+		}
+	}
 }
 ```
 
@@ -95,19 +93,24 @@ function insertionSort(nums) {
 
 ## Recursion
 
-> Your **base case** is the most important piece.  If you don't write this first you will stack overflow
+> Your **base case** is the most important piece. If you don't write this first you will stack overflow
 
+### Recipe for recursion:
+
+1. Identify base case(s)
+2. Identify recursive case(s)
+3. return where appropriate
+4. write procecdures for each case that bring you closer to the base case(s)
 
 ```js
 function basicRecursion(max, current) {
-  if (current > max) return
-  console.log(current)
-  basicRecursion(max, current + 1)
+	if (current > max) return
+	console.log(current)
+	basicRecursion(max, current + 1)
 }
 
 basicRecursion(1, 10)
 ```
-
 
 ### Fibonacci Sequences
 
@@ -118,11 +121,15 @@ basicRecursion(1, 10)
 
 ```javascript
 function fibonacci(n) {
-  if (n <= 2) return 1
-  
-  return fibonacci(n - 1) + fibonacci(n - 2)
+	if (n <= 2) return 1
+
+	return fibonacci(n - 1) + fibonacci(n - 2)
 }
 ```
+
+* Notice how we are returning the recursive function
+  _ It is a common mistake to not return the recursive function
+  _ What will happen is it will return `undefined` instead of preserving the value you are seeking
 
 ### Factorials
 
@@ -132,12 +139,9 @@ function fibonacci(n) {
 
 ```javascript
 function factorial(n) {
-  if (n < 2) return 1
-  
-  return n * function factorial(n) {
-  if (n < 2) return 1
-  
-  return n * factorial(n - 1)
+	if (n < 2) return 1
+
+	return n * factorial(n - 1)
 }
 ```
 
@@ -147,6 +151,5 @@ function factorial(n) {
 
 * Recursive algo that is very **stable**
   * However when sorting numbers stability doesn't matter because you don't care what order two 4's for instance are given to you
-
 
 </article>
