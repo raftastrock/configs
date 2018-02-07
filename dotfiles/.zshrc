@@ -169,6 +169,7 @@ function cleanAll {
 	rm -rfv webapps/osb-community-theme/css/.sass-cache
 	rm -rfv temp
 	rm -rfv logs
+	cd -
 }
 
 function gw {
