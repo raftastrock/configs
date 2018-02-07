@@ -66,6 +66,9 @@ export gh='node-gh'
 export life='liferay'
 export nil='next-in-line'
 
+# GITHUB BRANCHES
+export e6='ee-6.2.x'
+
 # JIRA PROJECTS
 export lrisa='LR Information Services' #default assignee
 export lrisp='LRIS' #project
