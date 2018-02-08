@@ -12,6 +12,7 @@ export ZSH=/home/ryan/.oh-my-zsh
 plugins=(git npm zsh-output-highlighting)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
+. /usr/share/autojump/autojump.sh
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
@@ -192,11 +193,9 @@ function serve7 {
 
 # Deploy community theme
 function theme {
-	clean | lch -c ~/logColors.conf
+	clean
 	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme || return 1
 	ant deploy | lch -c ~/logColors.conf
-	cd -
-	cd -
 }
 
 # Go to Tomcat Dir
