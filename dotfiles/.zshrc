@@ -145,7 +145,6 @@ function addDir {
 	touch build.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
 	cd -
-	cd -
 }
 
 function addDir1 {
