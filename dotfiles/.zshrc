@@ -141,7 +141,14 @@ function addDir {
 	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee || return 1
 	touch app.server.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
-	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
+	cd -
+
+	if [[ $1 ]]; then
+		cd /home/ryan/dev/life/$1 || return 1
+	else
+		cd /home/ryan/dev/life/liferay-plugins-ee || return 1
+	fi
+
 	touch build.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
 	cd -
