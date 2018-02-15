@@ -116,11 +116,11 @@ function s {
 function slang {
 	echo "Showing language keys in:  ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl"
 	echo "===============================\n"
-	cat ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl | grep $1
+	cat ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl | grep -E --color $1
 
 	echo "\nShowing language keys in:  ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties"
 	echo "===============================\n"
-	cat ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties | grep $1
+	cat ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties | grep -E --color $1
 }
 
 function zpush {
