@@ -113,6 +113,16 @@ function s {
 	cat $1 | grep $2
 }
 
+function slang {
+	echo "Showing language keys in:  ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl"
+	echo "===============================\n"
+	cat ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl | grep $1
+
+	echo "\nShowing language keys in:  ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties"
+	echo "===============================\n"
+	cat ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties | grep $1
+}
+
 function zpush {
 	cd ~/dev/notes/dotfiles &&
 	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh . &&
