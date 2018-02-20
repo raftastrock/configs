@@ -6,13 +6,12 @@ export GRADLE_HOME=/usr/local/gradle
 export PATH=$HOME/bin:~/.npm-global/bin:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:$PATH
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-export ZSH=/home/ryan/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # PLUGINS
-plugins=(git npm zsh-output-highlighting)
+plugins=(git npm)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
-. /usr/share/autojump/autojump.sh
 
 # ALIASES GLOBAL
 alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
