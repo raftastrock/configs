@@ -74,6 +74,7 @@ export lrisa='LR Information Services' #default assignee
 export lrisp='LRIS' #project
 export lrist='IS Request' #type
 export lrisc='Liferay.com' #component
+
 # new ticket
 function jiran {
 	gh ji -N -A $lrisa -p $lrisp -T $lrist -C $lrisc --title $1 --message $2
@@ -170,7 +171,6 @@ function addDir1 {
 	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
 	touch build.ryan.properties
 	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.1.x/bundles" > build.ryan.properties
-	cd -
 	cd -
 }
 
