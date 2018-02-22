@@ -130,10 +130,10 @@ function slang {
 }
 
 function zpush {
-	cd ~/dev/notes/dotfiles &&
-	cp ~/.oh-my-zsh/plugins/git/git.plugin.zsh . &&
-	cp ~/.oh-my-zsh/plugins/npm/npm.plugin.zsh . &&
-	cp ~/.zshrc . &&
+	cd ~/dev/notes/dotfiles
+	cp ~/.oh-my-zsh/plugins/git2/git.plugin.zsh .
+	cp ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh .
+	cp ~/.zshrc .
 	gsave "$1"
 	cd -
 }
@@ -144,8 +144,8 @@ function zpull {
 	git reset --hard origin/master
 	gcleandry
 	cp .zshrc ~
-	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git
-	cp npm.plugin.zsh ~/.oh-my-zsh/plugins/npm
+	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git2
+	cp npm.plugin.zsh ~/.oh-my-zsh/plugins/npm2
 	re
 	cd -
 }
