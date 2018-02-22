@@ -1,125 +1,97 @@
 #!/bin/bash
-ear() { echo "\$ $@" ; "$@" ; }
-spacer() { printf '\n-----------\n\n' ; }
 
-isDebian=$(python -mplatform | grep -qi debian && echo true || echo false)
+# Text color variables
+txtund=$(tput sgr 0 1)       # Underline
+txtbld=$(tput bold)          # Bold
+cyn=${txtbld}$(tput setaf 6) # cyan
+red=${txtbld}$(tput setaf 1) # red
+blu=${txtbld}$(tput setaf 4) # blue
+gre=${txtbld}$(tput setaf 2) # green
+wht=${txtbld}$(tput setaf 7) # white
+ylw=$(tput setaf 3)					 # yellow
+off=$(tput sgr0)             # Reset
+
+ear() {
+	echo -e "$cyn \$ $@ $off"
+	eval "$@"
+}
+
+spacer() { echo -e "$ylw \n-----------\n $off" ; }
+
+isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
 isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
 
-# Check for Git
-if ! [ -x "$(command -v git)" ]; then
-	echo 'Git is not installed'
+checkSoftware() {
+	if ! [ -x "$(command -v $1)" ]; then
+		echo -e "$red $1 is not installed $off"
 
-	if [ $isDebian == 'true' ]; then
-		ear sudo apt -y install git-all
-	elif [ $isFedora == 'true' ]; then
-		ear sudo dnf install git-all	
+		echo -e "$blu ===> Installing $1 $off"
+
+		if [ $isDebian == "true" ]; then
+			ear "$2"
+		elif [ $isFedora == "true" ]; then
+			ear "$3"
+		fi
+
+		if ! [ -z "$4" ]; then
+			ear "$4"
+		fi
+
+	else
+		echo -e "$gre ✓ $1 is installed $off"
 	fi
 
-else
-	echo '✓ Git is installed'
-fi
+	spacer
+}
 
-spacer
+checkDir() {
+	if [ -d "$1" ]; then
+		echo -e "$red x $1 directory does not exist $off"
 
-# Check for curl
-if ! [ -x "$(command -v curl)" ]; then
-	echo 'curl is not installed'
+		echo -e "$blu ===> Building out $1 directory $off"
 
-	if [ $isDebian == 'true' ]; then
-		ear sudo apt -y install curl
-	elif [ $isFedora == 'true' ]; then
-		ear sudo dnf -y install curl
+		ear $2
+
+	else
+		echo -e "$gre ✓ $1 directory exists $off"
 	fi
 
-else
-	echo '✓ curl is installed'
-fi
+	spacer
+}
 
-spacer
+checkFile() {
+	if [ ! -f "$1" ]; then
+		echo -e "$red x $1 file does not exist $off"
 
-# Check for Nodejs
-if ! [ -x "$(command -v node)" ]; then
-	echo 'Nodejs is not installed'
-	echo '===> Installing Node.js'
+		echo -e "$blu ===> Downloading $1 file $off"
 
-	if [ $isDebian == 'true' ]; then
-		ear curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-		ear sudo apt -y install nodejs
-	elif [ $isFedora == 'true' ]; then
-		ear curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-		ear sudo dnf -y install nodejs	
+		ear $2
+
+		if ! [ -z "$3" ]; then
+			ear "$3"
+		fi
+
+	else
+		echo -e "$gre ✓ $1 file exists $off"
 	fi
 
-else
-	echo '✓ Nodejs is installed'
-fi
+	spacer
+}
 
 spacer
 
-# Check for Zsh
-if ! [ -x "$(command -v zsh)" ]; then
-	echo 'x Zsh is not installed'
-	echo '===> Installing Zsh'
+checkSoftware "git" "sudo apt -y install git-all" "sudo dnf install git-all"
 
-	if [ $isDebian == 'true' ]; then
-		ear sudo apt -y install zsh
-	elif [ $isFedora == 'true' ]; then
-		ear sudo dnf -y install zsh
-	fi
+checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
-	sudo chsh -s $(which zsh)
-else
-	echo '✓ Zsh is installed'
-fi
+checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
 
-spacer
+checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
 
-# Check for oh my zsh
-if [ ! -d ~/.oh-my-zsh ] ; then
-	echo 'x Oh My Zsh directory does not exist'
-	echo '===> Installing Oh My Zsh'
+checkDir ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
 
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-	echo '✓ Oh My Zsh directory exists'
-fi
+checkFile ~/PS1.zsh "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/PS1.zsh >> ~/PS1.zsh"
 
-spacer
+checkFile ~/.zshrc "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/.zshrc >> ~/.zshrc"
 
-# Check for PS1
-if [ ! -f ~/PS1.zsh ] ; then
-	echo 'x PS1 file does not exist'
-	echo '===> Downloading PS1 file'
-
-	curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/PS1.zsh >> ~/PS1.zsh
-else
-	echo '✓ PS1 file exists'
-fi
-
-spacer
-
-# Check for .zshrc
-if [ ! -f ~/.zshrc ] ; then
-	echo 'x .zshrc file does not exist'
-	echo '===> Downloading .zshrc file'
-
-	curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/.zshrc >> ~/.zshrc
-else
-	echo '✓ .zshrc file exists'
-fi
-
-spacer
-
-# Check for zsh git plugin
-if [ ! -f ~/.oh-my-zsh/plugins/git2/git.plugin.zsh ] ; then
-	echo 'x Zsh git plugin file does not exist'
-	echo '===> Downloading git.plugin.zsh file'
-
-	mkdir ~/.oh-my-zsh/plugins/git2
-
-	curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/git.plugin.zsh >> ~/.oh-my-zsh/plugins/git2/git.plugin.zsh
-else
-	echo '✓ git.plugin.zsh file exists'
-fi
-
-spacer
+checkFile ~/.oh-my-zsh/plugins/git2/git.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/git.plugin.zsh >> ~/.oh-my-zsh/plugins/git2/git.plugin.zsh"
