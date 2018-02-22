@@ -14,8 +14,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES GLOBAL
-alias -g g='~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-alias -g np='~/.oh-my-zsh/plugins/npm/npm.plugin.zsh'
+alias -g g='~/.oh-my-zsh/plugins/git2/git.plugin.zsh'
+alias -g np='~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # ALIASES
