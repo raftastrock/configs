@@ -45,7 +45,7 @@ checkSoftware() {
 }
 
 checkDir() {
-	if [ -d "$1" ]; then
+	if [ ! -d "$1" ]; then
 		echo -e "$red x $1 directory does not exist $off"
 
 		echo -e "$blu ===> Building out $1 directory $off"
@@ -95,3 +95,5 @@ checkFile ~/PS1.zsh "curl -fsSL https://raw.githubusercontent.com/protoEvangelio
 checkFile ~/.zshrc "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/.zshrc >> ~/.zshrc"
 
 checkFile ~/.oh-my-zsh/plugins/git2/git.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/git.plugin.zsh >> ~/.oh-my-zsh/plugins/git2/git.plugin.zsh"
+
+checkFile ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/npm.plugin.zsh >> ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh"
