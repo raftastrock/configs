@@ -9,7 +9,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=~/.oh-my-zsh
 
 # PLUGINS
-plugins=(git npm)
+plugins=(git2 npm2)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
