@@ -135,8 +135,8 @@ function zpull {
 	git reset --hard origin/master
 	gcleandry
 	cp .zshrc ~
-	cp git.plugin.zsh ~/.oh-my-zsh/plugins/git2
-	cp npm.plugin.zsh ~/.oh-my-zsh/plugins/npm2
+	cp git2.plugin.zsh ~/.oh-my-zsh/plugins/git2
+	cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
 	re
 	cd -
 }
