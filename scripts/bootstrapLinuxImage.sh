@@ -132,7 +132,7 @@ generateSsh
 
 checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
-checkDir ~/dev/notes "git clone git@github.com:protoEvangelion/notes.git"
+checkDir ~/dev/notes "cd ~/dev && git clone git@github.com:protoEvangelion/notes.git"
 
 checkDir ~/.oh-my-zsh "sh -c ~/dev/notes/scripts/installOhMyZsh.sh"
 
