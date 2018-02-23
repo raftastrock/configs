@@ -95,7 +95,7 @@ generateSsh() {
 
 spacer
 
-checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all" "git config --global user.email \"ryantgarant@gmail.com\" && git config --global user.name \"Ryan Garant\""
+checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all" "git config --global user.email \"ryantgarant@gmail.com\" && git config --global user.name \"protoEvangelion\""
 
 checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
