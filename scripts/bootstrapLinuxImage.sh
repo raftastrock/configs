@@ -48,7 +48,7 @@ checkDir() {
 	if [ ! -d "$1" ]; then
 		echo -e "$red x $1 directory does not exist $off"
 
-		echo -e "$blu ===> Building out $1 directory $off"
+		echo -e "$blu ===> Creating $1 directory $off"
 
 		ear $2
 
@@ -78,9 +78,23 @@ checkFile() {
 	spacer
 }
 
+generateSsh() {
+	if ! [ -f ~/.ssh/id_rsa.pub ]; then
+			ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa -N ""
+
+			curl -u "protoEvangelion" \
+				--data "{\"title\":\"`date +%m/%d/%Y-%H:%M:%S`_$(python -mplatform)\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
+				https://api.github.com/user/keys
+	else
+		echo -e "$gre ✓ ssh key exists $off"
+	fi
+}
+
+generateSsh
+
 spacer
 
-checkSoftware "git" "sudo apt -y install git-all" "sudo dnf install git-all"
+checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all"
 
 checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
@@ -90,10 +104,18 @@ checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo ch
 
 checkDir ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
 
-checkFile ~/PS1.zsh "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/PS1.zsh >> ~/PS1.zsh"
+checkDir ~/dev "mkdir ~/dev"
 
-checkFile ~/.zshrc "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/.zshrc >> ~/.zshrc"
+checkDir ~/dev/notes "git clone https://github.com/protoEvangelion/notes.git"
 
-checkFile ~/.oh-my-zsh/plugins/git2/git.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/git.plugin.zsh >> ~/.oh-my-zsh/plugins/git2/git.plugin.zsh"
+checkFile ~/.Xmodmap "cp ~/dev/notes/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
 
-checkFile ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "curl -fsSL https://raw.githubusercontent.com/protoEvangelion/notes/master/dotfiles/npm.plugin.zsh >> ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh"
+checkFile ~/PS1.zsh "cp ~/dev/notes/dotfiles/PS1.zsh ~/"
+
+checkFile ~/.zshrc "cp ~/dev/notes/dotfiles/.zshrc ~/" "source .zshrc"
+
+checkFile ~/logColors.conf "cp ~/dev/notes/dotfiles/logColors.conf ~/"
+
+checkFile ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "cp ~/dev/notes/dotfiles/git2.plugin.zsh ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh"
+
+checkFile ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "cp ~/dev/notes/dotfiles/npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh"
