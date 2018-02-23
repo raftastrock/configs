@@ -88,6 +88,8 @@ generateSsh() {
 	else
 		echo -e "$gre ✓ ssh key exists $off"
 	fi
+
+	spacer
 }
 
 
