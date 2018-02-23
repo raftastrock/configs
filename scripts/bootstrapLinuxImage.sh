@@ -80,33 +80,34 @@ checkFile() {
 
 generateSsh() {
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
-			ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa -N ""
+		ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa -N ""
 
-			curl -u "protoEvangelion" \
-				--data "{\"title\":\"`date +%m/%d/%Y-%H:%M:%S`_$(python -mplatform)\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
-				https://api.github.com/user/keys
+		curl -u "protoEvangelion" \
+			--data "{\"title\":\"`date +%m/%d/%Y-%H:%M:%S`_$(python -mplatform)\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
+			https://api.github.com/user/keys
 	else
 		echo -e "$gre ✓ ssh key exists $off"
 	fi
 }
 
-generateSsh
 
 spacer
 
 checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all"
 
-checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
-
 checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
+
+checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
 checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
 
-checkDir ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+generateSsh
 
 checkDir ~/dev "mkdir ~/dev"
 
 checkDir ~/dev/notes "git clone https://github.com/protoEvangelion/notes.git"
+
+checkDir ~/.oh-my-zsh "sh -c ~/dev/notes/scripts/installOhMyZsh.sh"
 
 checkFile ~/.Xmodmap "cp ~/dev/notes/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
 
