@@ -143,6 +143,13 @@ function zpull {
 # LIFERAY FUNCTIONS
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
+function addBuild {
+	cd ../../
+	touch build.ryan.properties
+	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	cd -
+}
+
 function addDir {
 	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee || return 1
 	touch app.server.ryan.properties
@@ -209,31 +216,6 @@ function theme {
 	ant deploy | lch -c ~/logColors.conf
 }
 
-# Go to Tomcat Dir
-function tom {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62 || return 1
-}
-
-function rungradle {
-	# Rename settings.gradle temporarily
-	if [ -e settings.gradle ]
-		then
-			mv settings.gradle settings.gradle.tmp
-	fi
-	# Run regular gradle commands
-	local root_level=$(git rev-parse --show-toplevel 2>/dev/null)
-	if [[ -n "$root_level" && -f "$root_level/gradlew" ]]; then
-		root_level="$root_level/gradlew"
-	else
-		root_level=$(which gradle)
-	fi
-	"$root_level" $@
-	if [ -e settings.gradle.tmp ]
-		then
-			mv settings.gradle.tmp settings.gradle
-	fi
-}
-
 # JACK SEARCH FUNCTIONS
 function jse {
 	jack --stat $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
@@ -251,5 +233,3 @@ function mlabBackup {
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
-
-# This loads nvm bash_completion
