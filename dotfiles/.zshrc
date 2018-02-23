@@ -9,13 +9,13 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=~/.oh-my-zsh
 
 # PLUGINS
-plugins=(git2 npm2)
+plugins=(git2 npm2 ssh-agent)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES GLOBAL
-alias -g g='~/.oh-my-zsh/plugins/git2/git.plugin.zsh'
-alias -g np='~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh'
+alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
+alias -g np='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g z='~/.zshrc'
 
 # ALIASES
@@ -131,8 +131,8 @@ function slang {
 
 function zpush {
 	cd ~/dev/notes/dotfiles
-	cp ~/.oh-my-zsh/plugins/git2/git.plugin.zsh .
-	cp ~/.oh-my-zsh/plugins/npm2/npm.plugin.zsh .
+	cp ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh .
+	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
 	cp ~/.zshrc .
 	gsave "$1"
 	cd -
