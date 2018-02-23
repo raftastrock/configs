@@ -8,7 +8,7 @@ red=${txtbld}$(tput setaf 1) # red
 blu=${txtbld}$(tput setaf 4) # blue
 gre=${txtbld}$(tput setaf 2) # green
 wht=${txtbld}$(tput setaf 7) # white
-ylw=$(tput setaf 3)					 # yellow
+ylw=$(tput setaf 3)			 # yellow
 off=$(tput sgr0)             # Reset
 
 ear() {
@@ -63,7 +63,7 @@ checkFile() {
 	if [ ! -f "$1" ]; then
 		echo -e "$red x $1 file does not exist $off"
 
-		echo -e "$blu ===> Downloading $1 file $off"
+		echo -e "$blu ===> Copying $1 file $off"
 
 		ear $2
 
@@ -95,17 +95,40 @@ generateSsh() {
 
 spacer
 
-checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all"
-
-checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
+checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all" "git config --global user.email \"ryantgarant@gmail.com\" && git config --global user.name \"Ryan Garant\""
 
 checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
 checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
 
+vsCodeDebian() {
+	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+	sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+	sudo apt -y update
+	sudo apt -y install code
+}
+
+vsCodeFedora() {
+	sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+	sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+	sudo dnf -y check-update
+	sudo dnf -y install code
+}
+
+checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
+
+checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
+
+echo -e "$blu Updating/Installing my fav node packages globally $off"
+
+ear "sudo npm i -g n gh git-br git-select"
+
+spacer
+
 generateSsh
 
-checkDir ~/dev "mkdir ~/dev"
+checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
 checkDir ~/dev/notes "git clone https://github.com/protoEvangelion/notes.git"
 
