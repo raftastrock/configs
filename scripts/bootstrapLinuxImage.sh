@@ -99,6 +99,10 @@ checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all" 
 
 checkSoftware "curl" "sudo apt -y install curl" "sudo dnf -y install curl"
 
+checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
+
+checkSoftware "chsh" "" "sudo dnf -y install util-linux-user && sudo chsh -s $(which zsh)"
+
 checkSoftware "java" "sudo apt -y update && sudo apt -y install default-jdk" "sudo dnf -y check-update && sudo dnf -y install java-1.?.0-openjdk*"
 
 checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
