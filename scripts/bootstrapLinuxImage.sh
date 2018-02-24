@@ -92,7 +92,6 @@ generateSsh() {
 	spacer
 }
 
-
 spacer
 
 checkSoftware "git" "sudo apt -y install git-all" "sudo dnf -y install git-all" "git config --global user.email \"ryantgarant@gmail.com\" && git config --global user.name \"protoEvangelion\""
@@ -106,6 +105,18 @@ checkSoftware "chsh" "" "sudo dnf -y install util-linux-user && sudo chsh -s $(w
 checkSoftware "java" "sudo apt -y update && sudo apt -y install default-jdk" "sudo dnf -y check-update && sudo dnf -y install java-1.?.0-openjdk*"
 
 checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
+
+checkSoftware "snap" "sudo apt -y install snapd" "sudo dnf -y install snapd"
+
+if ! [ "$(snap list | grep slack)" ]; then
+	echo -e "$red slack is not installed $off"
+	echo -e "$blu ===> Installing slack $off"
+	sudo snap install slack --classic
+else
+	echo -e "$gre ✓ slack is installed $off"
+fi
+
+spacer
 
 vsCodeDebian() {
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
