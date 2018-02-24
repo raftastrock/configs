@@ -104,6 +104,8 @@ checkSoftware "chsh" "" "sudo dnf -y install util-linux-user && sudo chsh -s $(w
 
 checkSoftware "java" "sudo apt -y update && sudo apt -y install default-jdk" "sudo dnf -y check-update && sudo dnf -y install java-1.?.0-openjdk*"
 
+checkSoftware "xclip" "sudo apt -y install xclip" "sudo dnf -y install xclip"
+
 checkSoftware "zsh" "sudo apt -y install zsh" "sudo dnf -y install zsh" "sudo chsh -s $(which zsh)"
 
 checkSoftware "snap" "sudo apt -y install snapd" "sudo dnf -y install snapd"
