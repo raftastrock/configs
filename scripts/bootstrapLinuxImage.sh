@@ -141,7 +141,7 @@ checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E ba
 
 echo -e "$blu Updating/Installing my fav node packages globally $off"
 
-ear "sudo npm i -g gh git-br git-select n opn-cli"
+ear "sudo npm i -g gh git-br git-select jack-cli n opn-cli"
 
 spacer
 
