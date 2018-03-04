@@ -84,7 +84,6 @@ function jiran {
 }
 
 # GENERAL FUNCTIONS
-
 function screen {
 	xrandr --output VGA-1 --left-of HDMI-1
 	xrandr --output VGA-1 --primary
