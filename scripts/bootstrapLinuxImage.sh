@@ -87,8 +87,9 @@ generateSsh() {
 			https://api.github.com/user/keys
 	else
 		echo -e "$gre ✓ ssh key exists $off"
-	f
-	spacersdf
+	fi
+}
+
 spacer
 
 vsCodeDebian() {
