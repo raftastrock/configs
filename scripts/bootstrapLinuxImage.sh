@@ -109,15 +109,9 @@ vsCodeFedora() {
 
 checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
-checkSoftware "yarn" "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt -y install yarn" "curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo && sudo dnf -y install yarn"
-
 checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
 
-echo -e "$blu Updating/Installing my fav node packages globally $off"
-
-ear "npm i -g gh git-br git-select jack-cli n opn-cli"
-
-spacer
+checkSoftware "yarn" "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt -y install yarn" "curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo && sudo dnf -y install yarn"
 
 generateSsh
 
@@ -138,3 +132,9 @@ checkFile ~/logColors.conf "cp ~/dev/notes/dotfiles/logColors.conf ~/"
 checkFile ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "cp ~/dev/notes/dotfiles/git2.plugin.zsh ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh"
 
 checkFile ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "cp ~/dev/notes/dotfiles/npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh"
+
+echo -e "$blu Updating/Installing my fav node packages globally $off"
+
+ear "npm i -g gh git-br git-select jack-cli n opn-cli"
+
+spacer
