@@ -89,6 +89,12 @@ function screen {
 	xrandr --output VGA-1 --primary
 }
 
+function screen2 {
+	xrandr --output HDMI1 --left-of HDMI2
+	xrandr --output HDMI1 --primary
+}
+
+
 # Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
 function gif {
 	record-gif.sh $1 ~/Videos/$2.gif
