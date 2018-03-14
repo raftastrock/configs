@@ -1,5 +1,5 @@
 # PATH
-export PATH=$HOME/bin:~/.npm-global/bin:~/dev/notes/scripts:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
+export PATH=$HOME/swift-2.2-RELEASE-ubuntu14.04/usr/bin:$HOME/bin:~/.npm-global/bin:~/dev/notes/scripts:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
@@ -11,7 +11,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=~/.oh-my-zsh
 
 # PLUGINS
-plugins=(git2 npm2 ssh-agent)
+plugins=(colorize git2 npm2 ssh-agent )
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
@@ -77,23 +77,26 @@ export lrisa='LR Information Services' #default assignee
 export lrisp='LRIS' #project
 export lrist='IS Request' #type
 export lrisc='Liferay.com' #component
-
 # new ticket
 function jiran {
 	gh ji -N -A $lrisa -p $lrisp -T $lrist -C $lrisc --title $1 --message $2
 }
 
-# GENERAL FUNCTIONS
-function screen {
+# MONITOR FUNCTIONS
+function homeScreen {
 	xrandr --output VGA-1 --left-of HDMI-1
 	xrandr --output VGA-1 --primary
 }
 
-function screen2 {
+function workScreen {
+	xrandr --output HDMI1 --auto
+	xrandr --output HDMI2 --primary
 	xrandr --output HDMI1 --left-of HDMI2
-	xrandr --output HDMI1 --primary
 }
 
+function singleScreen {
+	xrandr --output eDP1 --auto
+}
 
 # Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
 function gif {
