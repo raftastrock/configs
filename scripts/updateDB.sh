@@ -80,7 +80,7 @@ if [ -z "$1" ]; then
 	FILE=www_lportal-$(date +"%Y-%m-%d")_19-00-PDT.sql.gz
 
 	if curl -s --head  --request GET $MIRROR/$FILE | grep "200 OK" > /dev/null; then
-		checkFile "$TEMP/$FILE" "curl -o $TEMP/$FILE -fSL $MIRROR/$FILE" "pv $TEMP/$FILE | gunzip | mysql -u root -p7777 liferay_db"
+		checkFile "$TEMP/$FILE" "curl -o $TEMP/$FILE -fSL $MIRROR/$FILE" "pv $TEMP/$FILE | gunzip | mysql -u root -p liferay_db"
 	else
 		echo "$red $MIRROR/$FILE does not exist"
 		echo " You can pass in a date as the first arg like: $off"
@@ -92,7 +92,7 @@ else
 	FILE=www_lportal-$1_19-00-PDT.sql.gz
 
 	if curl -s --head  --request GET $MIRROR/$FILE | grep "200 OK" > /dev/null; then
-		checkFile "$TEMP/$FILE" "curl -o $TEMP/$FILE -fSL $MIRROR/$FILE" "pv $TEMP/$FILE | gunzip | mysql -u root -p7777 liferay_db"
+		checkFile "$TEMP/$FILE" "curl -o $TEMP/$FILE -fSL $MIRROR/$FILE" "pv $TEMP/$FILE | gunzip | mysql -u root -p liferay_db"
 	else
 		echo "$red $MIRROR/$FILE does not exist $off"
 		spacer
