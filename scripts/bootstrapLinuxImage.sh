@@ -106,6 +106,8 @@ vsCodeDebian() {
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	sudo apt -y update
 	iapt code
+	rm ~/.config/Code/User/settings.json
+	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
 }
 
 vsCodeFedora() {
@@ -113,9 +115,9 @@ vsCodeFedora() {
 	sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 	sudo dnf -y check-update
 	idnf code
+	rm ~/.config/Code/User/settings.json
+	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
 }
-
-checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
 checkSoftware "curl" "iapt curl" "idnf curl"
 
@@ -132,6 +134,8 @@ generateSsh
 checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
 checkDir ~/dev/notes "cd ~/dev && git clone git@github.com:protoEvangelion/notes.git"
+
+checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
 checkDir ~/dev/quicktile "cd ~/dev && git clone https://github.com/ssokolow/quicktile"
 

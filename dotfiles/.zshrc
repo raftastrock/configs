@@ -11,7 +11,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=~/.oh-my-zsh
 
 # PLUGINS
-plugins=(colorize git2 npm2 ssh-agent )
+plugins=(colorize git2 npm2 ssh-agent)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
