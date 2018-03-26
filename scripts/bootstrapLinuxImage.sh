@@ -11,15 +11,23 @@ wht=${txtbld}$(tput setaf 7) # white
 ylw=$(tput setaf 3)			 # yellow
 off=$(tput sgr0)             # Reset
 
+isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
+isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
+
+idnf() {
+	sudo dnf install -y "$@"
+}
+
+iapt() {
+	sudo apt install -y "$@"
+}
+
 ear() {
 	echo -e "$cyn \$ $@ $off"
 	eval "$@"
 }
 
 spacer() { echo -e "$ylw \n-----------\n $off" ; }
-
-isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
-isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
 
 checkSoftware() {
 	if ! [ -x "$(command -v $1)" ]; then
@@ -80,7 +88,7 @@ checkFile() {
 
 generateSsh() {
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
-		ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa -N ""
+		ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa
 
 		curl -u "protoEvangelion" \
 			--data "{\"title\":\"`date +%m/%d/%Y-%H:%M:%S`_$(python -mplatform)\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
@@ -97,27 +105,37 @@ vsCodeDebian() {
 	sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	sudo apt -y update
-	sudo apt -y install code
+	iapt code
 }
 
 vsCodeFedora() {
 	sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 	sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 	sudo dnf -y check-update
-	sudo dnf -y install code
+	idnf code
 }
 
 checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
-checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && sudo apt -y install nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo dnf -y install nodejs"
+checkSoftware "curl" "iapt curl" "idnf curl"
+
+checkSoftware "git" "iapt git" "idnf git"
+
+checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - &&  iapt nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && idnf nodejs"
 
 checkSoftware "yarn" "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt -y install yarn" "curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo && sudo dnf -y install yarn"
+
+checkSoftware "xclip" "iapt xclip" "idnf xclip"
 
 generateSsh
 
 checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
 checkDir ~/dev/notes "cd ~/dev && git clone git@github.com:protoEvangelion/notes.git"
+
+checkDir ~/dev/quicktile "cd ~/dev && git clone https://github.com/ssokolow/quicktile"
+
+checkSoftware "quicktile" "iapt python-gtk2 python-xlib python-dbus python-wnck python-setuptools" "idnf pygtk2 pygobject2 dbus-python gnome-python2-libwnck" "cd ~/dev/quicktile && ./install.sh  && quicktile"
 
 checkDir ~/.oh-my-zsh "sh -c ~/dev/notes/scripts/installOhMyZsh.sh"
 
@@ -133,8 +151,15 @@ checkFile ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/
 
 checkFile ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "cp ~/dev/notes/dotfiles/npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh"
 
-echo -e "$blu Updating/Installing my fav node packages globally $off"
+checkDir ~/.npm-global "mkdir ~/.npm-global && npm config set prefix '~/.npm-global'"
 
-ear "npm i -g gh git-br git-select jack-cli n opn-cli"
+# Npm software
+ng() {
+	npm i -g $1
+}
 
-spacer
+checkSoftware "gh" "ng gh" "ng gh"
+checkSoftware "git-br" "ng git-br" "ng git-br"
+checkSoftware "git-select" "ng git-select" "ng git-select"
+checkSoftware "jack" "ng jack-cli" "ng jack-cli"
+checkSoftware "opn" "ng opn-cli" "ng opn-cli"

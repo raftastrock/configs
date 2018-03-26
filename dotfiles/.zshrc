@@ -1,5 +1,5 @@
 # PATH
-export PATH=$HOME/swift-2.2-RELEASE-ubuntu14.04/usr/bin:$HOME/bin:~/.npm-global/bin:~/dev/notes/scripts:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
+export PATH=$HOME/bin:~/.npm-global/bin:~/dev/notes/scripts:~/jpm/bin:/usr/local/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
