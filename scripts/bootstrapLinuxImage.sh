@@ -131,6 +131,8 @@ checkSoftware "xclip" "iapt xclip" "idnf xclip"
 
 generateSsh
 
+checkSoftware "keychain" "iapt keychain" "idnf keychain"
+
 checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
 checkDir ~/dev/notes "cd ~/dev && git clone git@github.com:protoEvangelion/notes.git"

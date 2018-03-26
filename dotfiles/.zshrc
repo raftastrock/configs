@@ -10,8 +10,12 @@ export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export ZSH=~/.oh-my-zsh
 
+# SETUP SSH KEYCHAIN
+/usr/bin/keychain $HOME/.ssh/id_rsa
+source $HOME/.keychain/$USER-sh
+
 # PLUGINS
-plugins=(colorize git2 npm2 ssh-agent)
+plugins=(colorize git2 npm2)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
