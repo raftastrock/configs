@@ -12,7 +12,7 @@ export ZSH=~/.oh-my-zsh
 
 # SETUP SSH KEYCHAIN
 /usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$USER-sh
+source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
 plugins=(colorize git2 npm2)
