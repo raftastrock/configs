@@ -11,7 +11,7 @@
 	"editor.insertSpaces": false,
 	"editor.lineNumbers": "off",
 	"editor.multiCursorModifier": "ctrlCmd",
-	"editor.renderWhitespace": "all",
+	"editor.renderWhitespace": "none",
 	"editor.tabSize": 4,
 	"editor.wordWrap": "on",
 	"emmet.includeLanguages": {
@@ -38,6 +38,7 @@
 		"suppressWelcomeNotice": true
 	},
 	"git.enableSmartCommit": true,
+	"gitlens.currentLine.format": "${authorAgo}",
 	"gitlens.keymap": "alternate",
 	"javascript.format.enable": false,
 	"javascript.validate.enable": true,

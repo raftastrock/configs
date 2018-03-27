@@ -139,6 +139,7 @@ function zpush {
 	cd ~/dev/notes/dotfiles
 	cp ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh .
 	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
+	cp ~/.config/Code/User/settings.json .
 	cp ~/.zshrc .
 	gsave "$1"
 	cd -
@@ -152,6 +153,7 @@ function zpull {
 	cp .zshrc ~
 	cp git2.plugin.zsh ~/.oh-my-zsh/plugins/git2
 	cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
+	cp settings.json ~/.config/Code/User/settings.json
 	re
 	cd -
 }
