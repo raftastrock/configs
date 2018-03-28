@@ -9,9 +9,8 @@
 	"editor.formatOnPaste": false,
 	"editor.formatOnSave": true,
 	"editor.insertSpaces": false,
-	"editor.lineNumbers": "off",
 	"editor.multiCursorModifier": "ctrlCmd",
-	"editor.renderWhitespace": "none",
+	"editor.renderWhitespace": "all",
 	"editor.tabSize": 4,
 	"editor.wordWrap": "on",
 	"emmet.includeLanguages": {
