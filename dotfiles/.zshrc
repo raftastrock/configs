@@ -11,7 +11,7 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 export ZSH=~/.oh-my-zsh
 
 # SETUP SSH KEYCHAIN
-/usr/bin/keychain $HOME/.ssh/id_rsa
+/usr/bin/keychain --quiet $HOME/.ssh/id_rsa
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
