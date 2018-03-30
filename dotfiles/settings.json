@@ -10,7 +10,7 @@
 	"editor.formatOnSave": true,
 	"editor.insertSpaces": false,
 	"editor.multiCursorModifier": "ctrlCmd",
-	"editor.renderWhitespace": "all",
+	"editor.renderWhitespace": "none",
 	"editor.tabSize": 4,
 	"editor.wordWrap": "on",
 	"emmet.includeLanguages": {
