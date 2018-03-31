@@ -1,5 +1,5 @@
 alias nb='npm run build'
-alias nd='npm run deploy'
+alias nd='npm run dev'
 alias ng='npm i -g '
 alias ni='npm i'
 alias nis='npm i -S '
