@@ -94,7 +94,12 @@ set
 	* -> array is [a,b,c,e,f,g]
 	* -> decrement length
 
-* Tradeoff: This optimizes **gets** and deoptimizes **deletes** and **insertIntos**                       
+* Tradeoff: This optimizes **gets** and deoptimizes **deletes** and **insertIntos**      
+
+Exersize:
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="wmYoJG" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="Visualized Data Structures: Array List Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/wmYoJG/">Visualized Data Structures: Array List Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ### Stacks
 
