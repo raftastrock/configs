@@ -42,6 +42,7 @@
 	"gitlens.keymap": "chorded",
 	"javascript.format.enable": false,
 	"javascript.validate.enable": true,
+	"prettier.requireConfig": true,
 	"shellcheck.enable": true,
 	"shellcheck.executablePath": "shellcheck",
 	"shellcheck.run": "onType",
