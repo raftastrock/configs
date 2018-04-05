@@ -16,13 +16,10 @@
 	"scripts": {
 		"start": "electric run",
 		"deploy": "electric deploy",
-		"git":
-			"git checkout wedeploy && git fetch origin && git reset --hard origin/wedeploy",
-		"eslint-check":
-			"eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+		"git": "git checkout wedeploy && git fetch origin && git reset --hard origin/wedeploy",
+		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
 		"lint-staged": "lint-staged",
-		"format":
-			"prettier-eslint --write \"*.j*\" \"src/**/*.js\" \"src/styles/*.scss\" --ignore \"dist\""
+		"format": "prettier-eslint --write \"*.j*\" \"src/**/*.js\" \"src/styles/*.scss\" --ignore \"dist\""
 	},
 	"lint-staged": {
 		"*.{js,json,css}": ["prettier --write", "git add"]
