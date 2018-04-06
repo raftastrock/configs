@@ -46,6 +46,8 @@
 	"shellcheck.enable": true,
 	"shellcheck.executablePath": "shellcheck",
 	"shellcheck.run": "onType",
+	"telemetry.enableCrashReporter": false,
+	"telemetry.enableTelemetry": false,
 	"terminal.integrated.fontSize": 12,
 	"terminal.integrated.scrollback": 10000,
 	"window.zoomLevel": 0,
