@@ -62,5 +62,8 @@
 	},
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile"
+	"workbench.startupEditor": "newUntitledFile",
+	"gitlens.codeLens.scopes": [
+		"document"
+	]
 }

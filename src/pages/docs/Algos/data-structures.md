@@ -68,13 +68,13 @@ set
 
 ## Data Structures - Implementations:
 
-> Implementations deal with that is happening under the hood--what is going on in the blackbox
+##### Implementations deal with that is happening under the hood--what is going on in the blackbox
 
 ### Implementing Arrays
 
 #### Array Lists
 
-> Primary lesson is to learn to make decisions based on the problem you are getting at
+##### Primary lesson is to learn to make decisions based on the problem you are getting at
 
 * **Analytical Q's to ask yourself:**
 	* *Will this problem require a lot of gets?*
