@@ -106,13 +106,10 @@ Exercise:
 <p data-height="300" data-theme-id="31719" data-slug-hash="wmYoJG" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="Visualized Data Structures: Array List Exercise" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/wmYoJG/">Visualized Data Structures: Array List Exercise</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-#### Array Lists
-
 * BIGO:
 	* Gets: 0(n)
 		* You have to loop through the list until you find the right node
 	* Adds / Deletes: 0(1)
-		* 
 
 ### Stacks
 

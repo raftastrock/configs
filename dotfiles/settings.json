@@ -22,7 +22,7 @@
 	"explorer.openEditors.visible": 0,
 	"extensions.ignoreRecommendations": true,
 	"files.associations": {
-		"*.ftl": "ftl",
+		"*.ftl": "html",
 		"*.css": "scss"
 	},
 	"gitlens.advanced.messages": {
@@ -40,9 +40,13 @@
 	"git.enableSmartCommit": true,
 	"gitlens.currentLine.format": "${authorAgo}",
 	"gitlens.keymap": "chorded",
+	"gitlens.codeLens.scopes": [
+		"document"
+	],
 	"javascript.format.enable": false,
 	"javascript.validate.enable": true,
 	"prettier.requireConfig": true,
+	"python.pythonPath": "python3",
 	"shellcheck.enable": true,
 	"shellcheck.executablePath": "shellcheck",
 	"shellcheck.run": "onType",
@@ -53,17 +57,12 @@
 	"window.zoomLevel": 0,
 	"workbench.colorCustomizations": {
 		"badge.foreground": "#00ffed",
-		"editorGroupHeader.tabsBackground": "#282a36",
 		"editorGroup.border": "#282a36",
 		"gitlens.trailingLineForegroundColor": "#00ffee0c",
 		"panel.border": "#00ffee00",
-		"sideBar.background": "#282a36",
 		"sideBar.border": "#00ffee00"
 	},
-	"workbench.colorTheme": "Dracula",
+	"workbench.colorTheme": "ƒ - AYU",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile",
-	"gitlens.codeLens.scopes": [
-		"document"
-	]
+	"workbench.startupEditor": "newUntitledFile"
 }
