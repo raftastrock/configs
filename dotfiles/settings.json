@@ -10,7 +10,7 @@
 	"editor.formatOnSave": true,
 	"editor.insertSpaces": false,
 	"editor.multiCursorModifier": "ctrlCmd",
-	"editor.renderWhitespace": "none",
+	"editor.renderWhitespace": "all",
 	"editor.tabSize": 4,
 	"editor.wordWrap": "on",
 	"emmet.includeLanguages": {
@@ -58,11 +58,13 @@
 	"workbench.colorCustomizations": {
 		"badge.foreground": "#00ffed",
 		"editorGroup.border": "#282a36",
+		"editorGroupHeader.tabsBackground": "#282a36",
 		"gitlens.trailingLineForegroundColor": "#00ffee0c",
 		"panel.border": "#00ffee00",
+		"sideBar.background": "#282a36",
 		"sideBar.border": "#00ffee00"
 	},
-	"workbench.colorTheme": "ƒ - AYU",
+	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.startupEditor": "newUntitledFile"
 }
