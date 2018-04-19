@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import os
+import zipfile
 import json
 import subprocess
 import socket
 import socks
 import urllib.request
+import shutil
+from shutil import make_archive
 
 
 def main():
@@ -12,6 +16,9 @@ def main():
 
     if jsonFile.mode == "r":
         obj = json.load(jsonFile)
+
+        folderName = "WebSecurity"
+        destDir = "/home/ryan/Videos/FrontEnd/" + folderName + "/"
 
         socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '127.0.0.1', 9050)
         socket.socket = socks.socksocket
@@ -22,9 +29,11 @@ def main():
             print("i:", index, key, value, "\n")
 
             urllib.request.FancyURLopener().retrieve(
-                value, '/home/ryan/Videos/FrontEnd/4SemestersOfCompSciPartI/' + str(index) + "_" + key + '.webm')
+                value, destDir + str(index) + "_" + key + '.webm')
 
             index = index + 1
+
+        shutil.make_archive(folderName, "zip", destDir)
 
     else:
         print("hello")
