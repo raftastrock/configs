@@ -1,5 +1,5 @@
-#!/bin/sh
-#
+#!/bin/bash
+
 # Move the current window to the next monitor.
 #
 # Also works only on one X screen (which is the most common case).
