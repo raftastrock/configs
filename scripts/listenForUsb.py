@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import glib
 import os
 
@@ -8,7 +10,7 @@ try:
 
     def device_event(observer, device):
         print 'TRY event {0} on device {1}'.format(device.action, device)
-	os.system("xmodmap ~/.Xmodmap")
+        os.system("xmodmap ~/.Xmodmap")
 except:
     from pyudev.glib import GUDevMonitorObserver as MonitorObserver
 
