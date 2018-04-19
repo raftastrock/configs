@@ -30,6 +30,7 @@ alias acd='lc ant clean deploy'
 alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
 alias bright='bash brightness.sh'
 alias c='clear'
+alias co='checkit $@' #https://www.npmjs.com/package/check-it-out
 alias copy='xclip -sel clip'
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
