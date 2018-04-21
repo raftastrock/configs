@@ -119,6 +119,8 @@ vsCodeFedora() {
 	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
 }
 
+checkSoftware "ag" "iapt silversearcher-ag" "idnf the_silver_searcher"
+
 checkSoftware "curl" "iapt curl" "idnf curl"
 
 checkSoftware "git" "iapt git" "idnf git"
