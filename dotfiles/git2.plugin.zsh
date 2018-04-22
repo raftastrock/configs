@@ -171,9 +171,9 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 function gopen(){
 	if [ $# -gt 0 ]
 	then
-		opn http://github.com/$1/$(repo_name)/commit/$(git rev-parse HEAD) -- "google-chrome" --new-tab
+		opn http://github.com/$1/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 	else
-		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- "google-chrome" --new-tab
+		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 	fi
 }
 
