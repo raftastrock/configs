@@ -53,7 +53,7 @@ function repeat(fn, n) {
 
 * `var` is better used when you want to stylistically signal to the reader that `result` in this case is going to be used throughout the function
 
-```js
+```javascript
 function lookupRecord(searchStr) {
   try {
     var id = getRecord(searchStr)

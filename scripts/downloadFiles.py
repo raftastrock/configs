@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import zipfile
 import json
-import subprocess
 import socket
 import socks
 import urllib.request
@@ -17,8 +15,11 @@ def main():
     if jsonFile.mode == "r":
         obj = json.load(jsonFile)
 
-        folderName = "WebSecurity"
+        folderName = "JSHardParts"
         destDir = "/home/ryan/Videos/FrontEnd/" + folderName + "/"
+
+        if not os.path.isdir(destDir):
+            os.mkdir(destDir)
 
         socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '127.0.0.1', 9050)
         socket.socket = socks.socksocket
@@ -26,10 +27,17 @@ def main():
         index = 1
 
         for key, value in obj.items():
-            print("i:", index, key, value, "\n")
 
-            urllib.request.FancyURLopener().retrieve(
-                value, destDir + str(index) + "_" + key + '.webm')
+            title = key.replace('/', '-').replace('\\', '-')
+
+            fileName = destDir + str(index) + "_" + title + '.webm'
+
+            if not os.path.isfile(fileName):
+                print("Downloading file ===> i:", fileName, "\n")
+
+                urllib.request.FancyURLopener().retrieve(value, fileName)
+            else:
+                print("FILE EXISTS ===>", fileName, "\n")
 
             index = index + 1
 

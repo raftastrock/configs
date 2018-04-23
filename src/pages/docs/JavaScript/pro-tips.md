@@ -19,3 +19,17 @@ weight: 2
 
 > **Pro Tip**  If you cannot see the variable on the same page, "redeclare it" so the reader knows exactly what scope it belongs to
 </article>
+
+
+<article id="2">
+
+## Top 5 Capacities You Should Develop
+
+1. Analytical problem solving with code
+2. Technical communication (can I implement your approach just from your explanation)
+3. Engineering best practices and approach (Debugging, code structure, patience and reference to docs)
+4. Non-technical communication (empathetic and thoughtful communication)
+5. Language and comp sci experience
+
+</article>
+
