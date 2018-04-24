@@ -10,6 +10,8 @@ for (let i = 0; i < lessons.length; i++) {
 		console.log(i, url)
 		window.urlObj[title] = url
 
-		lessons[i + 1].click()
+		if (i < lessons.length - 1) {
+			lessons[i + 1].click()
+		}
 	}, 3000 * i)
 }
