@@ -1,13 +1,15 @@
 'use strict'
 window.urlObj = {}
 
-document.querySelectorAll('.LessonList .lesson').forEach((node, i) => {
+const lessons = document.querySelectorAll('.LessonList .lesson')
+
+for (let i = 0; i < lessons.length; i++) {
 	setTimeout(() => {
-		const title = node.querySelector('.title').innerText
+		const title = lessons[i].querySelector('.title').innerText
 		const url = document.querySelector('video').src
+		console.log(i, url)
 		window.urlObj[title] = url
 
-		console.log(title, url)
-		node.click()
+		lessons[i + 1].click()
 	}, 3000 * i)
-})
+}
