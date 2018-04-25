@@ -51,9 +51,10 @@ const newOutput = multiplyBy2(10)
 * The way JS keeps track of the thread of execution in all its contexts is with the call stack
 * The call stack uses the **stack data structure**
 	* So the last thing that you **push** on the stack, is the first thing it gets out (**LIFO**)
+* Typically you have one call stack in your environment
+	* Sometimes you have multiple callstacks with things like web workers
 
 *How does it work (using the previous JS example)?*
-
 
 1. **Push** global on call stack
 2. **Push** multiplyBy2 on stack
@@ -65,5 +66,36 @@ const newOutput = multiplyBy2(10)
 
 * The thread is always at the top of the call stack
 * And variables are always stored in which ever part of the call stack they are in
+
+</article>
+
+<article id="2">
+
+## Functional Programming
+
+* The most prominent paradigm in the past 25 years is object oriented programming
+* This is an alternative paradagm
+
+#### Classic characteristics of functional programming
+	* Functions are **first class citizens**
+	* **Pure functions**: no side effects (*you don't change/mutate your program*)
+		* It's only consequence is the return value of the function
+	* Immutable
+
+### Pair Programming
+	* A secret to growing into a junior or senior level engineer
+	* Hard learning is where you grow the most
+	* **Hard Learning Spectrum**
+		1. *The Researcher Trap*
+			* Doing the hard work but you just get stuck researching and never get to coding
+		2. *The StackOverflow Approach*
+			* Take snippet try it, it doesn't work, try another snippet......
+	* Pair programming solves the hard learning dilema
+
+#### How to do it?
+		* **Driver**: One person is saying psuedocode  
+		* **Navigator**: One person is interpreting & typing psuedocode
+			* The navigator never tells the driver how to turn the psuedocode into the code specifically
+			* This greatly helps with technical communication
 
 </article>
