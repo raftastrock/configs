@@ -67,6 +67,38 @@ const newOutput = multiplyBy2(10)
 * The thread is always at the top of the call stack
 * And variables are always stored in which ever part of the call stack they are in
 
+### Example of reading code line by line
+
+```javascript
+function copyArrayAndDivideBy2(array) {
+	let output = []
+	for (let i =0; i < array.length; i++) {
+		output.push(array[i]/2)
+	}
+	return output
+}
+
+const myArray = [1,2,3]
+let result = copyArrayAndDivideBy2(myArray)
+```
+
+Line By Line:
+
+1. Declaring copyArrayAndDivideBy2 function & storing it's definition in global storage under the label copyArrayAndDivideBy2
+2. Store an unreassignable myArray variable under the label myArray in global memory with value of an Array literal that is flat with three number values
+3. Declare result as undefined in global memory
+4. Push copyArrayAndDivideBy2 function call onto call stack
+5. Create a new local execution context for copyArrayAndDivideBy2
+6. Establish params (In this case array param = [1,2,3]) 
+7. Declare a reassignable variable output in copyArrayAndDivideBy2 and assign it to an empty Array literal
+7. Declare i as 0
+8. Establish logic to continue the loop
+9. Do math push it on output
+10. Exit loop
+11. return output array
+12. Assign return value to result in global memory
+13. pop copyArrayAndDivideBy2 off callstack
+
 </article>
 
 <article id="2">
@@ -77,25 +109,46 @@ const newOutput = multiplyBy2(10)
 * This is an alternative paradagm
 
 #### Classic characteristics of functional programming
-	* Functions are **first class citizens**
-	* **Pure functions**: no side effects (*you don't change/mutate your program*)
-		* It's only consequence is the return value of the function
-	* Immutable
+
+* Functions are **first class citizens**
+* **Pure functions**: no side effects (*you don't change/mutate your program*)
+	* It's only consequence is the return value of the function
+* Immutable
 
 ### Pair Programming
-	* A secret to growing into a junior or senior level engineer
-	* Hard learning is where you grow the most
-	* **Hard Learning Spectrum**
-		1. *The Researcher Trap*
-			* Doing the hard work but you just get stuck researching and never get to coding
-		2. *The StackOverflow Approach*
-			* Take snippet try it, it doesn't work, try another snippet......
-	* Pair programming solves the hard learning dilema
+* A secret to growing into a junior or senior level engineer
+* Hard learning is where you grow the most
+* **Hard Learning Spectrum**
+	1. *The Researcher Trap*
+		* Doing the hard work but you just get stuck researching and never get to coding
+	2. *The StackOverflow Approach*
+		* Take snippet try it, it doesn't work, try another snippet......
+* Pair programming solves the hard learning dilema
 
 #### How to do it?
-		* **Driver**: One person is saying psuedocode  
-		* **Navigator**: One person is interpreting & typing psuedocode
-			* The navigator never tells the driver how to turn the psuedocode into the code specifically
-			* This greatly helps with technical communication
+* **Driver**: One person is saying psuedocode  
+* **Navigator**: One person is interpreting & typing psuedocode
+	* The navigator never tells the driver how to turn the psuedocode into the code specifically
+	* This greatly helps with technical communication
 
+
+#### Generalizing Functions
+
+Refactoring the previous example to be more DRY & General:
+
+```javascript
+function copyArrayAndManipulate(array, instructions) {
+  let output = [];
+  for (let i = 0; i < array.length; i++) {
+    output.push(instructions(array[i]));
+  }
+  return;
+  output;
+}
+function multiplyBy2(input) {
+  return;
+  input * 2;
+}
+let result = copyArrayAndManipulate([1, 2, 3], multiplyBy2);
+```
 </article>
