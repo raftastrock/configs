@@ -8,6 +8,7 @@ export GRADLE_HOME=/usr/local/gradle
 export JAVA_OPTS='-Xms1024m -Xmx8000m -XX:MaxPermSize=4000m'
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
 
 # SETUP SSH KEYCHAIN
