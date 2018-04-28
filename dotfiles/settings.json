@@ -52,9 +52,10 @@
 	"shellcheck.run": "onType",
 	"telemetry.enableCrashReporter": false,
 	"telemetry.enableTelemetry": false,
-	"terminal.integrated.fontSize": 12,
+	"terminal.integrated.fontFamily": "Ubuntu mono",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.lineHeight": 1.5,
 	"terminal.integrated.scrollback": 10000,
-	"window.zoomLevel": 0,
 	"workbench.colorCustomizations": {
 		"badge.foreground": "#00ffed",
 		"editorGroup.border": "#282a36",
@@ -66,6 +67,5 @@
 	},
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile",
-	"terminal.integrated.lineHeight": 2
+	"workbench.startupEditor": "newUntitledFile"
 }
