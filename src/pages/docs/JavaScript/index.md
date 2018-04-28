@@ -151,4 +151,85 @@ function multiplyBy2(input) {
 }
 let result = copyArrayAndManipulate([1, 2, 3], multiplyBy2);
 ```
+
+#### First Class Objects:
+
+* They can co-exist with and can be treated like any other js object
+	* The only bonus thing of an object is that it can be executed/run
+
+#### Higher Order Functions vs. Callbacks
+
+* **HOCs** are simply functions that return other functions
+* **Callbacks** are the function that is passed into the HOC
+* They simplify your code and help keep it **DRY**
+
+##### Line By Line example
+
+```javascript
+function instructionGenerator() {
+	function mulitplyBy2(num) {
+		return num * 2
+	}
+
+	return multiplyBy2
+}
+
+let generatedFunc = instructionGenerator()
+
+let result = generatedFunc(3)
+```
+
+* The key line that throws seasoned devs off is `let generatedFunc = instructionGenerator()`
+	* Because instruction generator doesn't actually call multiplyBy2, it returns the function definition of multiplyBy2 
+
+</article>
+
+<article id="3">
+
+## Closure
+
+* When function is called a **live store** is created which includes:
+	* local memory
+	* variable environment (VE)
+	* state
+
+* When function is finished executing it **deletes local memory** automatically
+	* The exception is for returned value
+	* This is known as *garbage collection*
+
+##### Line By Line example
+
+```javascript
+function outer() {
+	let counter = 0
+
+	function incrementCounter() {
+		counter++
+	}
+
+	return incrementCounter
+}
+
+let myNewFunction = outer()
+
+myNewFunction()
+```
+
+* Given everything we currently know, when you call `myNewFunction` you would not expect it to be able to find the variable `counter` because that has been garbage collected when we finished calling `outer()`
+	* **HUGE POINT**: However at the time of function declaration, it stores in its def the surrounding data
+		* In this case the `counter` var
+
+* When we store the function definition of `incrementCounter` in the variable `myNewFunction` it carries on its back a **"backpack"** which is in this case the **live persistent variable** `counter`
+	* This is a beautiful concept because it provides a way to have **live persistent data between function calls**
+	* The **backpack** is also known as:
+		* **closure** (most colloquial but not very helpful)
+		* **lexical scope**
+			* This is what we mean when JS is statically or lexically scoped
+		* **closed over variable environment (COVE)**
+	* This backpack is stored behind the scenes in the function definition as `[[scope]]`
+		* So how can you access this data?
+			* It's only available from the call of this function
+			* And only the data that is referenced within `incrementCounter` is going to be stored in the backpack
+				* If there were other variables besides `counter` defined outside `incrementCounter` they would be garbage collected
+ 
 </article>
