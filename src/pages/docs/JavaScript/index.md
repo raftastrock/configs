@@ -188,6 +188,21 @@ let result = generatedFunc(3)
 
 ## Closure
 
+### The power of closure:
+
+* Our functions get '**memories**'
+	* **once**
+		* You can "onceify" your function so that it can only be run once
+	* **memoize**
+		* Say you have an algo that requries lots of steps like getting the 1000th prime number
+		* You can save that value "memoize" in the function's backpack like
+```javascript
+const primeNumbers = { 1000: x }
+```
+		* So next time you look for > than the 1000th prime number
+* The functions get live persistent memeory
+* We can implement the JS module pattern
+
 * When function is called a **live store** is created which includes:
 	* local memory
 	* variable environment (VE)
@@ -197,23 +212,21 @@ let result = generatedFunc(3)
 	* The exception is for returned value
 	* This is known as *garbage collection*
 
+
+#### So why wouldn't you just use global memory?
+
+* Problems with that:
+	* Often times you want independent live stores associated with each function rather than one big global store
+	* When you write code at scale you do not want to pollute global memory
+		* If you are adding things to the global scope and you are working with hundreds of other engineers who try to use the same name, you will have name collisions
+	* You can't use the module pattern
+		* where you write code in such away that its data sticks around but is protected
+			* You also should try to make your functions easy to write to and easy to get data out of
+
 ##### Line By Line example
 
-```javascript
-function outer() {
-	let counter = 0
-
-	function incrementCounter() {
-		counter++
-	}
-
-	return incrementCounter
-}
-
-let myNewFunction = outer()
-
-myNewFunction()
-```
+<p data-height="300" data-theme-id="31719" data-slug-hash="PeWzMQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Closure Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/PeWzMQ/">JS Closure Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 * Given everything we currently know, when you call `myNewFunction` you would not expect it to be able to find the variable `counter` because that has been garbage collected when we finished calling `outer()`
 	* **HUGE POINT**: However at the time of function declaration, it stores in its def the surrounding data

@@ -3,6 +3,7 @@
 	"name": "notes",
 	"version": "0.0.0",
 	"devDependencies": {
+		"electric-cli": "^3.0.4",
 		"electric-marble-components": "^2.0.0",
 		"eslint": "^4.9.0",
 		"eslint-config-prettier": "^2.6.0",
@@ -22,6 +23,9 @@
 		"format": "prettier-eslint --write \"*.j*\" \"src/**/*.js\" \"src/styles/*.scss\" --ignore \"dist\""
 	},
 	"lint-staged": {
-		"*.{js,json,css}": ["prettier --write", "git add"]
+		"*.{js,json,css}": [
+			"prettier --write",
+			"git add"
+		]
 	}
 }

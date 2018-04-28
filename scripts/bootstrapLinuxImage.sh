@@ -125,6 +125,8 @@ checkSoftware "curl" "iapt curl" "idnf curl"
 
 checkSoftware "git" "iapt git" "idnf git"
 
+checkSoftware "java" "iapt default-jdk" "idnf java-1.8.0-openjdk"
+
 checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - &&  iapt nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && idnf nodejs"
 
 checkSoftware "yarn" "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt -y install yarn" "curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo && sudo dnf -y install yarn"
@@ -168,7 +170,6 @@ ng() {
 
 checkSoftware "gh" "ng gh" "ng gh"
 checkSoftware "git-br" "ng git-br" "ng git-br"
-checkSoftware "git-select" "ng git-select" "ng git-select"
 checkSoftware "jack" "ng jack-cli" "ng jack-cli"
 checkSoftware "opn" "ng opn-cli" "ng opn-cli"
 checkSoftware "opn" "ng check-it-out" "ng check-it-out"

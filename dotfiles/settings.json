@@ -66,5 +66,6 @@
 	},
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile"
+	"workbench.startupEditor": "newUntitledFile",
+	"terminal.integrated.lineHeight": 2
 }
