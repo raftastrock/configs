@@ -41,15 +41,6 @@ def main():
 
             index = index + 1
 
-        zipFilePath = destDir + folderName + '.zip'
-
-        if not os.path.isfile(zipFilePath):
-            os.chdir(destDir)
-            print('Zipping file ===>', os.getcwd())
-            shutil.make_archive(folderName, 'zip')
-        else:
-            print('ZIP FILE EXISTS ===>', zipFilePath)
-
 
 if __name__ == '__main__':
     main()
