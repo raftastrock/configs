@@ -346,4 +346,21 @@ console.log('Me first!')
 	* If you have hundreds of users, why would you just copy the same copy over and over again?
 		* So inefficient :(
 
+#### Example
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="devNmP" data-default-tab="css,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="__proto__ JS Bond Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/devNmP/">__proto__ JS Bond Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+* Main point of this example is to show the special bond that `Object.create()` makes
+	* So Object.create actually does 2 things:
+		* It returns an empty object
+		* It creates a reference to whatever object that you pass in under the special property `__proto__`
+			* Check out the browser console in the example above and click the dropdown under the prop `__proto__` to see it in action
+				* `__proto__` already exists on an empty object and contains things like `toString` and `hasOwnProperty`
+				* What we do with `Object.create(ourObj)` is add our object methods that we pass in as the new first level of the `__proto__` object
+					* The previous methods that exist in `__proto__` still exist but they are now nested in a second level under the key `__proto__`
+			* This is actually really useful
+			* Say you have a function that you want available on every user object but you don't want to duplicate it for every object
+				* You create instead link the function to your object so it is store one place in memory rather than being stored once for every single user object
+
 </article>

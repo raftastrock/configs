@@ -15,7 +15,7 @@ def main():
     if jsonFile.mode == 'r':
         obj = json.load(jsonFile)
 
-        folderName = 'JSHardParts'
+        folderName = 'FunctionalV2'
         destDir = '/home/ryan/Videos/FrontEnd/' + folderName + '/'
 
         if not os.path.isdir(destDir):
