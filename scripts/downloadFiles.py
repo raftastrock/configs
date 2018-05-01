@@ -7,6 +7,7 @@ import socks
 import urllib.request
 import shutil
 from shutil import make_archive
+import downloadFilesConfig
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
     if jsonFile.mode == 'r':
         obj = json.load(jsonFile)
 
-        folderName = 'DeepJSFoundations'
+        folderName = downloadFilesConfig.folder
         destDir = '/home/ryan/Videos/FrontEnd/' + folderName + '/'
 
         if not os.path.isdir(destDir):

@@ -376,6 +376,7 @@ console.log('Me first!')
 		* If you have a function stored in global memory under the label `myFunc` you can write `myFunc.firstName = 'Ryan'`
 			* And if you log that out you will actually see `firstName` as a key on `myFunc`
 			* The **actual functionality of the function** when you call it with parens is under the `call` property of the function definition which is located within the `__proto__` property
+			* Note that this is not standard practice to use functions as an object, but good to know that in their essence they are actually an object
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="css,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
