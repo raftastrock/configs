@@ -15,7 +15,7 @@ def main():
     if jsonFile.mode == 'r':
         obj = json.load(jsonFile)
 
-        folderName = 'FunctionalV2'
+        folderName = 'DeepJSFoundations'
         destDir = '/home/ryan/Videos/FrontEnd/' + folderName + '/'
 
         if not os.path.isdir(destDir):
