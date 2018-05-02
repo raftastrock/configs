@@ -10,6 +10,8 @@ weight: 2
 
 ###### {$page.description}
 
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
 <article id="1">
 
 > I am not content, nor should you be, at stopping once something just works, and not really knowing why. I gently challenge you to journey down that bumpy "*road less traveled*" and embrace all that JavaScript is and can do. With that knowledge, no **technique**, no **framework**, no popular **buzzword** acronym of the week, will be beyond your understanding. ~Kyle Simpson
@@ -226,7 +228,6 @@ const primeNumbers = { 1000: x }
 ##### Line By Line example
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="PeWzMQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Closure Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/PeWzMQ/">JS Closure Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 * Given everything we currently know, when you call `myNewFunction` you would not expect it to be able to find the variable `counter` because that has been garbage collected when we finished calling `outer()`
 	* **HUGE POINT**: However at the time of function declaration, it stores in its def the surrounding data
@@ -274,7 +275,6 @@ const primeNumbers = { 1000: x }
 		* It wouldn't be able to execute anything else
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="GdrryW" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="setTimeout Async Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/GdrryW/">setTimeout Async Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 * "Me first ${i}" will print out first
 	* setTimeout is *almost like an api request* because it is speaking to the web browser
@@ -338,7 +338,6 @@ console.log('Me first!')
 	* Binding together data and functions that manipulate the data
 
 <p data-height="300" data-theme-id="31719" data-slug-hash="deNWmr" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="Simple OOP Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/deNWmr/">Simple OOP Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 * This has the benefit of being very simple but
 	* Each time we create a new user we make space in our computer's memory for all our data and functions
@@ -350,8 +349,7 @@ console.log('Me first!')
 
 #### Example
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="devNmP" data-default-tab="css,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="__proto__ JS Bond Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/devNmP/">__proto__ JS Bond Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<p data-height="300" data-theme-id="31719" data-slug-hash="devNmP" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="__proto__ JS Bond Example" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/devNmP/">__proto__ JS Bond Example</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 * Main point of this example is to show the special bond that `Object.create()` makes
 	* So Object.create actually does 2 things:
@@ -367,10 +365,6 @@ console.log('Me first!')
 
 ### new Keyword
 
-* When we call the constructor function with new in front we automate 2 things:
-	* Create a new user object
-	* return the new user object
-
 * There are a couple things you need to understand about functions before understanding what's going on under the hood with the new Keyword
 	* Functions are actually just objects
 		* If you have a function stored in global memory under the label `myFunc` you can write `myFunc.firstName = 'Ryan'`
@@ -378,9 +372,20 @@ console.log('Me first!')
 			* The **actual functionality of the function** when you call it with parens is under the `call` property of the function definition which is located within the `__proto__` property
 			* Note that this is not standard practice to use functions as an object, but good to know that in their essence they are actually an object
 
-<p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="css,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<p data-height="300" data-theme-id="31719" data-slug-hash="gzWpwQ" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Functions As Objects" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/gzWpwQ/">JS Functions As Objects</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 
+* When we call the constructor function with new in front we automate 2 things:
+	* Create a new user object: `this = Object.create(userCreator)`
+		* This creates the `__proto__` property which references the prototype object methods
+	* return the new user object: `return this`
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="deWWjK" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS New Keyword" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/deWWjK/">JS New Keyword</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+### The Class 'Syntactic Sugar'
+
+* It is doing the same thing under the hood as the `new` keyword
+
+<p data-height="300" data-theme-id="31719" data-slug-hash="RyVVmd" data-default-tab="js,result" data-user="RyanGarant" data-embed-version="2" data-pen-title="JS Class Sugar For new Keyword" class="codepen">See the Pen <a href="https://codepen.io/RyanGarant/pen/RyVVmd/">JS Class Sugar For new Keyword</a> by Ryan Garant (<a href="https://codepen.io/RyanGarant">@RyanGarant</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 </article>
