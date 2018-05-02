@@ -1,5 +1,5 @@
 # PATH
-export PATH=/usr/local/bin:$HOME/bin:~/.npm-global/bin:~/dev/notes/scripts:~/jpm/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
+export PATH=/usr/local/bin:$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/notes/scripts:~/jpm/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
