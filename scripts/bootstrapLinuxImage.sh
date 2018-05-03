@@ -168,8 +168,8 @@ ng() {
 	npm i -g $1
 }
 
+checkSoftware "checkit" "ng check-it-out" "ng check-it-out"
 checkSoftware "gh" "ng gh" "ng gh"
 checkSoftware "git-br" "ng git-br" "ng git-br"
 checkSoftware "jack" "ng jack-cli" "ng jack-cli"
 checkSoftware "opn" "ng opn-cli" "ng opn-cli"
-checkSoftware "opn" "ng check-it-out" "ng check-it-out"
