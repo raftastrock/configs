@@ -3,7 +3,7 @@
 	"name": "notes",
 	"version": "0.0.0",
 	"devDependencies": {
-		"electric-cli": "^3.0.4",
+		"electric-cli": "^2.2.4",
 		"electric-marble-components": "^2.0.0",
 		"eslint": "^4.9.0",
 		"eslint-config-prettier": "^2.6.0",
