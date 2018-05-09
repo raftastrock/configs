@@ -109,6 +109,16 @@ Line By Line:
 
 > "Closure is the most important concept ever invented in the history of computing science" ~Kyle Simpson
 
+* "Closure is when a function '**remembers**' its lexical scope even when the function is executed outside that lexical scope" ~Kyle Simpson
+	* It's like seeing something that has always been there you just haven't been able to see it before
+	* Closure can save access to variables as many nested scopes as you want
+	* When you reference a **variable within your function in a scope outside your function**, it will preserve access to that variable for as long as the function is alive
+		* The practical lesson for this is that if you nest your functions uncessarily deep, you can create unintended closure
+			* The auto garbage collector will not garbage collect while that function is still alive
+			* Every time you create a new closure, you are taking up more memory
+				* To manually garbage collect a function with closure, you can just assign the function to null
+	* "Closure is a logical conclusion of lexical scope" ~Kyle Simpson
+
 ### The power of closure:
 
 * Our functions get '**memories**'
