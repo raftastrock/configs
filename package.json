@@ -17,10 +17,9 @@
 	"scripts": {
 		"build": "electric build",
 		"start": "electric run",
-		"deploy": "electric deploy",
-		"git": "git checkout wedeploy && git fetch origin && git reset --hard origin/wedeploy",
 		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
 		"lint-staged": "lint-staged",
+		"test": "npm run build",
 		"format": "prettier-eslint --write \"*.j*\" \"src/**/*.js\" \"src/styles/*.scss\" --ignore \"dist\""
 	},
 	"lint-staged": {
