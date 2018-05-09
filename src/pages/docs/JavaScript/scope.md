@@ -180,3 +180,31 @@ console.log(foo) // 'foo'
 
 </article>
 
+<article id="5">
+
+## Hoisting
+
+> This is a made up concept which doesn't exist...it's a convenient metaphor
+
+* This is simply a easy way to think about how lexical scope is working in the 2 pass system
+	* When assignments occur (which is executable code belonging to the 2nd pass) it doesn't get "hoisted" to the top of the scope
+		* *IE: function declarations are hoisted but function expressions are not*
+	* `let` and `const` are **not initialized** at the top of their scope but rather are intialized at the line where they are used
+		* This does not mean that they are not hoisted
+			* Hoisting involves adding the variable to the enclosing lexical scope
+			* Hoisting does not describe the **initialzation** step
+				* `var` is hoisted and initialized whereas `let` and `const`
+
+* One benefit of hoisting is by using **function declarations**
+	* You don't have to declare functions in order before they need to be consumed
+		* It takes longer to scroll down to the bottom of the file to figure out what the program is actually doing
+		* You can order your functions logically
+		* Or you can order them alphabetically
+	* You can do mutual recursion
+		* This is when one function recursively calls another function which calls another recursively
+		* Mutual recursion is impossible without function declarations
+
+
+
+</article>
+

@@ -1,0 +1,6 @@
+{
+	"id": "notes",
+	"env": {
+		"WEDEPLOY_WEB_PATH": "dist"
+	}
+}
