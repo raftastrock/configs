@@ -2,7 +2,6 @@
 title: "Functional JS"
 description: ""
 layout: "guide"
-icon: "flash"
 weight: 2
 ---
 

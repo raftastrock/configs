@@ -9,6 +9,8 @@ weight: 3
 
 <article id="1">
 
+## What Is Scope?
+
 > Where to look for things
 
 * JS is at a minimum a "*2-pass*" system that involves **compilation** and **execution**
@@ -203,8 +205,6 @@ console.log(foo) // 'foo'
 	* You can do mutual recursion
 		* This is when one function recursively calls another function which calls another recursively
 		* Mutual recursion is impossible without function declarations
-
-
 
 </article>
 
