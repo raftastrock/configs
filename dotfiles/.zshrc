@@ -62,6 +62,7 @@ export bchan='brianchandotcom'
 export design='liferay-design'
 export joan='joanhyokim'
 export josh='jwu910'
+export justin='justinsunho'
 export luke='raftastrock'
 export phil='phillipchan2'
 export proto='protoEvangelion'
@@ -108,7 +109,7 @@ function workScreen {
 }
 
 function workScreen2 {
-	xrandr --output eDP1		
+	xrandr --output eDP1
 #	xrandr --output eDP1 --scale 2048x1152
 	xrandr --output HDMI2 --primary
 	xrandr --output eDP1 --below HDMI2
