@@ -73,11 +73,12 @@ spacer
 TEMP=$HOME/dev/temp
 
 MIRROR=http://mirrors/files.liferay.com/private/lrdcom
+DATE=$(date --date "-1 days" +'%Y-%m-%d')
 
 checkSoftware "pv" "sudo apt -y install pv" "sudo dnf -y install pv"
 
 if [ -z "$1" ]; then
-	FILE=www_lportal-$(date +"%Y-%m-%d")_19-00-PDT.sql.gz
+	FILE=www_lportal-${DATE}_19-00-PDT.sql.gz
 
 	if curl -s --head  --request GET $MIRROR/$FILE | grep "200 OK" > /dev/null; then
 		checkFile "$TEMP/$FILE" "curl -o $TEMP/$FILE -fSL $MIRROR/$FILE" "pv $TEMP/$FILE | gunzip | mysql -u root -p liferay_db"
