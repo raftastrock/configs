@@ -108,6 +108,7 @@ vsCodeDebian() {
 	iapt code
 	rm ~/.config/Code/User/settings.json
 	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
+	git config --global core.editor "code --wait"
 }
 
 vsCodeFedora() {
