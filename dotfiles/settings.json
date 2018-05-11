@@ -2,6 +2,9 @@
 	"[json]": {
 		"editor.formatOnSave": true
 	},
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
 	"editor.detectIndentation": false,
 	"editor.fontFamily": "'Fira Code iScript', Consolas, 'Courier New', monospace",
 	"editor.fontLigatures": true,
@@ -45,6 +48,7 @@
 	],
 	"javascript.format.enable": false,
 	"javascript.validate.enable": true,
+	"npm.enableScriptExplorer": true,
 	"prettier.requireConfig": true,
 	"python.pythonPath": "python3",
 	"shellcheck.enable": true,
@@ -60,6 +64,7 @@
 		"badge.foreground": "#00ffed",
 		"editorGroup.border": "#2e3038",
 		"editorGroupHeader.tabsBackground": "#282a36",
+		"editorIndentGuide.activeBackground": "#6272a4",
 		"gitlens.trailingLineForegroundColor": "#00ffee0c",
 		"panel.border": "#1b1b1b",
 		"sideBar.background": "#282a36",
@@ -67,5 +72,5 @@
 	},
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile"
+	"workbench.startupEditor": "newUntitledFile",
 }
