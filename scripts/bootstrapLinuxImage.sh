@@ -14,6 +14,8 @@ off=$(tput sgr0)             # Reset
 isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
 isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
 
+configs=~/dev/configs
+
 idnf() {
 	sudo dnf install -y "$@"
 }
@@ -107,7 +109,7 @@ vsCodeDebian() {
 	sudo apt -y update
 	iapt code
 	rm ~/.config/Code/User/settings.json
-	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
+	cp $configs/dotfiles/settings.json ~/.config/Code/User/settings.json
 	git config --global core.editor "code --wait"
 }
 
@@ -117,7 +119,7 @@ vsCodeFedora() {
 	sudo dnf -y check-update
 	idnf code
 	rm ~/.config/Code/User/settings.json
-	cp ~/dev/notes/dotfiles/settings.json ~/.config/Code/User/settings.json
+	cp $configs/dotfiles/settings.json ~/.config/Code/User/settings.json
 }
 
 checkSoftware "ag" "iapt silversearcher-ag" "idnf the_silver_searcher"
@@ -140,7 +142,7 @@ checkSoftware "keychain" "iapt keychain" "idnf keychain"
 
 checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
 
-checkDir ~/dev/notes "cd ~/dev && git clone git@github.com:protoEvangelion/notes.git"
+checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
 
 checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
@@ -148,19 +150,19 @@ checkDir ~/dev/quicktile "cd ~/dev && git clone https://github.com/ssokolow/quic
 
 checkSoftware "quicktile" "iapt python-gtk2 python-xlib python-dbus python-wnck python-setuptools" "idnf pygtk2 pygobject2 dbus-python gnome-python2-libwnck" "cd ~/dev/quicktile && ./install.sh  && quicktile"
 
-checkDir ~/.oh-my-zsh "sh -c ~/dev/notes/scripts/installOhMyZsh.sh"
+checkDir ~/.oh-my-zsh "sh -c $configs/scripts/installOhMyZsh.sh"
 
-checkFile ~/.Xmodmap "cp ~/dev/notes/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
+checkFile ~/.Xmodmap "cp $configs/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
 
-checkFile ~/PS1.zsh "cp ~/dev/notes/dotfiles/PS1.zsh ~/"
+checkFile ~/PS1.zsh "cp $configs/dotfiles/PS1.zsh ~/"
 
-checkFile ~/.zshrc "cp ~/dev/notes/dotfiles/.zshrc ~/" "source .zshrc"
+checkFile ~/.zshrc "cp $configs/dotfiles/.zshrc ~/" "source .zshrc"
 
-checkFile ~/logColors.conf "cp ~/dev/notes/dotfiles/logColors.conf ~/"
+checkFile ~/logColors.conf "cp $configs/dotfiles/logColors.conf ~/"
 
-checkFile ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "cp ~/dev/notes/dotfiles/git2.plugin.zsh ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh"
+checkFile ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/git2" "cp $configs/dotfiles/git2.plugin.zsh ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh"
 
-checkFile ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "cp ~/dev/notes/dotfiles/npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh"
+checkFile ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh "mkdir ~/.oh-my-zsh/plugins/npm2" "cp $configs/dotfiles/npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh"
 
 checkDir ~/.npm-global "mkdir ~/.npm-global && npm config set prefix '~/.npm-global'"
 

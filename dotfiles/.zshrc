@@ -1,5 +1,5 @@
 # PATH
-export PATH=/usr/local/bin:$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/notes/scripts:~/jpm/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
+export PATH=/usr/local/bin:$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/jpm/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
@@ -43,7 +43,7 @@ alias lc='bash logColors.sh'
 alias ls='ls -F --color=auto'
 alias hi='systemctl hibernate -i'
 alias my='mysql -u root'
-alias notes='cd ~/dev/notes && code .'
+alias configs='cd ~/dev/configs && code .'
 alias re='source ~/.zshrc'
 alias restart='shutdown -r now'
 alias sai='sudo apt install $@'
@@ -154,7 +154,7 @@ function slang {
 }
 
 function zpush {
-	cd ~/dev/notes/dotfiles
+	cd ~/dev/configs/dotfiles
 	cp ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh .
 	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
 	cp ~/.config/Code/User/settings.json .
@@ -165,7 +165,7 @@ function zpush {
 }
 
 function zpull {
-	cd ~/dev/notes/dotfiles || return 1
+	cd ~/dev/configs/dotfiles || return 1
 	git fetch origin
 	git reset --hard origin/master
 	gcleandry
