@@ -115,6 +115,7 @@ alias gpd='git push --dry-run'
 alias gpf='git push --force origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
+alias gpod='git push origin --delete $1'
 alias gpv='git push -v'
 
 alias gr='git remote'
