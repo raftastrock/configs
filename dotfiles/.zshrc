@@ -28,7 +28,7 @@ alias -g z='~/.zshrc'
 # ALIASES
 alias add='bash addComponent.sh'
 alias acd='lc ant clean deploy'
-alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
+alias b='git rev-parse --abbrev-ref HEAD'
 alias bright='bash brightness.sh'
 alias c='clear'
 alias copy='xclip -sel clip'
