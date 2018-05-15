@@ -173,42 +173,27 @@ function gopen(){
 }
 
 function gpr(){
-	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
+	gh pr --verbose -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
 # Simple version
 function gprs(){
-	gh pr -s $1 -b $2 -t $3 -D "$4"
+	gh pr --verbose -s $1 -b $2 -t $3 -D "$4"
 }
 
 # Show open PRs on Organization
 function gpro(){
-	gh pr -O $1 --all
-}
-
-# Show close PR
-function gprc(){
-	gh pr
-}
-
-# Fetches and rebases PR
-function gprb(){
-	gh pr $1 -f -R
-}
-
-# Forwards PR to another repo, closes the PR, and comments in both locations
-function gprf(){
-	gh pr $1 --fwd $2
+	gh pr --verbose -O $1 --all
 }
 
 function gpo(){
-  git push origin $(git_current_branch)
-  gopen $1
+	git push origin $(git_current_branch)
+	gopen $1
 }
 
 function gpu(){
-  git push upstream $(git_current_branch)
-  gopen $1
+	git push upstream $(git_current_branch)
+	gopen $1
 }
 
 function gsave(){
@@ -227,5 +212,3 @@ function work_in_progress() {
 		echo "WIP!!"
 	fi
 }
-
-#a397b0edbf80ca16704e7015e178498bd241a12c
