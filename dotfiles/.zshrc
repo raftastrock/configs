@@ -55,7 +55,7 @@ alias sf='find . -name "*" | grep -v node_modules | xargs csf'
 alias suspend='systemctl suspend -i'
 alias switchJava='sudo update-alternatives --config java'
 alias up='xmod && python listenForUsb.py'
-alias xmod='xmodmap ~/.Xmodmap'
+alias x='xmodmap ~/.Xmodmap'
 alias xmod2='xmodmap ~/.Xmodmap2'
 
 # GITHUB USER VARIABLES
