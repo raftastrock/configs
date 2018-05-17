@@ -8,7 +8,17 @@
 	"Bind class function": {
 		"prefix": "bf",
 		"body": [
-			"this.$1 = this.$1.bind(this)"
+			"this.$1 = this.$1.bind(this)$2"
+		]
+	},
+	"Constructor, Props, State": {
+		"prefix": "c",
+		"body": [
+			"constructor(props) {",
+			"\tsuper(props)",
+			"\t",
+			"\tthis.state = {}",
+			"}$1"
 		]
 	},
 	"Import generic file": {
@@ -46,10 +56,8 @@
 	"Log to console": {
 		"prefix": "l",
 		"body": [
-			"console.log('$1');",
-			"$2"
+			"console.log('$1')$2"
 		],
-		"description": "Log output to console"
 	},
 	"Stateless functional component": {
 		"prefix": "rfc",
