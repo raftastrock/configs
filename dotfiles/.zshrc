@@ -160,6 +160,7 @@ function zpush {
 	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
 	cp ~/.config/Code/User/settings.json .
 	cp ~/.config/Code/User/keybindings.json .
+	cp ~/.config/Code/User/snippets/global.code-snippets .
 	cp ~/.zshrc .
 	gsave "$1"
 	cd -
@@ -175,7 +176,8 @@ function zpull {
 	cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
 	cp settings.json ~/.config/Code/User/settings.json
 	cp keybindings.json ~/.config/Code/User/keybindings.json
-	re
+	cp global.code-snippets ~/.config/Code/User/snippets/global.code-snippets
+	source ~/.zshrc
 	cd -
 }
 
