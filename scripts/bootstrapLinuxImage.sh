@@ -150,6 +150,8 @@ checkSoftware "ag" "iapt silversearcher-ag" "idnf the_silver_searcher"
 
 checkSoftware "curl" "iapt curl" "idnf curl"
 
+checkSoftware "docker" "iapt docker.io && sudo systemctl start docker && sudo systemctl enable docker"
+
 checkSoftware "java" "iapt default-jdk" "idnf java-1.8.0-openjdk"
 
 checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - &&  iapt nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && idnf nodejs"
