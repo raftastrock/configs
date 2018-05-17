@@ -13,6 +13,7 @@ off=$(tput sgr0)             # Reset
 
 isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
 isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
+isUbuntu=$(python -mplatform | grep -qie ubuntu && echo true || echo false)
 
 configs=~/dev/configs
 
@@ -49,6 +50,22 @@ checkSoftware() {
 
 	else
 		echo -e "$gre ✓ $1 is installed $off"
+	fi
+
+	spacer
+}
+
+checkUbuntuSoftware() {
+	if [ $isUbuntu == "true" ]; then
+		if [ $(dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+			echo -e "$red $1 is not installed $off"
+
+			echo -e "$blu ===> Installing $1 $off"
+
+			ear $2
+		else
+			echo -e "$gre ✓ $1 is installed $off"
+		fi
 	fi
 
 	spacer
@@ -103,13 +120,12 @@ generateSsh() {
 spacer
 
 vsCodeDebian() {
-	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-	sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-	sudo apt -y update
-	iapt code
+	sudo snap install vscode --classic
 	rm ~/.config/Code/User/settings.json
 	cp $configs/dotfiles/settings.json ~/.config/Code/User/settings.json
+	cd ~/dev/configs/dotfiles/
+	./extenstions
+	cd
 	git config --global core.editor "code --wait"
 }
 
@@ -122,29 +138,39 @@ vsCodeFedora() {
 	cp $configs/dotfiles/settings.json ~/.config/Code/User/settings.json
 }
 
+checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
+
+checkSoftware "git" "iapt git" "idnf git"
+
+checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
+
+checkSoftware "zsh" "iapt zsh" "idnf zsh" "rm ~.zshrc"
+
 checkSoftware "ag" "iapt silversearcher-ag" "idnf the_silver_searcher"
 
 checkSoftware "curl" "iapt curl" "idnf curl"
-
-checkSoftware "git" "iapt git" "idnf git"
 
 checkSoftware "java" "iapt default-jdk" "idnf java-1.8.0-openjdk"
 
 checkSoftware "node" "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - &&  iapt nodejs" "curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash - && idnf nodejs"
 
+checkSoftware "snap" "iapt snapd" "idnf snapd"
+
+checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
+
 checkSoftware "yarn" "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt -y install yarn" "curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo && sudo dnf -y install yarn"
 
 checkSoftware "xclip" "iapt xclip" "idnf xclip"
 
+checkUbuntuSoftware "gnome-tweak-tool" "iapt gnome-tweak-tool"
+
+checkUbuntuSoftware "umake" "sudo add-apt-repository ppa:lyzardking/ubuntu-make -y && iapt ubuntu-make"
+
+checkSoftware "firefox-developer" "umake web firefox-dev"
+
 generateSsh
 
 checkSoftware "keychain" "iapt keychain" "idnf keychain"
-
-checkDir ~/dev "mkdir ~/dev" "sudo chmod a+w"
-
-checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
-
-checkSoftware "code" "vsCodeDebian" "vsCodeFedora"
 
 checkDir ~/dev/quicktile "cd ~/dev && git clone https://github.com/ssokolow/quicktile"
 
@@ -156,7 +182,7 @@ checkFile ~/.Xmodmap "cp $configs/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
 
 checkFile ~/PS1.zsh "cp $configs/dotfiles/PS1.zsh ~/"
 
-checkFile ~/.zshrc "cp $configs/dotfiles/.zshrc ~/" "source .zshrc"
+checkFile ~/.zshrc "cp $configs/dotfiles/.zshrc ~/" "source  ~/.zshrc"
 
 checkFile ~/logColors.conf "cp $configs/dotfiles/logColors.conf ~/"
 
