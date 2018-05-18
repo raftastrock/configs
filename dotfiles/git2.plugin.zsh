@@ -173,17 +173,17 @@ function gopen(){
 }
 
 function gpr(){
-	gh pr --verbose -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
+	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
 # Simple version
 function gprs(){
-	gh pr --verbose -s $1 -b $2 -t $3 -D "$4"
+	gh pr -s $1 -b $2 -t $3 -D "$4"
 }
 
 # Show open PRs on Organization
 function gpro(){
-	gh pr --verbose -O $1 --all
+	gh pr -O $1 --all
 }
 
 function gpo(){
