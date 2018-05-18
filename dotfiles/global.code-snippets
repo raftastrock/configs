@@ -56,7 +56,7 @@
 	"Log to console": {
 		"prefix": "l",
 		"body": [
-			"console.log('$1')$2"
+			"console.log('$1', $1)$2"
 		],
 	},
 	"Stateless functional component": {
