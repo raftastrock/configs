@@ -164,15 +164,26 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
 
-# FUNCTIONS
+# BROWSER OPEN UTILS
+
+function getRemoteUrl() {
+	git remote -v | grep -o -P '(?<='$1').*(?=\(fetch)'
+}
+
+function getUserAndRepo() {
+	getRemoteUrl $1 | grep -o -P '(?<=github.com:).*(?=.git)'
+}
+
 function gopen(){
 	if [ $# -gt 0 ]
 	then
-		opn http://github.com/$1/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+		opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 	else
-		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+		opn http://github.com/origin/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 	fi
 }
+
+# FUNCTIONS
 
 function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
@@ -204,6 +215,7 @@ function gsave(){
 	git push origin $(git_current_branch)
 	gopen $2
 }
+
 
 function repo_name() {
 	git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
