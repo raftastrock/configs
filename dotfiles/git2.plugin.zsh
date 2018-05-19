@@ -167,7 +167,13 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 # BROWSER OPEN UTILS
 
 function getRemoteUrl() {
-	git remote -v | grep -o -P '(?<='$1').*(?=\(fetch)'
+	if [ $# -gt 0 ]; then
+		regexStr='(?<='$1').*(?=\(fetch)'
+	else
+		regexStr='(?<=origin).*(?=\(fetch)'
+	fi
+
+	git remote -v | grep -o -P $regexStr
 }
 
 function getUserAndRepo() {
@@ -175,12 +181,7 @@ function getUserAndRepo() {
 }
 
 function gopen(){
-	if [ $# -gt 0 ]
-	then
-		opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
-	else
-		opn http://github.com/origin/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
-	fi
+	opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 }
 
 # FUNCTIONS
