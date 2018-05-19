@@ -202,12 +202,12 @@ function gpro(){
 
 function gpo(){
 	git push origin $(git_current_branch)
-	gopen $1
+	gopen
 }
 
 function gpu(){
 	git push upstream $(git_current_branch)
-	gopen $1
+	gopen upstream
 }
 
 function gsave(){
