@@ -79,7 +79,6 @@ alias gga='git gui citool --amend'
 
 alias ggpo='git pull origin $(git_current_branch)'
 alias ggpu='git pull upstream $(git_current_branch)'
-
 alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
@@ -216,6 +215,12 @@ function gsave(){
 	git commit -m $1
 	git push origin $(git_current_branch)
 	gopen $2
+}
+
+function gMassEdit() {
+	# Prepends string to beginning of all commits in history
+	# https://davidwalsh.name/update-git-commit-messages
+	git filter-branch --msg-filter 'echo "$1 - \c" && cat'
 }
 
 

@@ -44,6 +44,7 @@ alias lock='gnome-screensaver-command -l'
 alias lc='bash logColors.sh'
 alias ls='ls -F --color=auto'
 alias hi='systemctl hibernate -i'
+alias j='jack' # Alias for jack-cli npm package
 alias my='mysql -u root'
 alias configs='cd ~/dev/configs && code .'
 alias re='source ~/.zshrc'
