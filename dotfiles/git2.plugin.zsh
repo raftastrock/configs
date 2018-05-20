@@ -65,6 +65,7 @@ alias gdw='git diff --word-diff'
 
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
+alias gfirst='git rev-list HEAD | tail -n 1' # Gets first commit in history
 alias gfo='git fetch origin'
 alias gfor='git fetch origin && git reset --hard origin/$(git_current_branch)'
 alias gform='git fetch origin && git reset --hard origin/master'
