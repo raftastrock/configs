@@ -2,9 +2,6 @@
 	"[json]": {
 		"editor.formatOnSave": true
 	},
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": true
-	},
 	"editor.detectIndentation": false,
 	"editor.fontFamily": "'Fira Code iScript', Consolas, 'Courier New', monospace",
 	"editor.fontLigatures": true,
@@ -73,4 +70,5 @@
 	"workbench.colorTheme": "Dracula",
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.startupEditor": "newUntitledFile",
+	"gitlens.historyExplorer.enabled": true,
 }

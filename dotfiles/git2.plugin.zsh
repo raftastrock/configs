@@ -65,11 +65,14 @@ alias gdw='git diff --word-diff'
 
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
+alias gfirst='git rev-list HEAD | tail -n 1' # Gets first commit in history
 alias gfo='git fetch origin'
 alias gfor='git fetch origin && git reset --hard origin/$(git_current_branch)'
+alias gform='git fetch origin && git reset --hard origin/master'
 alias gfr='git fetch upstream && git reset --hard'
 alias gfu='git fetch upstream'
 alias gfur='git fetch upstream && git reset --hard upstream/$(git_current_branch) && git clean -dfnx'
+alias gfurm='git fetch upstream && git reset --hard upstream/master && git clean -dfnx'
 
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
@@ -93,16 +96,8 @@ alias gke='\gitk --all $(git log -g --pretty=%h)'
 compdef _git gke='gitk'
 
 alias gl='git log'
-alias glg='git log --stat'
-alias glgp='git log --stat -p'
-alias glgg='git log --graph'
-alias glgga='git log --graph --decorate --all'
-alias glgm='git log --graph --max-count=10'
-alias glo='git log --oneline --decorate'
-alias glol="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias glola="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
-alias glog='git log --oneline --decorate --graph'
-alias gloga='git log --oneline --decorate --graph --all'
+alias glg="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias gla='git log --oneline --decorate --graph --all'
 
 alias gm='git merge'
 alias gmom='git merge origin/master'
@@ -115,6 +110,7 @@ alias gpd='git push --dry-run'
 alias gpf='git push --force origin $(git_current_branch)'
 alias gpoat='git push origin --all && git push origin --tags'
 compdef _git gpoat=git-push
+alias gpod='git push origin --delete $1'
 alias gpv='git push -v'
 
 alias gr='git remote'
@@ -169,15 +165,27 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
 
-# FUNCTIONS
-function gopen(){
-	if [ $# -gt 0 ]
-	then
-		opn http://github.com/$1/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+# BROWSER OPEN UTILS
+
+function getRemoteUrl() {
+	if [ $# -gt 0 ]; then
+		regexStr='(?<='$1').*(?=\(fetch)'
 	else
-		opn http://github.com/$(gun)/$(repo_name)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+		regexStr='(?<=origin).*(?=\(fetch)'
 	fi
+
+	git remote -v | grep -o -P $regexStr
 }
+
+function getUserAndRepo() {
+	getRemoteUrl $1 | grep -o -P '(?<=github.com:).*(?=.git)'
+}
+
+function gopen(){
+	opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+}
+
+# FUNCTIONS
 
 function gpr(){
 	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
@@ -193,29 +201,14 @@ function gpro(){
 	gh pr -O $1 --all
 }
 
-# Show close PR
-function gprc(){
-	gh pr
-}
-
-# Fetches and rebases PR
-function gprb(){
-	gh pr $1 -f -R
-}
-
-# Forwards PR to another repo, closes the PR, and comments in both locations
-function gprf(){
-	gh pr $1 --fwd $2
-}
-
 function gpo(){
-  git push origin $(git_current_branch)
-  gopen $1
+	git push origin $(git_current_branch)
+	gopen
 }
 
 function gpu(){
-  git push upstream $(git_current_branch)
-  gopen $1
+	git push upstream $(git_current_branch)
+	gopen upstream
 }
 
 function gsave(){
@@ -224,6 +217,7 @@ function gsave(){
 	git push origin $(git_current_branch)
 	gopen $2
 }
+
 
 function repo_name() {
 	git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
@@ -234,5 +228,3 @@ function work_in_progress() {
 		echo "WIP!!"
 	fi
 }
-
-#a397b0edbf80ca16704e7015e178498bd241a12c

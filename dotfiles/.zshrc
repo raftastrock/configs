@@ -28,14 +28,16 @@ alias -g z='~/.zshrc'
 # ALIASES
 alias add='bash addComponent.sh'
 alias acd='lc ant clean deploy'
-alias b='echo -n $(git rev-parse --abbrev-ref HEAD) | copy'
+alias b='git rev-parse --abbrev-ref HEAD'
 alias bright='bash brightness.sh'
 alias c='clear'
+alias code='vscode'
 alias copy='xclip -sel clip'
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
 alias docl='docker-compose logs $@'
 alias docr='docker-compose down && docker-compose up -d --build'
+alias firefox='firefox-developer'
 alias getip='ip route get 8.8.8.8 | awk "{print $NF; exit}"'
 alias gd='gulp deploy'
 alias lock='gnome-screensaver-command -l'
@@ -53,7 +55,7 @@ alias sf='find . -name "*" | grep -v node_modules | xargs csf'
 alias suspend='systemctl suspend -i'
 alias switchJava='sudo update-alternatives --config java'
 alias up='xmod && python listenForUsb.py'
-alias xmod='xmodmap ~/.Xmodmap'
+alias x='xmodmap ~/.Xmodmap'
 alias xmod2='xmodmap ~/.Xmodmap2'
 
 # GITHUB USER VARIABLES
@@ -65,6 +67,7 @@ export johanna='jotchon'
 export josh='jwu910'
 export justin='justinsunho'
 export luke='raftastrock'
+export paul='plhnk'
 export phil='phillipchan2'
 export proto='protoEvangelion'
 export ryan='ryanschuhler'
@@ -159,6 +162,7 @@ function zpush {
 	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
 	cp ~/.config/Code/User/settings.json .
 	cp ~/.config/Code/User/keybindings.json .
+	cp ~/.config/Code/User/snippets/global.code-snippets .
 	cp ~/.zshrc .
 	gsave "$1"
 	cd -
@@ -174,7 +178,8 @@ function zpull {
 	cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
 	cp settings.json ~/.config/Code/User/settings.json
 	cp keybindings.json ~/.config/Code/User/keybindings.json
-	re
+	cp global.code-snippets ~/.config/Code/User/snippets/global.code-snippets
+	source ~/.zshrc
 	cd -
 }
 
@@ -261,12 +266,6 @@ function jse {
 
 function jsc {
 	jack $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
-}
-
-# Mongo Mlab Backup
-function mlabBackup {
-	mongodump -h ds249575.mlab.com:49575 -d heroku_n9739n51 -c laBooths -u heroku_n9739n51 -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/la
-	mongodump -h ds249575.mlab.com:49575 -d heroku_n9739n51 -c lbBooths -u heroku_n9739n51 -p $1 -o /home/ryan/dev/interactiveTradeFloor/backup/lb
 }
 
 # Adding autocomplete for 'we'
