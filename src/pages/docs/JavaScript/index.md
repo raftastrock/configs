@@ -109,15 +109,21 @@ Line By Line:
 
 > "Closure is the most important concept ever invented in the history of computing science" ~Kyle Simpson
 
-* "Closure is when a function '**remembers**' its lexical scope even when the function is executed outside that lexical scope" ~Kyle Simpson
-	* It's like seeing something that has always been there you just haven't been able to see it before
-	* Closure can save access to variables as many nested scopes as you want
-	* When you reference a **variable within your function in a scope outside your function**, it will preserve access to that variable for as long as the function is alive
-		* The practical lesson for this is that if you nest your functions uncessarily deep, you can create unintended closure
-			* The auto garbage collector will not garbage collect while that function is still alive
-			* Every time you create a new closure, you are taking up more memory
-				* To manually garbage collect a function with closure, you can just assign the function to null
-	* "Closure is a logical conclusion of lexical scope" ~Kyle Simpson
+
+### Key Questions:
+
+1. *What is closure?*
+	* A function that can reference it's outer enclosing scope EVEN when it is called OUTSIDE that scope
+
+2. *How is closure created?*
+	* Declare a function and within that function, reference a variable from it's outer scope
+
+3. *How long does scope stay around?*
+	* Until there are no references to it
+
+4. *How do you leverage the module pattern?*
+	* Use an outer enclosing function which runs once and returns a function that references its scope
+
 
 ### The power of closure:
 
@@ -142,6 +148,17 @@ const primeNumbers = { 1000: x }
 * When function is finished executing it **deletes local memory** automatically
 	* The exception is for returned value
 	* This is known as *garbage collection*
+
+* "Closure is when a function '**remembers**' its lexical scope even when the function is executed outside that lexical scope" ~Kyle Simpson
+	* It's like seeing something that has always been there you just haven't been able to see it before
+	* Closure can save access to variables as many nested scopes as you want
+	* When you reference a **variable within your function in a scope outside your function**, it will preserve access to that variable for as long as the function is alive
+		* The practical lesson for this is that if you nest your functions uncessarily deep, you can create unintended closure
+			* The auto garbage collector will not garbage collect while that function is still alive
+			* Every time you create a new closure, you are taking up more memory
+				* To manually garbage collect a function with closure, you can just assign the function to null
+	* "Closure is a logical conclusion of lexical scope" ~Kyle Simpson
+
 
 
 #### So why wouldn't you just use global memory?
@@ -262,6 +279,10 @@ console.log('Me first!')
 * This is where you can protect private functions from being accessed from the public api
 * Closure makes the module pattern feasible
 
+* Main **benefit** is restricting access & protecting internal functions from being called
+* Main **disadvantage** is if your testing methodology believes a unit test involves testing all private internals
+	* If you subscribe to Kyle Simpson's persuasion this is not a problem
+		* He believes a unit is not a function, it is a single indivisible piece of business logic
 
 </article>
 
