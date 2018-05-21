@@ -108,16 +108,16 @@ function homeScreen {
 }
 
 function workScreen {
-	xrandr --output HDMI1 --auto
-	xrandr --output HDMI2 --primary
-	xrandr --output HDMI2 -- HDMI2
+	xrandr --output HDMI-1 --auto
+	xrandr --output eDP-1 --auto
+	xrandr --output HDMI-1 --primary
+	xrandr --output HDMI-1 --left-of eDP-1
 }
 
 function workScreen2 {
-	xrandr --output eDP1
-#	xrandr --output eDP1 --scale 2048x1152
+	xrandr --output eDP-1
 	xrandr --output HDMI2 --primary
-	xrandr --output eDP1 --below HDMI2
+	xrandr --output eDP-1 --below HDMI2
 }
 
 
