@@ -1,0 +1,27 @@
+keycode 64 = Mode_switch
+keycode 133 = Alt_L Alt_L Alt_L
+
+keycode 31 = i I Up
+keycode 44 = j J Left
+keycode 45 = k K Down
+keycode 46 = l L Right
+
+!Home
+keycode 47 = semicolon colon Home
+keycode 48 = apostrophe quotedbl End
+
+! Swap Caps_Lock and Control_L
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+
+! free up right-Alt for remapping
+remove mod1 = Alt_R
+
+! Right-Alt remapped to Super
+clear mod4
+keycode 108 = Super_R
+add mod4 = Super_R
