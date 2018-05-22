@@ -122,8 +122,6 @@ function ws2 {
 }
 
 function ws3 {
-	xrandr --output eDP-1 --auto
-	xrandr --output eDP-1 --primary
 	xrandr --output eDP-1 --mode 2048x1152
 	xmodmap .Xmodmap2
 }
