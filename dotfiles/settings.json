@@ -22,7 +22,7 @@
 	"explorer.openEditors.visible": 0,
 	"extensions.ignoreRecommendations": true,
 	"files.associations": {
-		"*.ftl": "html",
+		"*.ftl": "ftl",
 		"*.css": "scss"
 	},
 	"gitlens.advanced.messages": {

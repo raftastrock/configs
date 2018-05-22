@@ -57,7 +57,7 @@ alias suspend='systemctl suspend -i'
 alias switchJava='sudo update-alternatives --config java'
 alias up='xmod && python listenForUsb.py'
 alias x='xmodmap ~/.Xmodmap'
-alias xmod2='xmodmap ~/.Xmodmap2'
+alias x2='xmodmap ~/.Xmodmap2'
 
 # GITHUB USER VARIABLES
 export allen='allen-ziegenfus'
@@ -107,7 +107,7 @@ function homeScreen {
 	xrandr --output HDMI-1 --primary
 }
 
-function workScreen {
+function ws {
 	xrandr --output HDMI-1 --auto
 	xrandr --output HDMI-1 --primary
 	xrandr --output eDP-1 --auto
@@ -115,10 +115,17 @@ function workScreen {
 	xrandr --output HDMI-1 --left-of eDP-1
 }
 
-function workScreen2 {
+function ws2 {
 	xrandr --output eDP-1
 	xrandr --output HDMI2 --primary
 	xrandr --output eDP-1 --below HDMI2
+}
+
+function ws3 {
+	xrandr --output eDP-1 --auto
+	xrandr --output eDP-1 --primary
+	xrandr --output eDP-1 --mode 2048x1152
+	xmodmap .Xmodmap2
 }
 
 
