@@ -117,8 +117,9 @@ function ws {
 
 function ws2 {
 	xrandr --output eDP-1
-	xrandr --output HDMI2 --primary
-	xrandr --output eDP-1 --below HDMI2
+	xrandr --output eDP-1 --mode 2048x1152
+	xrandr --output HDMI-2 --primary
+	xrandr --output eDP-1 --below HDMI-2
 }
 
 function ws3 {
