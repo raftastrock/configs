@@ -139,6 +139,11 @@ function gif {
 	record-gif.sh $1 ~/Videos/$2.gif
 }
 
+# do math
+function m {
+	node -pe $@
+}
+
 function new {
 	cd ~/dev/temp || return 1
 	touch $1
