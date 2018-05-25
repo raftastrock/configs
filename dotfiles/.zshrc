@@ -20,10 +20,12 @@ plugins=(colorize git2 npm2)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
-# ALIASES GLOBAL
+# ALIASES GLOBAL Files
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
 alias -g np='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
+alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
 alias -g z='~/.zshrc'
+
 
 # ALIASES
 alias add='bash addComponent.sh'

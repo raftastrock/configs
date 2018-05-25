@@ -71,4 +71,5 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.startupEditor": "newUntitledFile",
 	"gitlens.historyExplorer.enabled": true,
+	"window.zoomLevel": 0,
 }
