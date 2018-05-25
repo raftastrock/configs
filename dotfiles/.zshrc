@@ -150,6 +150,11 @@ function s {
 	cat $1 | grep $2
 }
 
+function sb {
+	regex='.*(?s)(?<='$2').*?(?=})'
+	cat $1 | grep -Pzo $regex
+}
+
 function slang {
 	printf "\n===============================\n\n"
 
