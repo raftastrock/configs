@@ -134,6 +134,16 @@ function singleScreen {
 	xrandr --output eDP1 --auto
 }
 
+# GENERAL UTILITY FUNCTIONS
+
+function fonts {
+	echo "extra-light: 200"
+	echo "light:       300"
+	echo "regular:     400"
+	echo "semi-bold:   600"
+	echo "bold:        700"
+}
+
 # Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
 function gif {
 	record-gif.sh $1 ~/Videos/$2.gif
