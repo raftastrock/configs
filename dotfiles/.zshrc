@@ -173,17 +173,17 @@ function sb {
 function slang {
 	printf "\n===============================\n\n"
 
-	echo "Showing language keys in:  ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl"
+	echo "Showing language keys in:  ~/dev/life/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl"
 
 	printf "\n===============================\n\n"
 
-	cat ~/dev/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl | grep -E --color $1
+	cat ~/dev/life/web-dev-lrdcom/6.2.x/templates/global/language_keys.ftl | grep -E --color $1
 
-	echo "Showing language keys in:  ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties"
+	echo "Showing language keys in:  ~/dev/life/liferay-portal-ee/portal-impl/src/content/Language.properties"
 
 	printf "\n===============================\n\n"
 
-	cat ~/dev/life/ee-6.2.x/liferay-portal-ee/portal-impl/src/content/Language.properties | grep -E --color $1
+	cat ~/dev/life/liferay-portal-ee/portal-impl/src/content/Language.properties | grep -E --color $1
 }
 
 function zpush {
