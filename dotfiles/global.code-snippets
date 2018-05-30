@@ -20,6 +20,14 @@
 			"this.$1 = this.$1.bind(this)$2"
 		]
 	},
+	"Block JS Markdown": {
+		"prefix": "bjs",
+		"body": [
+			"```javascript",
+			"$1",
+			"```"
+		]
+	},
 	"Constructor, Props, State": {
 		"prefix": "c",
 		"body": [
