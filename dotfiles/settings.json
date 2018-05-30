@@ -13,9 +13,10 @@
 	"editor.renderWhitespace": "none",
 	"editor.tabSize": 4,
 	"editor.wordWrap": "on",
+	"emmet.excludeLanguages": [],
 	"emmet.includeLanguages": {
 		"FreeMarker": "html",
-		"md": "html"
+		"markdown": "html"
 	},
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
@@ -72,4 +73,7 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"gitlens.historyExplorer.enabled": true,
 	"window.zoomLevel": 0,
+	"[markdown]": {
+		"editor.quickSuggestions": true
+	}
 }
