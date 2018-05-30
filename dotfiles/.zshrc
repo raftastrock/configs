@@ -145,6 +145,12 @@ function fonts {
 	echo "bold:        700"
 }
 
+function media {
+	echo "@media all and (max-width: 576px) {}"
+	echo "@media all and (max-width: 768px) {}"
+	echo "@media all and (max-width: 980px) {}"
+}
+
 # Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
 function gif {
 	record-gif.sh $1 ~/Videos/$2.gif
