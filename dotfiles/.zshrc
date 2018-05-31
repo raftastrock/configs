@@ -1,5 +1,5 @@
 # PATH
-export PATH=/usr/local/bin:$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/jpm/bin:$GRADLE_HOME/bin:/opt/firefox-dev:$PATH
+export PATH=$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
@@ -55,6 +55,7 @@ alias restart='shutdown -r now'
 alias sai='sudo apt install $@'
 alias sas='sudo apt search $1'
 alias sass='npm rebuild node-sass --force'
+alias sar='sudo apt remove $@'
 alias sf='find . -name "*" | grep -v node_modules | xargs csf'
 alias suspend='systemctl suspend -i'
 alias switchJava='sudo update-alternatives --config java'
@@ -138,10 +139,10 @@ function singleScreen {
 # GENERAL UTILITY FUNCTIONS
 
 function fonts {
-	echo "extra-light: 200"
+	echo "extra-light: 200 - .font-weight-lighter"
 	echo "light:       300"
 	echo "regular:     400"
-	echo "semi-bold:   600"
+	echo "semi-bold:   600 - .font-weight-bold"
 	echo "bold:        700"
 }
 
