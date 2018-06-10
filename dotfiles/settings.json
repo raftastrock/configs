@@ -1,77 +1,77 @@
 {
-	"[json]": {
-		"editor.formatOnSave": true
-	},
-	"editor.detectIndentation": false,
-	"editor.fontFamily": "'DejaVu Sans Mono'",
-	"editor.fontLigatures": true,
-	"editor.fontSize": 14,
-	"editor.formatOnPaste": false,
-	"editor.formatOnSave": true,
-	"editor.insertSpaces": false,
-	"editor.multiCursorModifier": "ctrlCmd",
-	"editor.renderWhitespace": "none",
-	"editor.tabSize": 4,
-	"editor.wordWrap": "on",
-	"emmet.excludeLanguages": [],
-	"emmet.includeLanguages": {
-		"FreeMarker": "html",
-		"markdown": "html"
-	},
-	"explorer.confirmDelete": false,
-	"explorer.confirmDragAndDrop": false,
-	"explorer.openEditors.visible": 0,
-	"extensions.ignoreRecommendations": true,
-	"files.associations": {
-		"*.ftl": "ftl",
-		"*.css": "scss"
-	},
-	"gitlens.advanced.messages": {
-		"suppressCommitHasNoPreviousCommitWarning": false,
-		"suppressCommitNotFoundWarning": false,
-		"suppressFileNotUnderSourceControlWarning": false,
-		"suppressGitVersionWarning": false,
-		"suppressLineUncommittedWarning": true,
-		"suppressNoRepositoryWarning": false,
-		"suppressResultsExplorerNotice": false,
-		"suppressShowKeyBindingsNotice": true,
-		"suppressUpdateNotice": false,
-		"suppressWelcomeNotice": true
-	},
-	"git.enableSmartCommit": true,
-	"gitlens.currentLine.format": "${authorAgo}",
-	"gitlens.keymap": "chorded",
-	"gitlens.codeLens.scopes": [
-		"document"
-	],
-	"javascript.format.enable": false,
-	"javascript.validate.enable": true,
-	"npm.enableScriptExplorer": true,
-	"prettier.requireConfig": true,
-	"python.pythonPath": "python3",
-	"telemetry.enableCrashReporter": false,
-	"telemetry.enableTelemetry": false,
-	"terminal.integrated.fontFamily": "'DejaVu Sans Mono'",
-	"terminal.integrated.fontSize": 12,
-	"terminal.integrated.lineHeight": 1.2,
-	"terminal.integrated.scrollback": 10000,
-	"workbench.colorCustomizations": {
-		"badge.foreground": "#00ffed",
-		"editorGroup.border": "#2e3038",
-		"editorGroupHeader.tabsBackground": "#282a36",
-		"editorIndentGuide.activeBackground": "#6272a4",
-		"gitlens.trailingLineForegroundColor": "#00ffee0c",
-		"panel.border": "#1b1b1b",
-		"sideBar.background": "#282a36",
-		"sideBar.border": "#1b1b1b"
-	},
-	"workbench.colorTheme": "Dracula",
-	"workbench.iconTheme": "material-icon-theme",
-	"workbench.startupEditor": "newUntitledFile",
-	"gitlens.historyExplorer.enabled": true,
-	"window.zoomLevel": 0,
-	"[markdown]": {
-		"editor.quickSuggestions": true
-	},
-	"files.useExperimentalFileWatcher": true
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "'DejaVu Sans Mono'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "emmet.excludeLanguages": [],
+  "emmet.includeLanguages": {
+    "FreeMarker": "html",
+    "markdown": "html"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.visible": 0,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "*.ftl": "ftl",
+    "*.css": "scss"
+  },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": true,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "git.enableSmartCommit": true,
+  "gitlens.currentLine.format": "${authorAgo}",
+  "gitlens.keymap": "chorded",
+  "gitlens.codeLens.scopes": [
+    "document"
+  ],
+  "javascript.format.enable": false,
+  "javascript.validate.enable": true,
+  "npm.enableScriptExplorer": true,
+  "prettier.requireConfig": true,
+  "python.pythonPath": "python3",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "terminal.integrated.fontFamily": "'DejaVu Sans Mono'",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.scrollback": 10000,
+  "workbench.colorCustomizations": {
+    "badge.foreground": "#00ffed",
+    "editorGroup.border": "#2e3038",
+    "editorGroupHeader.tabsBackground": "#282a36",
+    "editorIndentGuide.activeBackground": "#6272a4",
+    "gitlens.trailingLineForegroundColor": "#00ffee0c",
+    "panel.border": "#1b1b1b",
+    "sideBar.background": "#282a36",
+    "sideBar.border": "#1b1b1b"
+  },
+  "workbench.colorTheme": "Dracula",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "gitlens.historyExplorer.enabled": true,
+  "window.zoomLevel": 0,
+  "[markdown]": {
+    "editor.quickSuggestions": true
+  },
+  "files.useExperimentalFileWatcher": true
 }

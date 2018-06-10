@@ -1,113 +1,113 @@
 {
-	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	"Add article html tag": {
-		"prefix": "ar",
-		"body": [
-			"<article id=\"$1\">",
-			"\n## $2Heading",
-			"\n$0",
-			"</article>"
-		]
-	},
-	"Bind class function": {
-		"prefix": "bf",
-		"body": [
-			"this.$1 = this.$1.bind(this)$2"
-		]
-	},
-	"Block JS Markdown": {
-		"prefix": "bjs",
-		"body": [
-			"```javascript",
-			"$1",
-			"```"
-		]
-	},
-	"Constructor, Props, State": {
-		"prefix": "c",
-		"body": [
-			"constructor(props) {",
-			"\tsuper(props)",
-			"\t",
-			"\tthis.state = {}",
-			"}$1"
-		]
-	},
-	"Import generic file": {
-		"prefix": "imp",
-		"body": [
-			"import $1 from '$1'"
-		]
-	},
-	"Import component file": {
-		"prefix": "impc",
-		"body": [
-			"import { $1 } from 'components/atoms'"
-		]
-	},
-	"Import & export file": {
-		"prefix": "impe",
-		"body": [
-			"import $1 from './$1'",
-			"",
-			"export default $1"
-		]
-	},
-	"Import React": {
-		"prefix": "impr",
-		"body": [
-			"import React from 'react'"
-		]
-	},
-	"Import Styled Components": {
-		"prefix": "impsc",
-		"body": [
-			"import styled from 'styled-components'"
-		]
-	},
-	"Log to console": {
-		"prefix": "l",
-		"body": [
-			"console.log('$1', $1)$2"
-		],
-	},
-	"Stateless functional component": {
-		"prefix": "rfc",
-		"body": [
-			"const $1 = () => (",
-			"\t<div>$0</div>",
-			")",
-			"\n",
-			"export default $1"
-		]
-	},
-	"Stateful component": {
-		"prefix": "rsc",
-		"body": [
-			"import React, { Component } from 'react'",
-			"",
-			"class $1 extends Component {"
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+  // Placeholders with the same ids are connected.
+  "Add article html tag": {
+    "prefix": "ar",
+    "body": [
+      "<article id=\"$1\">",
+      "\n## $2Heading",
+      "\n$0",
+      "</article>"
+    ]
+  },
+  "Bind class function": {
+    "prefix": "bf",
+    "body": [
+      "this.$1 = this.$1.bind(this)$2"
+    ]
+  },
+  "Block JS Markdown": {
+    "prefix": "bjs",
+    "body": [
+      "```javascript",
+      "$1",
+      "```"
+    ]
+  },
+  "Constructor, Props, State": {
+    "prefix": "c",
+    "body": [
+      "constructor(props) {",
+      "\tsuper(props)",
+      "\t",
+      "\tthis.state = {}",
+      "}$1"
+    ]
+  },
+  "Import generic file": {
+    "prefix": "imp",
+    "body": [
+      "import $1 from '$1'"
+    ]
+  },
+  "Import component file": {
+    "prefix": "impc",
+    "body": [
+      "import { $1 } from 'components/atoms'"
+    ]
+  },
+  "Import & export file": {
+    "prefix": "impe",
+    "body": [
+      "import $1 from './$1'",
+      "",
+      "export default $1"
+    ]
+  },
+  "Import React": {
+    "prefix": "impr",
+    "body": [
+      "import React from 'react'"
+    ]
+  },
+  "Import Styled Components": {
+    "prefix": "impsc",
+    "body": [
+      "import styled from 'styled-components'"
+    ]
+  },
+  "Log to console": {
+    "prefix": "l",
+    "body": [
+      "console.log('$1', $1)$2"
+    ],
+  },
+  "Stateless functional component": {
+    "prefix": "rfc",
+    "body": [
+      "const $1 = () => (",
+      "\t<div>$0</div>",
+      ")",
+      "\n",
+      "export default $1"
+    ]
+  },
+  "Stateful component": {
+    "prefix": "rsc",
+    "body": [
+      "import React, { Component } from 'react'",
+      "",
+      "class $1 extends Component {"
 			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"",
-			"\t\tthis.state = {}",
-			"\t}",
-			"",
-			"\trender() {",
-			"\t\treturn (",
-			"\t\t\t<div>",
-			"\t\t\t\t<h1>Something remarkable</h1>",
-			"\t\t\t</div>",
-			"\t\t)",
-			"\t}",
-			"}",
-			"",
-			"export default $1"
-		]
-	}
+      "\t\tsuper(props)",
+      "",
+      "\t\tthis.state = {}",
+      "\t}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t<h1>Something remarkable</h1>",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default $1"
+    ]
+  }
 }
