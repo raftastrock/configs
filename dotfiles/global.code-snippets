@@ -76,6 +76,14 @@
       "console.log('$1', $1)$2"
     ],
   },
+  "Markdown Image": {
+    "prefix": "mdi",
+    "body": [
+      "![](images/$1.jpg)",
+      "_Provided by [Andrew Ng](http://www.andrewng.org/about/)_",
+      "$2",
+    ],
+  },
   "Stateless functional component": {
     "prefix": "rfc",
     "body": [
