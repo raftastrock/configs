@@ -104,15 +104,15 @@ fi
 
 checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
 
-checkSoftware "zsh" "brew install zsh"
+checkSoftware "zsh" "brew install zsh" "brew install zsh-completions"
 
-checkSoftware "ag" "brew the_silver_searcher"
+spacer
 
-checkSoftware "curl" "brew curl"
+checkSoftware "ag" "brew install the_silver_searcher"
 
-checkSoftware "docker" "brew docker"
+checkSoftware "curl" "brew install curl"
 
-checkSoftware "java" "iapt default-jdk" "idnf java-1.8.0-openjdk"
+checkSoftware "docker" "brew install docker"
 
 checkSoftware "node" "brew install node"
 
@@ -120,15 +120,23 @@ checkSoftware "code" "brew cask install visual-studio-code"
 
 checkSoftware "yarn" "brew install yarn"
 
-checkSoftware "firefox-developer" "brew cask install firefox-developer-edition"
+# Brew Specific
+
+brew list zsh-completions || brew install zsh-completions
+
+spacer
+
+brew cask list firefox-developer-edition || brew cask install firefox-developer-edition
+
+spacer
+
+###
 
 generateSsh
 
 checkSoftware "keychain" "ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null" "brew install keychain"
 
 checkDir ~/.oh-my-zsh "sh -c $configs/scripts/installOhMyZsh.sh"
-
-checkFile ~/.Xmodmap "cp $configs/dotfiles/.Xmodmap ~/" "xmodmap .Xmodmap"
 
 checkFile ~/PS1.zsh "cp $configs/dotfiles/PS1.zsh ~/"
 
