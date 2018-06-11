@@ -13,6 +13,7 @@ off=$(tput sgr0)             # Reset
 
 isDebian=$(python -mplatform | grep -qie debian -qie ubuntu && echo true || echo false)
 isFedora=$(python -mplatform | grep -qi fedora && echo true || echo false)
+isMac=$(python -mplatform | grep -qie darwin && echo true || echo false)
 isUbuntu=$(python -mplatform | grep -qie ubuntu && echo true || echo false)
 
 configs=~/dev/configs
