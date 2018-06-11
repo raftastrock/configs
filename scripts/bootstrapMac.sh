@@ -106,8 +106,6 @@ checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.
 
 checkSoftware "zsh" "brew install zsh" "brew install zsh-completions"
 
-spacer
-
 checkSoftware "ag" "brew install the_silver_searcher"
 
 checkSoftware "curl" "brew install curl"
@@ -134,7 +132,7 @@ spacer
 
 generateSsh
 
-checkSoftware "keychain" "ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null" "brew install keychain"
+checkSoftware "keychain" "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)' < /dev/null 2> /dev/null" "brew install keychain"
 
 checkDir ~/.oh-my-zsh "sh -c $configs/scripts/installOhMyZsh.sh"
 
