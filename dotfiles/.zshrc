@@ -1,12 +1,15 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
-GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:/opt/gradle/gradle-3.4.1/bin
-export PATH=$APPS:$GENERAL:~/dev/configs/scripts:$PATH
+GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:$HOME/apache-ant-1.7.1/bin
+export PATH=$APPS:$GENERAL:$JAVA_APPS:~/dev/configs/scripts:$PATH
 
 # VARIABLES
+export ANT_HOME=$HOME/apache-ant-1.7.1
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
+export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_OPTS='-Xms1024m -Xmx8000m -XX:MaxPermSize=4000m'
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
