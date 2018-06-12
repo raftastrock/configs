@@ -128,6 +128,10 @@ brew cask list firefox-developer-edition || brew cask install firefox-developer-
 
 spacer
 
+brew cask list amethyst || brew cask install amethyst
+
+spacer
+
 ###
 
 generateSsh
@@ -155,7 +159,7 @@ ng() {
 
 checkSoftware "checkit" "ng check-it-out"
 checkSoftware "gh" "ng gh"
-checkSoftware "n" "ng gh"
+checkSoftware "n" "ng n"
 checkSoftware "git-br" "ng git-br"
 checkSoftware "jack" "ng jack-cli"
 checkSoftware "opn" "ng opn-cli"
