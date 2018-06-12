@@ -53,6 +53,7 @@
   "terminal.integrated.fontFamily": "monospace",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.scrollback": 10000,
   "workbench.colorCustomizations": {
     "badge.foreground": "#00ffed",
