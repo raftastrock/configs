@@ -1,5 +1,6 @@
 # PATH
-export PATH=$HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:/opt/firefox-dev:/opt/gradle/gradle-3.4.1/bin:$PATH
+BINS=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:/opt/gradle/gradle-3.4.1/bin
+export PATH=$BINS:~/dev/configs/scripts:/opt/firefox-dev:$PATH
 
 # VARIABLES
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
@@ -10,9 +11,19 @@ export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
+export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)
+
+if [ $IS_MAC ]; then
+	CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+	unset LSCOLORS
+	export CLICOLOR=1
+	export CLICOLOR_FORCE=1
+else
+	CONFIG_DIR="$HOME/.config/Code/User"
+fi
 
 # SETUP SSH KEYCHAIN
-/usr/bin/keychain --quiet $HOME/.ssh/id_rsa
+/usr/local/bin/keychain --quiet $HOME/.ssh/id_rsa
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
@@ -26,7 +37,6 @@ alias -g np='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
 alias -g vars='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_variables.scss'
 alias -g z='~/.zshrc'
-
 
 # ALIASES
 alias add='bash addComponent.sh'
@@ -45,7 +55,7 @@ alias getip='ip route get 8.8.8.8 | awk "{print $NF; exit}"'
 alias gd='gulp deploy'
 alias lock='gnome-screensaver-command -l'
 alias lc='bash logColors.sh'
-alias ls='ls -F --color=auto'
+alias ls='ls'
 alias hi='systemctl hibernate -i'
 alias j='jack' # Alias for jack-cli npm package
 alias my='mysql -u root'
@@ -198,9 +208,9 @@ function zpush {
 	cd ~/dev/configs/dotfiles
 	cp ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh .
 	cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
-	cp ~/.config/Code/User/settings.json .
-	cp ~/.config/Code/User/keybindings.json .
-	cp ~/.config/Code/User/snippets/global.code-snippets .
+	cp $CONFIG_DIR/settings.json .
+	cp $CONFIG_DIR/keybindings.json .
+	cp $CONFIG_DIR/snippets/global.code-snippets .
 	cp ~/.zshrc .
 	gsave "$1"
 	cd -
@@ -214,9 +224,9 @@ function zpull {
 	cp .zshrc ~
 	cp git2.plugin.zsh ~/.oh-my-zsh/plugins/git2
 	cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
-	cp settings.json ~/.config/Code/User/settings.json
-	cp keybindings.json ~/.config/Code/User/keybindings.json
-	cp global.code-snippets ~/.config/Code/User/snippets/global.code-snippets
+	cp settings.json $CONFIG_DIR/settings.json
+	cp keybindings.json $CONFIG_DIR/keybindings.json
+	cp global.code-snippets $CONFIG_DIR/snippets/global.code-snippets
 	source ~/.zshrc
 	cd -
 }
@@ -227,44 +237,44 @@ function zpull {
 function addBuild {
 	cd ../../
 	touch build.ryan.properties
-	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > build.ryan.properties
 	cd -
 }
 
 function addDir {
-	cd /home/ryan/dev/life/ee-6.2.x/liferay-portal-ee || return 1
+	cd $HOME/dev/life/ee-6.2.x/liferay-portal-ee || return 1
 	touch app.server.ryan.properties
-	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
 	cd -
 
 	if [[ $1 ]]; then
-		cd /home/ryan/dev/life/$1 || return 1
+		cd $HOME/dev/life/$1 || return 1
 	else
-		cd /home/ryan/dev/life/liferay-plugins-ee || return 1
+		cd $HOME/dev/life/liferay-plugins-ee || return 1
 	fi
 
 	touch build.ryan.properties
-	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > build.ryan.properties
 	cd -
 }
 
 function addDir1 {
-	cd /home/ryan/dev/life/ee-6.1.x/liferay-portal-ee || return 1
+	cd $HOME/dev/life/ee-6.1.x/liferay-portal-ee || return 1
 	touch app.server.ryan.properties
-	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.1.x/bundles" > app.server.ryan.properties
-	cd /home/ryan/dev/life/liferay-plugins-ee || return 1
+	echo "app.server.parent.dir=$HOME/dev/life/ee-6.1.x/bundles" > app.server.ryan.properties
+	cd $HOME/dev/life/liferay-plugins-ee || return 1
 	touch build.ryan.properties
-	echo "app.server.parent.dir=/home/ryan/dev/life/ee-6.1.x/bundles" > build.ryan.properties
+	echo "app.server.parent.dir=$HOME/dev/life/ee-6.1.x/bundles" > build.ryan.properties
 	cd -
 }
 
 function clean {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
+	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 }
 
 function cleanAll {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
+	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 	rm -rfv webapps/osb-community-theme/css/.sass-cache
 	rm -rfv temp
@@ -278,14 +288,14 @@ function gw {
 
 # Serve Liferay
 function serve {
-	cd /home/ryan/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin || return 1
+	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin || return 1
 	./catalina.sh run | lch -c ~/logColors.conf
 	cd -
 }
 
 # Serve Liferay
 function serve7 {
-	cd /home/ryan/dev/life/ee-7.0.x/bundles/tomcat-8.0.32/bin || return 1
+	cd $HOME/dev/life/ee-7.0.x/bundles/tomcat-8.0.32/bin || return 1
 	./catalina.sh run | lch -c ~/logColors.conf
 	cd -
 }
@@ -293,7 +303,7 @@ function serve7 {
 # Deploy community theme
 function theme {
 	clean
-	cd /home/ryan/dev/life/liferay-plugins-ee/themes/osb-community-theme || return 1
+	cd $HOME/dev/life/liferay-plugins-ee/themes/osb-community-theme || return 1
 	ant deploy | lch -c ~/logColors.conf
 }
 
