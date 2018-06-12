@@ -1,11 +1,11 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
 GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin
-JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:$HOME/apache-ant-1.7.1/bin
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:$HOME/apache-ant-1.9.11/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:~/dev/configs/scripts:$PATH
 
 # VARIABLES
-export ANT_HOME=$HOME/apache-ant-1.7.1
+export ANT_HOME=$HOME/apache-ant-1.9.11
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
@@ -236,29 +236,41 @@ function zpull {
 }
 
 # LIFERAY FUNCTIONS
+LIFERAY_DIR=$HOME/dev/life
+BUNDLES_DIR=$LIFERAY_DIR/bundles
+SERVER_DIR=$BUNDLES_DIR/tomcat-7.0.62
+DOCKER_DIR=$LIFERAY_DIR/liferay-is-marketing-wedeploy/www-prod/liferay
+PORTAL_DIR=$LIFERAY_DIR/liferay-portal-ee
+PLUGINS_DIR=$LIFERAY_DIR/liferay-plugins-ee
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
-function addBuild {
-	cd ../../
-	touch build.ryan.properties
-	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > build.ryan.properties
-	cd -
+function addDocker {
+  cd $PLUGINS_DIR || return 1
+  rm "build.$(whoami).properties"
+  echo docker.dir=$DOCKER_DIR >> "build.$(whoami).properties"
+  echo bundle.dir=$BUNDLES_DIR >> "build.$(whoami).properties"
+  echo app.server.parent.dir=$DOCKER_DIR >> "build.$(whoami).properties"
+  echo app.server.tomcat.dir=$DOCKER_DIR/tomcat >> "build.$(whoami).properties"
+  echo app.server.tomcat.deploy.dir=$DOCKER_DIR/tomcat/webapps >> "build.$(whoami).properties"
+  echo app.server.tomcat.lib.global.dir=$SERVER_DIR/lib/ext >> "build.$(whoami).properties"
+  echo app.server.tomcat.portal.dir=$SERVER_DIR/webapps/ROOT >> "build.$(whoami).properties"
+  cd -
 }
 
 function addDir {
-	cd $HOME/dev/life/ee-6.2.x/liferay-portal-ee || return 1
+	cd $PORTAL_DIR || return 1
 	touch app.server.ryan.properties
-	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > app.server.ryan.properties
+	echo "app.server.parent.dir=$BUNDLES_DIR" > app.server.ryan.properties
 	cd -
 
 	if [[ $1 ]]; then
 		cd $HOME/dev/life/$1 || return 1
 	else
-		cd $HOME/dev/life/liferay-plugins-ee || return 1
+		cd $PLUGINS_DIR || return 1
 	fi
 
 	touch build.ryan.properties
-	echo "app.server.parent.dir=$HOME/dev/life/ee-6.2.x/bundles" > build.ryan.properties
+	echo "app.server.parent.dir=$BUNDLES_DIR" > build.ryan.properties
 	cd -
 }
 
@@ -273,12 +285,12 @@ function addDir1 {
 }
 
 function clean {
-	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
+	cd $BUNDLES_DIR/tomcat-7.0.62/ || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 }
 
 function cleanAll {
-	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/ || return 1
+	cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
 	rm -rfv webapps/osb-community-theme/css/.sass-cache
 	rm -rfv temp
@@ -292,7 +304,7 @@ function gw {
 
 # Serve Liferay
 function serve {
-	cd $HOME/dev/life/ee-6.2.x/bundles/tomcat-7.0.62/bin || return 1
+	cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
 	./catalina.sh run | lch -c ~/logColors.conf
 	cd -
 }
