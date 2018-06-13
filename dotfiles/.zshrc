@@ -9,7 +9,6 @@ export ANT_HOME=$HOME/apache-ant-1.9.11
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
-export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_OPTS='-Xms1024m -Xmx8000m -XX:MaxPermSize=4000m'
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
@@ -22,6 +21,7 @@ if [ $IS_MAC ]; then
 	unset LSCOLORS
 	export CLICOLOR=1
 	export CLICOLOR_FORCE=1
+  export JAVA_HOME=$(/usr/libexec/java_home)
 else
 	CONFIG_DIR="$HOME/.config/Code/User"
 fi
