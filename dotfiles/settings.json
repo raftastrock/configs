@@ -3,6 +3,7 @@
     "editor.formatOnSave": true
   },
   "editor.detectIndentation": false,
+  "editor.fontFamily": "'Fira Code iScript', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "editor.fontSize": 12,
   "editor.formatOnPaste": false,
@@ -50,9 +51,7 @@
   "python.pythonPath": "python3",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "terminal.integrated.fontFamily": "monospace",
   "terminal.integrated.fontSize": 12,
-  "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.scrollback": 10000,
   "workbench.colorCustomizations": {

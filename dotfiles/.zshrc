@@ -16,13 +16,16 @@ export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
 export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)
 
-if [ $IS_MAC ]; then
+if [[ $IS_MAC = true ]]; then
 	unset LSCOLORS
 	export CLICOLOR=1
 	export CLICOLOR_FORCE=1
+  export JAVA_HOME=$(/usr/libexec/java_home)
 	CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+  echo "ismac!"
 else
 	CONFIG_DIR="$HOME/.config/Code/User"
+  echo "not mac!"
 fi
 
 # SETUP SSH KEYCHAIN
