@@ -7,7 +7,7 @@ zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 # the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
 # to fix the core -> git plugin dependency.
 function current_branch() {
-	git_current_branch
+  git_current_branch
 }
 
 # ALIASES
@@ -167,69 +167,69 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 # BROWSER OPEN UTILS
 
 function getRemoteUrl() {
-	if [ $# -gt 0 ]; then
-		regexStr='(?<='$1').*(?=\(fetch)'
-	else
-		regexStr='(?<=origin).*(?=\(fetch)'
-	fi
+  if [ $# -gt 0 ]; then
+    regexStr='(?<='$1').*(?=\(fetch)'
+  else
+    regexStr='(?<=origin).*(?=\(fetch)'
+  fi
 
-	git remote -v | grep -o -P $regexStr
+  git remote -v | grep -o -P $regexStr
 }
 
 function getUserAndRepo() {
-	getRemoteUrl $1 | grep -o -P '(?<=github.com:).*(?=.git)'
+  getRemoteUrl $1 | grep -o -P '(?<=github.com:).*(?=.git)'
 }
 
 function gopen(){
-	opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+  opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
 }
 
 # FUNCTIONS
 
 function gpr(){
-	gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
+  gh pr -s $1 -b $2 -t $3 -D "Hey @$1 $4, here is the work for [$3](https://issues.liferay.com/browse/$3) :rocket:. Thanks for reviewing :relieved: $5"
 }
 
 # Simple version
 function gprs(){
-	gh pr -s $1 -b $2 -t $3 -D "$4"
+  gh pr -s $1 -b $2 -t $3 -D "$4"
 }
 
 # Show open PRs on Organization
 function gpro(){
-	gh pr -O $1 --all
+  gh pr -O $1 --all
 }
 
 function gpo(){
-	git push origin $(git_current_branch)
-	gopen
+  git push origin $(git_current_branch)
+  gopen
 }
 
 function gpu(){
-	git push upstream $(git_current_branch)
-	gopen upstream
+  git push upstream $(git_current_branch)
+  gopen upstream
 }
 
 function gsave(){
-	gaa
-	git commit -m $1
-	git push origin $(git_current_branch)
-	gopen $2
+  gaa
+  git commit -m $1
+  git push origin $(git_current_branch)
+  gopen $2
 }
 
 function gMassEdit() {
-	# Prepends string to beginning of all commits in history
-	# https://davidwalsh.name/update-git-commit-messages
-	git filter-branch --msg-filter 'echo "$1 - \c" && cat'
+  # Prepends string to beginning of all commits in history
+  # https://davidwalsh.name/update-git-commit-messages
+  git filter-branch --msg-filter 'echo "$1 - \c" && cat'
 }
 
 
 function repo_name() {
-	git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
+  git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
 }
 
 function work_in_progress() {
-	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
-		echo "WIP!!"
-	fi
+  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+    echo "WIP!!"
+  fi
 }
