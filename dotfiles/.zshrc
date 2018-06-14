@@ -43,6 +43,7 @@ alias -g np='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
 alias -g vars='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_variables.scss'
 alias -g z='~/.zshrc'
+alias -g kar='~/.config/karabiner/karabiner.json'
 
 # ALIASES
 alias add='bash addComponent.sh'
