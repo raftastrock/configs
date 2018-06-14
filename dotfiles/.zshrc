@@ -17,11 +17,10 @@ export ZSH=~/.oh-my-zsh
 export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)
 
 if [ $IS_MAC ]; then
-	CONFIG_DIR="$HOME/Library/Application Support/Code/User"
 	unset LSCOLORS
 	export CLICOLOR=1
 	export CLICOLOR_FORCE=1
-  export JAVA_HOME=$(/usr/libexec/java_home)
+	CONFIG_DIR="$HOME/Library/Application Support/Code/User"
 else
 	CONFIG_DIR="$HOME/.config/Code/User"
 fi
