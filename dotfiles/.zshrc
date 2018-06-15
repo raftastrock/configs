@@ -1,8 +1,8 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
 GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin
-JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:$HOME/apache-ant-1.9.11/bin
-export PATH=$APPS:$GENERAL:$JAVA_APPS:~/dev/configs/scripts:$PATH
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin:~/dev/configs/scripts
+export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
 # VARIABLES
 export ANT_HOME=$HOME/apache-ant-1.9.11
@@ -25,6 +25,7 @@ if [[ $IS_MAC = true ]]; then
   echo "ismac!"
 else
   CONFIG_DIR="$HOME/.config/Code/User"
+  alias code='vscode'
   echo "not mac!"
 fi
 
@@ -51,7 +52,6 @@ alias acd='lc ant clean deploy'
 alias b='git rev-parse --abbrev-ref HEAD'
 alias bright='bash brightness.sh'
 alias c='clear'
-alias code='vscode'
 alias copy='xclip -sel clip'
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
