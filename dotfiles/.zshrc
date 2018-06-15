@@ -128,31 +128,6 @@ function homeScreen {
   xrandr --output HDMI-1 --primary
 }
 
-function ws {
-  xrandr --output HDMI-1 --auto
-  xrandr --output HDMI-1 --primary
-  xrandr --output eDP-1 --auto
-  xrandr --output eDP-1 --mode 2048x1152
-  xrandr --output HDMI-1 --left-of eDP-1
-}
-
-function ws2 {
-  xrandr --output eDP-1
-  xrandr --output eDP-1 --mode 2048x1152
-  xrandr --output HDMI-2 --primary
-  xrandr --output eDP-1 --below HDMI-2
-}
-
-function ws3 {
-  xrandr --output eDP-1 --mode 2048x1152
-  xmodmap .Xmodmap2
-}
-
-
-function singleScreen {
-  xrandr --output eDP1 --auto
-}
-
 # GENERAL UTILITY FUNCTIONS
 
 function fonts {
@@ -241,22 +216,39 @@ function zpull {
 # LIFERAY FUNCTIONS
 LIFERAY_DIR=$HOME/dev/life
 BUNDLES_DIR=$LIFERAY_DIR/bundles
-SERVER_DIR=$BUNDLES_DIR/tomcat-7.0.62
 DOCKER_DIR=$LIFERAY_DIR/liferay-is-marketing-wedeploy/www-prod/liferay
 PORTAL_DIR=$LIFERAY_DIR/liferay-portal-ee
 PLUGINS_DIR=$LIFERAY_DIR/liferay-plugins-ee
+PLUGINS_BUILD_FILE=build.$(whoami).properties
+
+# 6.2
+SERVER_62_BUNDLE=$BUNDLES_DIR/6.2
+SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat-7.0.62
+
+# 6.1
+SERVER_61_BUNDLE=$BUNDLES_DIR/6.1
+SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat-7.0.40
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
-function addDocker {
+function dockerDir {
   cd $PLUGINS_DIR || return 1
-  rm "build.$(whoami).properties"
-  echo docker.dir=$DOCKER_DIR >> "build.$(whoami).properties"
-  echo bundle.dir=$BUNDLES_DIR >> "build.$(whoami).properties"
-  echo app.server.parent.dir=$DOCKER_DIR >> "build.$(whoami).properties"
-  echo app.server.tomcat.dir=$DOCKER_DIR/tomcat >> "build.$(whoami).properties"
-  echo app.server.tomcat.deploy.dir=$DOCKER_DIR/tomcat/webapps >> "build.$(whoami).properties"
-  echo app.server.tomcat.lib.global.dir=$SERVER_DIR/lib/ext >> "build.$(whoami).properties"
-  echo app.server.tomcat.portal.dir=$SERVER_DIR/webapps/ROOT >> "build.$(whoami).properties"
+  echo "" > $PLUGINS_BUILD_FILE
+  echo docker.dir=$DOCKER_DIR >> $PLUGINS_BUILD_FILE
+  echo bundle.dir=$SERVER_62_BUNDLE >> $PLUGINS_BUILD_FILE
+  echo app.server.parent.dir=$DOCKER_DIR >> $PLUGINS_BUILD_FILE
+  echo app.server.tomcat.dir=$DOCKER_DIR/tomcat >> $PLUGINS_BUILD_FILE
+  echo app.server.tomcat.deploy.dir=$DOCKER_DIR/tomcat/webapps >> $PLUGINS_BUILD_FILE
+  echo app.server.tomcat.lib.global.dir=$SERVER_62_DIR/lib/ext >> $PLUGINS_BUILD_FILE
+  echo app.server.tomcat.portal.dir=$SERVER_62_DIR/webapps/ROOT >> $PLUGINS_BUILD_FILE
+  cd -
+}
+
+function 61Dir {
+  cd $PORTAL_DIR || return 1
+  echo app.server.parent.dir=$SERVER_61_BUNDLE > app.server.$(whoami).properties
+  cd -
+  cd $PLUGINS_DIR || return 1
+  echo app.server.parent.dir=$SERVER_61_BUNDLE > $PLUGINS_BUILD_FILE
   cd -
 }
 
@@ -274,16 +266,6 @@ function addDir {
 
   touch build.ryan.properties
   echo "app.server.parent.dir=$BUNDLES_DIR" > build.ryan.properties
-  cd -
-}
-
-function addDir1 {
-  cd $HOME/dev/life/ee-6.1.x/liferay-portal-ee || return 1
-  touch app.server.ryan.properties
-  echo "app.server.parent.dir=$HOME/dev/life/ee-6.1.x/bundles" > app.server.ryan.properties
-  cd $HOME/dev/life/liferay-plugins-ee || return 1
-  touch build.ryan.properties
-  echo "app.server.parent.dir=$HOME/dev/life/ee-6.1.x/bundles" > build.ryan.properties
   cd -
 }
 

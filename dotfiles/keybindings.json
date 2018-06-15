@@ -6,18 +6,18 @@
 		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
-		"key": "alt+down",
-		"command": "-editor.action.moveLinesDownAction",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
 		"key": "alt+i",
 		"command": "editor.action.moveLinesUpAction",
 		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
-		"key": "alt+up",
-		"command": "-editor.action.moveLinesUpAction",
+		"key": "ctrl+k",
+		"command": "editor.action.moveLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "editor.action.moveLinesUpAction",
 		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
