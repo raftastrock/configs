@@ -1,7 +1,7 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
-GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin
-JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin:~/dev/configs/scripts
+GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
 # VARIABLES
@@ -12,6 +12,9 @@ export GRADLE_HOME=/usr/local/gradle
 export JAVA_OPTS='-Xms1024m -Xmx8000m -XX:MaxPermSize=4000m'
 export TEMP=$HOME/temp
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
 export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)

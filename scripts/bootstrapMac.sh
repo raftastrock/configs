@@ -114,6 +114,8 @@ checkSoftware "docker" "brew install docker"
 
 checkSoftware "node" "brew install node"
 
+checkSoftware "nvm" "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash"
+
 checkSoftware "code" "brew cask install visual-studio-code"
 
 checkSoftware "yarn" "brew install yarn"
@@ -159,7 +161,6 @@ ng() {
 
 checkSoftware "checkit" "ng check-it-out"
 checkSoftware "gh" "ng gh"
-checkSoftware "n" "ng n"
 checkSoftware "git-br" "ng git-br"
 checkSoftware "jack" "ng jack-cli"
 checkSoftware "opn" "ng opn-cli"
