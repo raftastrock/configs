@@ -16,7 +16,8 @@
   "emmet.excludeLanguages": [],
   "emmet.includeLanguages": {
     "FreeMarker": "html",
-    "markdown": "html"
+	"markdown": "html",
+	"jsp": "html"
   },
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,

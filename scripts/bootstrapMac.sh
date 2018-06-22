@@ -112,9 +112,7 @@ checkSoftware "curl" "brew install curl"
 
 checkSoftware "docker" "brew install docker"
 
-checkSoftware "node" "brew install node"
-
-checkSoftware "nvm" "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash"
+checkSoftware "nodebrew" "curl -L git.io/nodebrew | perl - setup && nodebrew install stable && nodebrew use stable"
 
 checkSoftware "code" "brew cask install visual-studio-code"
 
