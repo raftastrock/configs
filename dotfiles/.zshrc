@@ -40,7 +40,7 @@ source ~/PS1.zsh
 
 # ALIASES GLOBAL Files
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
-alias -g np='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
+alias -g nplug='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
 alias -g vars='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_variables.scss'
 alias -g z='~/.zshrc'
