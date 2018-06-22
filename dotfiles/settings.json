@@ -10,7 +10,7 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderWhitespace": "none",
+"editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "emmet.excludeLanguages": [],
@@ -69,7 +69,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "gitlens.historyExplorer.enabled": true,
-  "window.zoomLevel": 0,
+"window.zoomLevel": 0,
   "[markdown]": {
     "editor.quickSuggestions": true
   },

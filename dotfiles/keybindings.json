@@ -39,6 +39,10 @@
 		"when": "terminalFocus"
 	},
 	{
+		"key": "cmd+g",
+		"command": 	"workbench.action.gotoLine"
+	},
+	{
 		"key": "ctrl+shift+j",
 		"command": "workbench.action.terminal.focusNext"
 	},
