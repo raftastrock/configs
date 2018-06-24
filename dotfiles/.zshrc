@@ -319,3 +319,4 @@ function jsc {
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
+export GPG_TTY=$(tty)
