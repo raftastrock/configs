@@ -1,6 +1,6 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
-GENERAL=HOME/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin
+GENERAL=~/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin
 JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
@@ -32,7 +32,17 @@ fi
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
-plugins=(colorize gpg-agent git2 npm2)
+plugins=(
+  colored-man-pages
+  colorize
+  docker
+  docker-compose
+  gpg-agent
+  git2
+  npm2
+  zsh-autosuggestion
+  zsh-syntax-highlighting
+)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
@@ -58,9 +68,10 @@ alias docr='docker-compose down && docker-compose up -d --build'
 alias firefox='firefox-developer'
 alias getip='ip route get 8.8.8.8 | awk "{print $NF; exit}"'
 alias gd='gulp deploy'
+alias l='exa -la'
 alias lock='gnome-screensaver-command -l'
 alias lc='bash logColors.sh'
-alias ls='ls'
+alias ls='exa'
 alias hi='systemctl hibernate -i'
 alias j='jack' # Alias for jack-cli npm package
 alias my='mysql -u root'
