@@ -22,11 +22,9 @@ if [[ $IS_MAC = true ]]; then
   export CLICOLOR_FORCE=1
   export JAVA_HOME=$(/usr/libexec/java_home)
   CONFIG_DIR="$HOME/Library/Application Support/Code/User"
-  echo "ismac!"
 else
   CONFIG_DIR="$HOME/.config/Code/User"
   alias code='vscode'
-  echo "not mac!"
 fi
 
 # SETUP SSH KEYCHAIN
@@ -34,7 +32,7 @@ fi
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
-plugins=(colorize git2 npm2)
+plugins=(colorize gpg-agent git2 npm2)
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
