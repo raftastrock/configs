@@ -112,25 +112,23 @@ checkSoftware "curl" "brew install curl"
 
 checkSoftware "docker" "brew install docker"
 
+checkSoftware "exa" "brew install exa"
+
 checkSoftware "nodebrew" "curl -L git.io/nodebrew | perl - setup && nodebrew install stable && nodebrew use stable"
 
 checkSoftware "code" "brew cask install visual-studio-code"
 
 checkSoftware "yarn" "brew install yarn"
 
-# Brew Specific
-
-brew list zsh-completions || brew install zsh-completions
-
-spacer
-
-brew cask list firefox-developer-edition || brew cask install firefox-developer-edition
-
-spacer
+# Check only if installed undered Brew
 
 brew cask list amethyst || brew cask install amethyst
-
 spacer
+brew cask list firefox-developer-edition || brew cask install firefox-developer-edition
+spacer
+brew list grep || brew install grep --with-default-name
+spacer
+brew list zsh-completions || brew install zsh-completions
 
 ###
 

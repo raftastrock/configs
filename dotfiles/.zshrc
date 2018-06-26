@@ -1,6 +1,6 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/opt/firefox-dev
-GENERAL=~/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin
+GENERAL=~/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin:/usr/local/Cellar/grep/3.1/bin/
 JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
