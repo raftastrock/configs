@@ -2,6 +2,7 @@
   "[json]": {
     "editor.formatOnSave": true
   },
+  "cSpell.enabled": false,
   "editor.detectIndentation": false,
   "editor.fontFamily": "'Fira Code iScript', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
@@ -10,14 +11,14 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.multiCursorModifier": "ctrlCmd",
-"editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "emmet.excludeLanguages": [],
   "emmet.includeLanguages": {
     "FreeMarker": "html",
-	"markdown": "html",
-	"jsp": "html"
+    "markdown": "html",
+    "jsp": "html"
   },
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -69,7 +70,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "gitlens.historyExplorer.enabled": true,
-"window.zoomLevel": 0,
+  "window.zoomLevel": 0,
   "[markdown]": {
     "editor.quickSuggestions": true
   },
