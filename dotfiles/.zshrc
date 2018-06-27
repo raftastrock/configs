@@ -119,6 +119,7 @@ export nil='next-in-line'
 
 # GITHUB BRANCHES
 export e6='ee-6.2.x'
+export e61='ee-6.1.x'
 
 # JIRA PROJECTS
 export lrisa='LR Information Services' #default assignee
