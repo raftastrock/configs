@@ -56,7 +56,8 @@ alias -g kar='~/.config/karabiner/karabiner.json'
 
 # ALIASES
 alias add='bash addComponent.sh'
-alias acd='lc ant clean deploy'
+alias acd='ant clean deploy | lch -c ~/logColors.conf'
+alias acdd='ant direct-deploy | lch -c ~/logColors.conf'
 alias b='git rev-parse --abbrev-ref HEAD'
 alias bright='bash brightness.sh'
 alias c='clear'
@@ -70,7 +71,6 @@ alias getip='ip route get 8.8.8.8 | awk "{print $NF; exit}"'
 alias gd='gulp deploy'
 alias l='exa -la'
 alias lock='gnome-screensaver-command -l'
-alias lc='bash logColors.sh'
 alias ls='exa'
 alias hi='systemctl hibernate -i'
 alias j='jack' # Alias for jack-cli npm package
@@ -328,4 +328,3 @@ function jsc {
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
-export GPG_TTY=$(tty)
