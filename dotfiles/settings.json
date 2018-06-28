@@ -18,6 +18,7 @@
   "emmet.includeLanguages": {
     "FreeMarker": "html",
     "markdown": "html",
+    "typescript": "javascriptreact",
     "jsp": "html"
   },
   "explorer.confirmDelete": false,

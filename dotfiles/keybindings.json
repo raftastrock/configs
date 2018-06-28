@@ -30,6 +30,9 @@
     "when": "terminalFocus"
   },
   {
+	  "key": "cmd+r",
+	  "command": "gitlens.openFileInRemote"
+  },{
     "key": "cmd+escape",
     "command": "workbench.action.terminal.focus"
   },
