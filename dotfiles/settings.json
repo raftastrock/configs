@@ -11,7 +11,7 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "files.useExperimentalFileWatcher": true,

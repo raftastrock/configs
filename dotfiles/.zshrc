@@ -239,6 +239,7 @@ SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat-7.0.62
 # 6.1
 SERVER_61_BUNDLE=$BUNDLES_DIR/6.1
 SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat-7.0.40
+THEME_61_DIR=~/dev/life/liferay-plugins-ee/themes/osb-community-theme
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
 function dockerDir {
@@ -281,8 +282,19 @@ function addDir {
 }
 
 function clean {
-  cd $BUNDLES_DIR/tomcat-7.0.62/ || return 1
+  cd $SERVER_62_DIR || return 1
   rm -rfv work/Catalina/localhost/osb-community-theme
+  cd -
+}
+
+function clean61 {
+	cd $SERVER_61_DIR || return 1
+	rm -rfv work/Catalina/localhost/osb-community-theme
+	rm -rfv webapps/osb-community-theme/css/.sass-cache
+	cd -
+	cd $THEME_61_DIR/docroot/css || return 1
+	rm -rfv .sass-cache
+	cd -
 }
 
 function cleanAll {
