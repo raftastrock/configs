@@ -21,15 +21,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+escape",
-    "command": "workbench.action.terminal.focus"
-  },
-  {
-    "key": "ctrl+escape",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
-  },
-  {
     "key": "cmd+r",
     "command": "gitlens.openFileInRemote"
   },

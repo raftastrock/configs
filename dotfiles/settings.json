@@ -1,7 +1,4 @@
 {
-  "[json]": {
-    "editor.formatOnSave": true
-  },
   "cSpell.enabled": false,
   "editor.detectIndentation": false,
   "editor.fontFamily": "'Fira Code iScript', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -11,7 +8,7 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderWhitespace": "none",
+  "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "files.useExperimentalFileWatcher": true,
