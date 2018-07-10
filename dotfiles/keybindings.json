@@ -1,10 +1,5 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-	{
-		"key": "ctrl+f",
-		"command": "cursorRight",
-		 "when": "textInputFocus"
-	},
   {
     "key": "alt+k",
     "command": "editor.action.moveLinesDownAction",
@@ -16,20 +11,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+k",
-    "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+i",
-    "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "cmd+r",
-    "command": "gitlens.openFileInRemote"
-  },
-  {
     "key": "cmd+escape",
     "command": "workbench.action.terminal.focus"
   },
@@ -39,12 +20,27 @@
     "when": "terminalFocus"
   },
   {
+    "key": "cmd+r",
+    "command": "gitlens.openFileInRemote"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "cursorRight",
+     "when": "textInputFocus"
+  },
+  {
     "key": "ctrl+f",
     "command": "filesExplorer.findInFolder"
   },
   {
-    "key": "cmd+g",
-    "command": "workbench.action.gotoLine"
+    "key": "ctrl+k",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "key": "ctrl+t",
