@@ -16,7 +16,7 @@ export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
 export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)
 
-if [[ $IS_MAC = true ]]; the
+if [[ $IS_MAC = true ]]; then
   unset LSCOLORS
   export CLICOLOR=1
   export CLICOLOR_FORCE=1
