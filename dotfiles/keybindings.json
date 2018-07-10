@@ -20,6 +20,10 @@
     "when": "terminalFocus"
   },
   {
+    "key": "cmd+g",
+    "command": "workbench.action.gotoLine"
+  },
+  {
     "key": "cmd+r",
     "command": "gitlens.openFileInRemote"
   },
