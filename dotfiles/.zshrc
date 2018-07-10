@@ -22,9 +22,12 @@ if [[ $IS_MAC = true ]]; then
   export CLICOLOR_FORCE=1
   export JAVA_HOME=$(/usr/libexec/java_home)
   CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+  alias copy="tr -d '\n' | pbcopy"
+
 else
   CONFIG_DIR="$HOME/.config/Code/User"
   alias code='vscode'
+  alias copy='xclip -sel clip'
 fi
 
 # SETUP SSH KEYCHAIN
@@ -58,10 +61,9 @@ alias -g kar='~/.config/karabiner/karabiner.json'
 alias add='bash addComponent.sh'
 alias acd='ant clean deploy | lch -c ~/logColors.conf'
 alias acdd='ant direct-deploy | lch -c ~/logColors.conf'
-alias b='git rev-parse --abbrev-ref HEAD'
+alias b='git rev-parse --abbrev-ref HEAD | copy'
 alias bright='bash brightness.sh'
 alias c='clear'
-alias copy='xclip -sel clip'
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
 alias docl='docker-compose logs $@'
@@ -151,8 +153,8 @@ function fonts {
 
 function media {
   echo "@media all and (max-width: 576px) {}"
-  echo "@media all and (max-width: 768px) {}"
-  echo "@media all and (max-width: 980px) {}"
+  echo "@media all and (max-width: 767px) {}"
+  echo "@media all and (max-width: 979px) {}"
 }
 
 # Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
