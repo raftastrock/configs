@@ -1,6 +1,6 @@
 {
   "cSpell.enabled": false,
-  "editor.detectIndentation": false,
+  "editor.detectIndentation": true,
   "editor.fontFamily": "'Fira Code iScript', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
@@ -23,9 +23,9 @@
   "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
-	  "*.ftl": "ftl",
-	  "*.css": "scss"
-	},
+    "*.ftl": "ftl",
+    "*.css": "scss"
+  },
   "files.trimTrailingWhitespace": true,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,

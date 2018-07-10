@@ -1,5 +1,10 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+	{
+		"key": "ctrl+f",
+		"command": "cursorRight",
+		 "when": "textInputFocus"
+	},
   {
     "key": "alt+k",
     "command": "editor.action.moveLinesDownAction",
@@ -34,7 +39,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "cmd+f",
+    "key": "ctrl+f",
     "command": "filesExplorer.findInFolder"
   },
   {
@@ -42,7 +47,7 @@
     "command": "workbench.action.gotoLine"
   },
   {
-    "key": "cmd+t",
+    "key": "ctrl+t",
     "command": "openInTerminal"
   },
   {
