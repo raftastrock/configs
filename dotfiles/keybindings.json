@@ -20,20 +20,8 @@
     "when": "terminalFocus"
   },
   {
-    "key": "cmd+f",
-    "command": "filesExplorer.findInFolder"
-  },
-  {
     "key": "cmd+g",
     "command": "workbench.action.gotoLine"
-  },
-  {
-    "key": "cmd+r",
-    "command": "gitlens.openFileInRemote"
-  },
-  {
-    "key": "cmd+t",
-    "command": "openInTerminal"
   },
   {
     "key": "cmd+shift+j",
@@ -42,7 +30,11 @@
   {
     "key": "cmd+shift+k",
     "command": "workbench.action.terminal.focusPrevious"
-  }
+  },
+  {
+    "key": "ctrl+f",
+    "command": "filesExplorer.findInFolder"
+  },
   {
     "key": "ctrl+k",
     "command": "editor.action.moveLinesDownAction",
@@ -52,6 +44,14 @@
     "key": "ctrl+i",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "gitlens.openFileInRemote"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "openInTerminal"
   },
   {
     "key": "ctrl+shift+j",

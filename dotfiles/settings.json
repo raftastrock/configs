@@ -8,7 +8,7 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "files.useExperimentalFileWatcher": true,
@@ -72,5 +72,6 @@
   "window.zoomLevel": 0,
   "[markdown]": {
     "editor.quickSuggestions": true
-  }
+  },
+  "gitlens.gitExplorer.files.layout": "auto"
 }
