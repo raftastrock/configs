@@ -43,9 +43,9 @@ plugins=(
   gpg-agent
   git2
   npm2
-  zsh-autosuggestion
   zsh-syntax-highlighting
 )
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
