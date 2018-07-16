@@ -35,6 +35,8 @@ fi
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
+ZSH_THEME="wild-cherry"
+
 plugins=(
   colored-man-pages
   colorize
@@ -43,11 +45,11 @@ plugins=(
   gpg-agent
   git2
   npm2
-  zsh-syntax-highlighting
 )
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
-source ~/PS1.zsh
+# source ~/PS1.zsh
 
 # ALIASES GLOBAL Files
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
@@ -197,6 +199,13 @@ function slang {
   printf "\n===============================\n\n"
 
   cat ~/dev/life/liferay-portal-ee/portal-impl/src/content/Language.properties | grep -E --color $1
+}
+
+# Install `tree` first — brew install tree
+function t() {
+  # Defaults to 3 levels deep, do more with `t 5` or `t 1`
+  # pass additional args after
+  tree -I '.git|node_modules|bower_components|.DS_Store' --dirsfirst --filelimit 100 -L ${1:-3} -aC $2
 }
 
 function zpush {

@@ -52,6 +52,7 @@
   "python.pythonPath": "python3",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
+  "terminal.integrated.fontFamily": "Hack",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.scrollback": 10000,

@@ -124,10 +124,14 @@ checkSoftware "yarn" "brew install yarn"
 
 brew cask list amethyst || brew cask install amethyst
 spacer
+brew list coreutils  || brew install coreutils
 brew cask list firefox-developer-edition || brew cask install firefox-developer-edition
 spacer
 brew list grep || brew install grep --with-default-name
 spacer
+brew list zsh-syntax-highlighting || brew install zsh-syntax-highlighting
+brew list tree || brew install tree
+brew list wget || brew install wget
 brew list zsh-completions || brew install zsh-completions
 
 ###
@@ -141,6 +145,8 @@ checkDir ~/.oh-my-zsh "sh -c $configs/scripts/installOhMyZsh.sh"
 checkFile ~/PS1.zsh "cp $configs/dotfiles/PS1.zsh ~/"
 
 checkFile ~/.zshrc "cp $configs/dotfiles/.zshrc ~/" "source  ~/.zshrc"
+
+checkDir ~/.zsh/.zsh-autosuggestions "git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions"
 
 checkFile ~/logColors.conf "cp $configs/dotfiles/logColors.conf ~/"
 
