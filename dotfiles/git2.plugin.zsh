@@ -178,7 +178,7 @@ function getRemoteUrl() {
     regexStr='(?<=origin).*(?=\(fetch)'
   fi
 
-  git remote -v | grep -o -P $regexStr
+  git remote -v | grep -o -P $regexStr | awk '{$1=$1};1'
 }
 
 function getUserAndRepo() {
@@ -213,6 +213,11 @@ function gpo(){
 function gpu(){
   git push upstream $(git_current_branch)
   gopen upstream
+}
+
+function grswap() {
+  git remote rename origin upstream
+  git remote add origin $1
 }
 
 function gsave(){
