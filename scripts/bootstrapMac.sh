@@ -104,7 +104,7 @@ fi
 
 checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
 
-checkSoftware "zsh" "brew install zsh" "brew install zsh-completions"
+checkSoftware "zsh" "brew install zsh"
 
 checkSoftware "ag" "brew install the_silver_searcher"
 
@@ -120,7 +120,7 @@ checkSoftware "code" "brew cask install visual-studio-code"
 
 checkSoftware "yarn" "brew install yarn"
 
-# Check only if installed undered Brew
+# Check only if installed under Brew
 
 brew cask list amethyst || brew cask install amethyst
 spacer
