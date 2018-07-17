@@ -35,8 +35,6 @@ fi
 source $HOME/.keychain/$HOST-sh
 
 # PLUGINS
-ZSH_THEME="wild-cherry"
-
 plugins=(
   colored-man-pages
   colorize
@@ -49,7 +47,7 @@ plugins=(
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
-# source ~/PS1.zsh
+source ~/PS1.zsh
 
 # ALIASES GLOBAL Files
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
