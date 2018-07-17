@@ -97,11 +97,6 @@ checkSoftware "brew" "/usr/bin/ruby -e '$(curl -fsSL https://raw.githubuserconte
 
 checkSoftware "git" "" "git --version"
 
-if [ $(git config --global user.name) = "" ]; then
-  echo "Make sure to set git user name & email \n git config --global user.name"
-  spacer
-fi
-
 checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
 
 checkSoftware "zsh" "brew install zsh"
@@ -146,7 +141,7 @@ checkFile ~/PS1.zsh "cp $configs/dotfiles/PS1.zsh ~/"
 
 checkFile ~/.zshrc "cp $configs/dotfiles/.zshrc ~/" "source  ~/.zshrc"
 
-checkDir ~/.zsh/.zsh-autosuggestions "git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions"
+checkDir ~/.zsh/zsh-autosuggestions "git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions"
 
 checkFile ~/logColors.conf "cp $configs/dotfiles/logColors.conf ~/"
 
