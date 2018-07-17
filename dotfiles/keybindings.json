@@ -32,6 +32,10 @@
     "command": "workbench.action.terminal.focusPrevious"
   },
   {
+    "key": "ctrl+c",
+    "command": "copyFilePath"
+  },
+  {
     "key": "ctrl+f",
     "command": "filesExplorer.findInFolder"
   },

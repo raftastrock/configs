@@ -74,5 +74,6 @@
   "[markdown]": {
     "editor.quickSuggestions": true
   },
-  "gitlens.gitExplorer.files.layout": "auto"
+  "gitlens.gitExplorer.files.layout": "auto",
+  "[typescript]": {}
 }

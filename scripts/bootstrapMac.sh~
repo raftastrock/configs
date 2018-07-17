@@ -121,7 +121,7 @@ brew cask list amethyst || brew cask install amethyst
 brew list coreutils  || brew install coreutils
 brew cask list firefox-developer-edition || brew cask install firefox-developer-edition
 brew list grep || brew install grep --with-default-name
-brew list ruby || brew install ruby
+brew list ruby  || brew install ruby
 brew list tree || brew install tree
 brew list wget || brew install wget
 brew list zsh-completions || brew install zsh-completions

@@ -50,6 +50,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
 # ALIASES GLOBAL Files
+alias -g boots='~/dev/configs/scripts/bootstrapMac.sh'
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
 alias -g nplug='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
@@ -236,7 +237,7 @@ function zpull {
 # LIFERAY FUNCTIONS
 LIFERAY_DIR=$HOME/dev/life
 BUNDLES_DIR=$LIFERAY_DIR/bundles
-DOCKER_DIR=$LIFERAY_DIR/liferay-is-marketing-wedeploy/www-prod/liferay
+DOCKER_DIR=$LIFERAY_DIR/docker/www-prod/liferay
 PORTAL_DIR=$LIFERAY_DIR/liferay-portal-ee
 PLUGINS_DIR=$LIFERAY_DIR/liferay-plugins-ee
 PLUGINS_BUILD_FILE=build.$(whoami).properties
