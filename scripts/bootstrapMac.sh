@@ -79,9 +79,9 @@ checkFile() {
 
 generateSsh() {
 	if ! [ -f ~/.ssh/id_rsa.pub ]; then
-		ssh-keygen -t rsa -b 4096 -C "ryantgarant@gmail.com" -f ~/.ssh/id_rsa
+		ssh-keygen -t rsa -b 4096 -C "luke.shackelford@liferay.com" -f ~/.ssh/id_rsa
 
-		curl -u "protoEvangelion" \
+		curl -u "raftastrock" \
 			--data "{\"title\":\"`date +%m/%d/%Y-%H:%M:%S`_$(python -mplatform)\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
 			https://api.github.com/user/keys
 	else
@@ -97,7 +97,7 @@ checkSoftware "brew" "/usr/bin/ruby -e '$(curl -fsSL https://raw.githubuserconte
 
 checkSoftware "git" "" "git --version"
 
-checkDir $configs "cd ~/dev && git clone git@github.com:protoEvangelion/configs.git"
+checkDir $configs "cd ~/dev && git clone git@github.com:raftastrock/configs.git"
 
 checkSoftware "zsh" "brew install zsh"
 
