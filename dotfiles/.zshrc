@@ -273,8 +273,8 @@ function 61Dir {
 
 function addDir {
   cd $PORTAL_DIR || return 1
-  touch app.server.luke.properties
-  echo "app.server.parent.dir=$BUNDLES_DIR" > app.server.luke.properties
+  touch app.server.$(whoami).properties
+  echo "app.server.parent.dir=$BUNDLES_DIR" > app.server.$(whoami).properties
   cd -
 
   if [[ $1 ]]; then
@@ -284,7 +284,7 @@ function addDir {
   fi
 
   touch build.luke.properties
-  echo "app.server.parent.dir=$BUNDLES_DIR" > build.luke.properties
+  echo "app.server.parent.dir=$BUNDLES_DIR" > build.$(whoami).properties
   cd -
 }
 
