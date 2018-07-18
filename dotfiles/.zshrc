@@ -115,13 +115,10 @@ export ryanicon=':registered:'
 export westonicon=':four_leaf_clover:'
 
 # GITHUB ORGS
-export cov='covailnt'
-export gh='node-gh'
 export life='liferay'
-export nil='next-in-line'
 
 # GITHUB BRANCHES
-export e6='ee-6.2.x'
+export e62='ee-6.2.x'
 export e61='ee-6.1.x'
 
 # JIRA PROJECTS
@@ -276,8 +273,8 @@ function 61Dir {
 
 function addDir {
   cd $PORTAL_DIR || return 1
-  touch app.server.ryan.properties
-  echo "app.server.parent.dir=$BUNDLES_DIR" > app.server.ryan.properties
+  touch app.server.luke.properties
+  echo "app.server.parent.dir=$BUNDLES_DIR" > app.server.luke.properties
   cd -
 
   if [[ $1 ]]; then
@@ -286,8 +283,8 @@ function addDir {
     cd $PLUGINS_DIR || return 1
   fi
 
-  touch build.ryan.properties
-  echo "app.server.parent.dir=$BUNDLES_DIR" > build.ryan.properties
+  touch build.luke.properties
+  echo "app.server.parent.dir=$BUNDLES_DIR" > build.luke.properties
   cd -
 }
 
