@@ -186,7 +186,7 @@ function getUserAndRepo() {
 }
 
 function gopen(){
-  opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "firefox" --new-tab
+  opn http://github.com/$(getUserAndRepo $1)/commit/$(git rev-parse HEAD) -- "chrome" --new-tab
 }
 
 # FUNCTIONS

@@ -1,11 +1,11 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin:/opt/firefox-dev
 GENERAL=~/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin:/usr/local/Cellar/grep/3.1/bin/
-JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.13/bin
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:/usr/local/opt/ant@1.9/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
 # VARIABLES
-export ANT_HOME=$HOME/apache-ant-1.9.13
+# export ANT_HOME=$HOME/apache-ant-1.9.13
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
@@ -25,7 +25,7 @@ CONFIG_DIR="$HOME/Library/Application Support/Code/User"
 /usr/local/bin/keychain --quiet $HOME/.ssh/id_rsa
 source $HOME/.keychain/$HOST-sh
 
-# PLUGINS
+# OhMyZsh PLUGINS
 plugins=(
   colored-man-pages
   colorize
@@ -33,7 +33,6 @@ plugins=(
   docker-compose
   gpg-agent
   git2
-  npm2
 )
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -43,50 +42,32 @@ source ~/PS1.zsh
 # ALIASES GLOBAL Files (treats as string for quick referencing/editing)
 alias -g boots='~/dev/configs/scripts/bootstrapMac.sh'
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
-alias -g nplug='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
 alias -g utils='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_utilities.scss'
 alias -g vars='~/dev/life/liferay-plugins-ee/themes/osb-community-theme/docroot/_diffs/css/_variables.scss'
 alias -g z='~/.zshrc'
+## Kararbiner is R2's favorite keyboard modifier (set to vim arrows?)
 alias -g kar='~/.config/karabiner/karabiner.json'
 
 # ALIASES
-alias add='bash addComponent.sh'
 alias acd='ant clean deploy | lch -c ~/logColors.conf'
 alias acdd='ant direct-deploy | lch -c ~/logColors.conf'
 alias b='git rev-parse --abbrev-ref HEAD | copy'
-alias bright='bash brightness.sh'
 alias c='clear'
 alias copy="tr -d '\n' | pbcopy"
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
 alias docl='docker-compose logs $@'
 alias docr='docker-compose down && docker-compose up -d --build'
-alias firefox='firefox-developer'
-alias getip='ip route get 8.8.8.8 | awk "{print $NF; exit}"'
-alias gd='gulp deploy'
 alias l='exa -la'
 alias lc='lch -c ~/logColors.conf'
-alias lock='gnome-screensaver-command -l'
 alias ls='exa'
-alias hi='systemctl hibernate -i'
 alias j='jack' # Alias for jack-cli npm package
 alias my='mysql -u root'
-alias configs='cd ~/dev/configs && code .'
 alias re='source ~/.zshrc'
-alias restart='shutdown -r now'
-alias sai='sudo apt install $@'
-alias sas='sudo apt search $1'
-alias sass='npm rebuild node-sass --force'
-alias sar='sudo apt remove $@'
-alias sf='find . -name "*" | grep -v node_modules | xargs csf'
-alias suspend='systemctl suspend -i'
-alias switchJava='sudo update-alternatives --config java'
-alias up='xmod && python listenForUsb.py'
-alias x='xmodmap ~/.Xmodmap'
-alias x2='xmodmap ~/.Xmodmap2'
+alias sf='find . -name "*" | grep -v node_modules | xargs csf' # check source formatter
 
 # GITHUB USER VARIABLES
-export allen='allen-ziegenfus'
+export allen='allen-ziegenfus' # can be referenced with $allen
 export bchan='brianchandotcom'
 export design='liferay-design'
 export joan='joanhyokim'
@@ -100,17 +81,11 @@ export proto='protoEvangelion'
 export ryan='ryanschuhler'
 export weston='westonhancock'
 
-export joanicon=':fist:'
-export lukeicon=':mount_fuji:'
-export philicon=':palm_tree:'
-export ryanicon=':registered:'
-export westonicon=':four_leaf_clover:'
-
 # GITHUB ORGS
 export life='liferay'
 
 # GITHUB BRANCHES
-export e62='ee-6.2.x'
+export e62='ee-6.2.x' # can use 'gco' (git check out) $e62 to checkout ee-6.2.x
 export e61='ee-6.1.x'
 
 # JIRA PROJECTS
@@ -121,14 +96,6 @@ export lrisc='Liferay.com' #component
 # new ticket
 function jiran {
   gh ji -N -A $lrisa -p $lrisp -T $lrist -C $lrisc --title $1 --message $2
-}
-
-# MONITOR FUNCTIONS
-function homeScreen {
-  xrandr --output VGA-1 --auto
-  xrandr --output HDMI-1 --auto
-  xrandr --output VGA-1 --left-of HDMI-1
-  xrandr --output HDMI-1 --primary
 }
 
 # GENERAL UTILITY FUNCTIONS
@@ -148,6 +115,7 @@ function setjdk() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
 
+## Ways to remember what our standards are...
 function fonts {
   echo "extra-light: 200 - .font-weight-lighter"
   echo "light:       300"
@@ -160,16 +128,6 @@ function media {
   echo "@media all and (max-width: 576px) {}"
   echo "@media all and (max-width: 767px) {}"
   echo "@media all and (max-width: 979px) {}"
-}
-
-# Command to download recored-gif script: curl -l https://git.io/record-gif.sh | bash -
-function gif {
-  record-gif.sh $1 ~/Videos/$2.gif
-}
-
-# do math
-function m {
-  node -pe $@
 }
 
 function new {
@@ -214,7 +172,6 @@ function t() {
 function zpush {
   cd ~/dev/configs/dotfiles
   cp ~/.oh-my-zsh/plugins/git2/git2.plugin.zsh .
-  cp ~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh .
   cp $CONFIG_DIR/settings.json .
   cp $CONFIG_DIR/keybindings.json .
   cp $CONFIG_DIR/snippets/global.code-snippets .
@@ -230,7 +187,6 @@ function zpull {
   gcleandry
   cp .zshrc ~
   cp git2.plugin.zsh ~/.oh-my-zsh/plugins/git2
-  cp npm2.plugin.zsh ~/.oh-my-zsh/plugins/npm2
   cp settings.json $CONFIG_DIR/settings.json
   cp keybindings.json $CONFIG_DIR/keybindings.json
   cp global.code-snippets $CONFIG_DIR/snippets/global.code-snippets
@@ -248,7 +204,7 @@ PLUGINS_BUILD_FILE=build.$(whoami).properties
 
 # 6.2
 SERVER_62_BUNDLE=$BUNDLES_DIR/6.2
-SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat-7.0.62
+SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat*
 
 # 6.1
 SERVER_61_BUNDLE=$BUNDLES_DIR/6.1
@@ -295,12 +251,6 @@ function addDir {
   cd -
 }
 
-function clean {
-  cd $SERVER_62_DIR || return 1
-  rm -rfv work/Catalina/localhost/osb-community-theme
-  cd -
-}
-
 function clean61 {
 	cd $SERVER_61_DIR || return 1
 	rm -rfv work/Catalina/localhost/osb-community-theme
@@ -312,7 +262,7 @@ function clean61 {
 }
 
 function cleanAll {
-  cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
+  cd $BUNDLES_DIR/tomcat*/bin || return 1
   rm -rfv work/Catalina/localhost/osb-community-theme
   rm -rfv webapps/osb-community-theme/css/.sass-cache
   rm -rfv temp
@@ -320,40 +270,19 @@ function cleanAll {
   cd -
 }
 
-function gw {
-  gradle $1 | lch -c ~/logColors.conf
-}
-
 # Serve Liferay
 function serve {
-  cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
+  cd $BUNDLES_DIR/tomcat*/bin || return 1
   ./catalina.sh run | lch -c ~/logColors.conf
   cd -
 }
 
 # Serve Liferay
 function serve7 {
-  cd $HOME/dev/life/ee-7.0.x/bundles/tomcat-8.0.32/bin || return 1
+  cd $HOME/dev/life/ee-7.0.x/bundles/tomcat*/bin || return 1
   ./catalina.sh run | lch -c ~/logColors.conf
   cd -
 }
 
-# Deploy community theme
-function theme {
-  clean
-  cd $HOME/dev/life/liferay-plugins-ee/themes/osb-community-theme || return 1
-  ant deploy | lch -c ~/logColors.conf
-}
-
-# JACK SEARCH FUNCTIONS
-function jse {
-  jack --stat $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
-}
-
-function jsc {
-  jack $1 --grep $2 --pretty=format:'%C(yellow)%h%Creset %C(white)%s - %an%Creset (%C(green)%ar%Creset)';
-}
-
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
-export PATH="/usr/local/opt/ant@1.9/bin:$PATH"
