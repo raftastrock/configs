@@ -222,7 +222,7 @@ function grswap() {
 
 function gsave(){
   gaa
-  git commit -S -m $1
+  git commit -m $1
   git push origin $(git_current_branch)
   gopen $2
 }

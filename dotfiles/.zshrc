@@ -1,34 +1,25 @@
 # PATH
 APPS=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin:/opt/firefox-dev
 GENERAL=~/bin:~/.npm-global/bin:~/.local/share/umake/bin:~/dev/configs/scripts:~/.nodebrew/current/bin:/usr/local/Cellar/grep/3.1/bin/
-JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.11/bin
+JAVA_APPS=/opt/gradle/gradle-3.4.1/bin:~/apache-ant-1.9.13/bin
 export PATH=$APPS:$GENERAL:$JAVA_APPS:$PATH
 
 # VARIABLES
-export ANT_HOME=$HOME/apache-ant-1.9.11
+export ANT_HOME=$HOME/apache-ant-1.9.13
 export ANT_OPTS='-Xms2048m -Xmx4096m -XX:MaxPermSize=10000m'
 export API_URL='http://localhost:1337'
 export GRADLE_HOME=/usr/local/gradle
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
 export JAVA_OPTS='-Xms1024m -Xmx8000m -XX:MaxPermSize=4000m'
 export TEMP=$HOME/temp
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export NODE_PATH=~/.npm-global/lib/node_modules
 export ZSH=~/.oh-my-zsh
-export IS_MAC=$(python -mplatform | grep -qie darwin && echo true || echo false)
 
-if [[ $IS_MAC = true ]]; then
-  unset LSCOLORS
-  export CLICOLOR=1
-  export CLICOLOR_FORCE=1
-  export JAVA_HOME=$(/usr/libexec/java_home)
-  CONFIG_DIR="$HOME/Library/Application Support/Code/User"
-  alias copy="tr -d '\n' | pbcopy"
-
-else
-  CONFIG_DIR="$HOME/.config/Code/User"
-  alias code='vscode'
-  alias copy='xclip -sel clip'
-fi
+# MAC SPECIFIC SETS
+unset LSCOLORS
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
+CONFIG_DIR="$HOME/Library/Application Support/Code/User"
 
 # SETUP SSH KEYCHAIN
 /usr/local/bin/keychain --quiet $HOME/.ssh/id_rsa
@@ -49,7 +40,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 source ~/PS1.zsh
 
-# ALIASES GLOBAL Files
+# ALIASES GLOBAL Files (treats as string for quick referencing/editing)
 alias -g boots='~/dev/configs/scripts/bootstrapMac.sh'
 alias -g g='~/.oh-my-zsh/plugins/git2/git2.plugin.zsh'
 alias -g nplug='~/.oh-my-zsh/plugins/npm2/npm2.plugin.zsh'
@@ -65,6 +56,7 @@ alias acdd='ant direct-deploy | lch -c ~/logColors.conf'
 alias b='git rev-parse --abbrev-ref HEAD | copy'
 alias bright='bash brightness.sh'
 alias c='clear'
+alias copy="tr -d '\n' | pbcopy"
 alias doc='docker-compose $@'
 alias doce='docker-compose exec 62_liferay bash'
 alias docl='docker-compose logs $@'
@@ -140,6 +132,21 @@ function homeScreen {
 }
 
 # GENERAL UTILITY FUNCTIONS
+
+## Set Java Version
+function setjdk() {
+  if [ $# -ne 0 ]; then
+   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+   if [ -n "${JAVA_HOME+x}" ]; then
+    removeFromPath $JAVA_HOME
+   fi
+   export JAVA_HOME=`/usr/libexec/java_home -v $@`
+   export PATH=$JAVA_HOME/bin:$PATH
+  fi
+ }
+ function removeFromPath() {
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+ }
 
 function fonts {
   echo "extra-light: 200 - .font-weight-lighter"
@@ -349,3 +356,4 @@ function jsc {
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
+export PATH="/usr/local/opt/ant@1.9/bin:$PATH"
