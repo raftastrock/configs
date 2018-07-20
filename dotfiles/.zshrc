@@ -208,7 +208,7 @@ SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat*
 
 # 6.1
 SERVER_61_BUNDLE=$BUNDLES_DIR/6.1
-SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat-7.0.40
+SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat*
 THEME_61_DIR=~/dev/life/liferay-plugins-ee/themes/osb-community-theme
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
@@ -283,6 +283,7 @@ function serve7 {
   ./catalina.sh run | lch -c ~/logColors.conf
   cd -
 }
+
 
 # Adding autocomplete for 'we'
 [ -f ~/.we_autocomplete ] && source ~/.we_autocomplete
