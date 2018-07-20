@@ -204,11 +204,11 @@ PLUGINS_BUILD_FILE=build.$(whoami).properties
 
 # 6.2
 SERVER_62_BUNDLE=$BUNDLES_DIR/6.2
-SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat*
+SERVER_62_DIR=$SERVER_62_BUNDLE/tomcat-7.0.62
 
 # 6.1
 SERVER_61_BUNDLE=$BUNDLES_DIR/6.1
-SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat*
+SERVER_61_DIR=$SERVER_61_BUNDLE/tomcat-7.0.62
 THEME_61_DIR=~/dev/life/liferay-plugins-ee/themes/osb-community-theme
 
 # Add custom server properties file with correct paths in LIFERAY & PLUGINS repo
@@ -262,7 +262,7 @@ function clean61 {
 }
 
 function cleanAll {
-  cd $BUNDLES_DIR/tomcat*/bin || return 1
+  cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
   rm -rfv work/Catalina/localhost/osb-community-theme
   rm -rfv webapps/osb-community-theme/css/.sass-cache
   rm -rfv temp
@@ -272,14 +272,14 @@ function cleanAll {
 
 # Serve Liferay
 function serve {
-  cd $BUNDLES_DIR/tomcat*/bin || return 1
+  cd $BUNDLES_DIR/tomcat-7.0.62/bin || return 1
   ./catalina.sh run | lch -c ~/logColors.conf
   cd -
 }
 
 # Serve Liferay
 function serve7 {
-  cd $HOME/dev/life/ee-7.0.x/bundles/tomcat*/bin || return 1
+  cd $HOME/dev/life/ee-7.0.x/bundles/tomcat-7.0.62/bin || return 1
   ./catalina.sh run | lch -c ~/logColors.conf
   cd -
 }
